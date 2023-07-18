@@ -1,0 +1,21 @@
+# Carpetas
+/node_modules
+/dist
+
+# Archivos de configuración
+.env
+
+# Archivos generados
+/build
+/.DS_Store
+
+# Logs y archivos temporales
+/log
+/tmp
+
+# Archivos de respaldo
+*.bak
+*.swp
+
+# Dependencias específicas de IDE
+/.idea
