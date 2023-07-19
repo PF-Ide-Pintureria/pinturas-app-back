@@ -7,6 +7,7 @@ const uploadFromJSONController = async () => {
             where: {
                 name: product.name,
                 price: product.price,
+                code: product.code,
                 category: product.category,
                 image: product.image,
                 patent: product.patent
