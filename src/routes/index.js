@@ -23,7 +23,7 @@ const productsUploads = multer({ storage })
 
 router.get('/products', getAllProductsHandler);
 router.get('/categories', getCategoriesHandler);
-//fileProduct es el nombre del field html por el cual se recibe el archivo
+//image es el nombre del field html por el cual se recibe el archivo
 router.post('/products', [productsUploads.single("image")], createProductHandler);
 
 module.exports = router;

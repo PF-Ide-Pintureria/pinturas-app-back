@@ -12,7 +12,7 @@ const createProductHandler = async (req, res) => {
     let extension = imgProduct.split(".").at(-1)
 
     //Comprobar extension
-    if (extension !== "png" && extension !== "jpg" && extension !== "jpeg" && extension !== "gif") {
+    if (extension !== "png" && extension !== "jpg" && extension !== "jpeg" && extension !== "gif" && extension !== "webp") {
 
         //Si no es la extensión correcta eliminar el archivo
         const filePath = req.file.path;
