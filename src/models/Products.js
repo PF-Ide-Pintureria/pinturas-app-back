@@ -54,9 +54,17 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
             allowNull: true //de momento para facilitar pruebas
         },
-        inCart: {
+        rating: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        active: {
             type: DataTypes.BOOLEAN,
-            allowNull: true //de momento para facilitar pruebas
+            defaultValue: true,
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     },
         { timestamps: true });

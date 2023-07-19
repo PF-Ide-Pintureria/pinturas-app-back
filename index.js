@@ -8,7 +8,7 @@ const { uploadFromJSONController } = require('./src/controllers/');
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
     server.listen(PORT, "0.0.0.0", async () => {
-        // await uploadFromJSONController();
+        //await uploadFromJSONController();
         // eslint-disable-next-line no-console
         console.log(`Server listening on port ${PORT}`);
     });
