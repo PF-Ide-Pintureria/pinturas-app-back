@@ -1,6 +1,5 @@
 const { createProductController } = require('../controllers');
 const fs = require("fs");
-const { type } = require('os');
 const sanitize = require("sanitize-filename");
 
 
@@ -17,11 +16,11 @@ const createProductHandler = async (req, res) => {
         console.log(imgProduct, typeof imgProduct);
 
         //Sacar la extensión;
-        let extension = imgProduct.split(".").at(-1);
+        let extension = imgProduct.split(".").pop();
 
         //Comprobar extension;
-        if (extension !== "png" && extension !== "jpg" && extension !== "jpeg"
-            && extension !== "gif" && extension !== "webp") {
+        if (!["png", "jpg", "jpeg", "gif", "webp"]
+            .includes(extension.toLowerCase())) {
 
             //Si no es la extensión correcta eliminar el archivo;
             const filePath = req.file.path;
