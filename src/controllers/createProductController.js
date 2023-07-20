@@ -7,7 +7,11 @@ const createProductController = (product) => {
             price: product.price,
             category: product.category,
             image: product.image,
-            patent: product.patent
+            patent: product.patent,
+            price: product.price,
+            color: product.color,
+            package: product.package,
+            stock: product.stock
         },
     });
 };
