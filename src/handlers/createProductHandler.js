@@ -1,5 +1,6 @@
 const { createProductController } = require('../controllers');
 const fs = require("fs");
+const sanitize = require("sanitize-filename");
 
 
 const createProductHandler = async (req, res) => {
@@ -21,6 +22,12 @@ const createProductHandler = async (req, res) => {
 
             //Si no es la extensión correcta eliminar el archivo;
             const filePath = req.file.path;
+
+            // Validar si el path es seguro;
+            const safePath = sanitize(filePath, { replacement: "_" });
+            if (safePath !== filePath) {
+                throw new Error("El path no es seguro");
+            };
 
             fs.unlinkSync(filePath);
 
