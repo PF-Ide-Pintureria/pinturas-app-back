@@ -6,6 +6,7 @@ const uploadFromJSONController = require('./uploadFromJSONController');
 const deleteProductController = require("./deleteProductController");
 const editProductController = require("./editProductController");
 const getProductByIdController = require("./getProductByIdController");
+const filterProductsController = require("./filterProductsController");
 
 
 module.exports = {
@@ -17,4 +18,5 @@ module.exports = {
     deleteProductController,
     editProductController,
     getProductByIdController,
+    filterProductsController,
 };
