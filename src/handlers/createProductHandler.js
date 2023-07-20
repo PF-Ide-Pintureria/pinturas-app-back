@@ -1,5 +1,6 @@
 const { createProductController } = require('../controllers');
 const fs = require("fs");
+const { type } = require('os');
 const sanitize = require("sanitize-filename");
 
 
@@ -13,7 +14,7 @@ const createProductHandler = async (req, res) => {
         //Obtener nombre de la imagen;
         let imgProduct = req.file.originalname;
 
-        console.log(imgProduct);
+        console.log(imgProduct, typeof imgProduct);
 
         //Sacar la extensión;
         let extension = imgProduct.split(".").at(-1);
