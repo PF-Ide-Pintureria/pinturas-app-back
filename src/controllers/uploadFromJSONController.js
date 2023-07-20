@@ -13,6 +13,8 @@ const uploadFromJSONController = async () => {
                 patent: product.patent,
                 rating: product.rating,
                 description: product.description,
+                color: product.color,
+                package: product.package
             },
         });
         // console.log('Product created');
