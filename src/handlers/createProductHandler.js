@@ -13,6 +13,8 @@ const createProductHandler = async (req, res) => {
         //Obtener nombre de la imagen;
         let imgProduct = req.file.originalname;
 
+        console.log(imgProduct);
+
         //Sacar la extensión;
         let extension = imgProduct.split(".").at(-1);
 
