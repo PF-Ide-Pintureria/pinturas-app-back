@@ -1,12 +1,12 @@
-const { DataTypes, UUIDV4 } = require('sequelize');
+const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('products', {
-        id: {
-            type: DataTypes.UUID,
-            defaultValue: UUIDV4, //genero un identificador unico universal v4
+        idProduct: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
             primaryKey: true
         },
         name: {
