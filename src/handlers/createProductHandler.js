@@ -14,11 +14,11 @@ const createProductHandler = async (req, res) => {
         let imgProduct = req.file.originalname;
 
         //Sacar la extensión;
-        let extension = imgProduct.split(".").at(-1);
+        let extension = imgProduct.split(".").pop();
 
         //Comprobar extension;
-        if (extension !== "png" && extension !== "jpg" && extension !== "jpeg"
-            && extension !== "gif" && extension !== "webp") {
+        if (!["png", "jpg", "jpeg", "gif", "webp"]
+            .includes(extension.toLowerCase())) {
 
             //Si no es la extensión correcta eliminar el archivo;
             const filePath = req.file.path;
