@@ -1,6 +1,6 @@
-const { compare } = require('bcrypt');
 const { Products } = require('../db.js');
-const { Op } = require('sequelize');
+
+const productsPerPage = 10;
 
 
 const filterAndOrderProductsController =
@@ -105,6 +105,27 @@ const filterAndOrderProductsController =
                 };
             };
             filteredProducts.sort(compareFunc);
+        };
+        // añadir paginación
+        const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+        filteredProducts = filteredProducts.map((product, index) => {
+            return {
+                ...product.dataValues,
+                page: Math.ceil((index + 1) / productsPerPage),
+                totalPages,
+            };
+        });
+        // si se especifica una página, se devuelven los productos de esa
+        // página
+        if (page) {
+            filteredProducts = filteredProducts.filter((product) => {
+                return product.page === parseInt(page);
+            });
+        };
+        // si se especifica un límite, se limita la cantidad de productos
+        // devueltos
+        if (limit) {
+            filteredProducts = filteredProducts.slice(0, limit);
         };
         return filteredProducts;
     };
