@@ -39,9 +39,9 @@ const editProductHandler = async (req, res) => {
         return res.status(201).json({
 
             status: "success",
-            mensaje: "Producto editado exitosamente",
-            producto: product,
-            imagen: req.file
+            mesage: "Producto editado exitosamente",
+            product,
+            image: req.file
 
         });
     }

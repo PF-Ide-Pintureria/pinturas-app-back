@@ -46,9 +46,9 @@ const createProductHandler = async (req, res) => {
         return res.status(201).json({
 
             status: "success",
-            mensaje: "Producto publicado exitosamente",
-            producto: product,
-            imagen: req.file
+            message: "Producto publicado exitosamente",
+            product,
+            image: req.file
 
         });
 
