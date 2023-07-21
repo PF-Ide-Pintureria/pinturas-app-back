@@ -14,7 +14,7 @@ const createProductHandler = async (req, res) => {
     try {
 
         if (!req.file) return res.status(400)
-            .send("No se ha proporcinado la imagen de producto");
+            .send("No se ha proporcionado la imagen del producto.");
 
         //Obtener nombre de la imagen;
         let imgProduct = req.file.originalname;
