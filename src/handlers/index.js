@@ -4,6 +4,7 @@ const createProductHandler = require('./createProductHandler');
 const deleteProductHandler = require("./deleteProductHandler");
 const editProductHandler = require("./editProductHandler");
 const getProductByIdHandler = require("./getProductByIdHandler");
+const destroyProductHandler = require("./destroyProductHandler");
 
 
 module.exports = {
@@ -13,4 +14,5 @@ module.exports = {
     deleteProductHandler,
     editProductHandler,
     getProductByIdHandler,
+    destroyProductHandler,
 };

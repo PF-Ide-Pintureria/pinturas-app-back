@@ -5,6 +5,7 @@ const {
     deleteProductHandler,
     editProductHandler,
     getProductByIdHandler,
+    destroyProductHandler,
 } = require('../handlers/');
 const { Router } = require('express');
 const router = Router();
@@ -20,6 +21,7 @@ router.put("/products/:id", [productsUploads.single("image")],
 router.post('/products', [productsUploads.single("image")],
     createProductHandler);
 router.delete("/products/:id", deleteProductHandler);
+router.delete("/products/destroy/:id", destroyProductHandler);
 
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const { Products } = require('../db.js');
 
-const productsPerPage = 10;
+const productsPerPage = 12;
 
 
 const filterAndOrderProductsController =
@@ -10,7 +10,7 @@ const filterAndOrderProductsController =
         minStock, maxStock,
         limit, page,
         color, active,
-        sortBy, orderBy
+        sortBy, orderBy,
     ) => {
         // si no se especifica un nombre, se devuelven todos los productos
         let filteredProducts = await Products.findAll();
