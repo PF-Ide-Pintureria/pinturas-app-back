@@ -5,9 +5,11 @@ const sanitize = require("sanitize-filename");
 
 const createProductHandler = async (req, res) => {
 
-    console.log('req.body', req.body);
-    console.log('req.file', req.file);
-    console.log('Objeto req', req);
+    // console.log('req.body', req.body);
+    // console.log('req.file', req.file);
+    // console.log('Objeto req', req);
+
+    console.log('Estamos en el handler de createProductHandler');
 
     try {
 
@@ -43,7 +45,10 @@ const createProductHandler = async (req, res) => {
         };
 
         // si la imagen es correcta agregar a la bd;
-        const saveImage = req.file.filename;
+        const defaultPath = 'http://www.pinturasfadepa.com.ar/latex/imgnotas/prof_interior_opt.jpg';
+        const saveImage = req.file?.filename ?? defaultPath;
+
+        console.log('saveImage', saveImage);
 
         req.body.image = saveImage;
         const [product] = await createProductController(req.body);
