@@ -5,6 +5,10 @@ const sanitize = require("sanitize-filename");
 
 const createProductHandler = async (req, res) => {
 
+    console.log('req.body', req.body);
+    console.log('req.file', req.file);
+    console.log('Objeto req', req);
+
     try {
 
         if (!req.file) return res.status(400)
