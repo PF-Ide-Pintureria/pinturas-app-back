@@ -1,13 +1,27 @@
-const { filterProductsController } = require('../controllers');
+const { filterAndOrderProductsController } = require('../controllers');
 
 
 const getAllProductsHandler = async (req, res) => {
     try {
         // parámetros de búsqueda: nombre, precio (límite inferior y superior),
         // categoría
-        const { name, category, lowPrice, highPrice } = req.query;
-        const filteredProducts = await filterProductsController(
-            name, category, lowPrice, highPrice
+        const {
+            name, category,
+            lowPrice, highPrice,
+            minRating, maxRating,
+            minStock, maxStock,
+            limit, page,
+            color, active,
+            sortBy, orderBy,
+        } = req.query;
+        const filteredProducts = await filterAndOrderProductsController(
+            name, category,
+            lowPrice, highPrice,
+            minRating, maxRating,
+            minStock, maxStock,
+            limit, page,
+            color, active,
+            sortBy, orderBy,
         );
         return res.status(200).json({
             "status": "success",
