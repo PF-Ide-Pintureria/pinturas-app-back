@@ -1,10 +1,10 @@
 # Pinturas App Backend Server
 
 ## Authors:
-- [Jamer José](github.com/jamerrq)
-- [Edgar Juan](github.com/ejguercio)
-- [Roberto Jardines](github.com/charliejp21)
-- [Basilio Romero](github.com/bachiromero)
+- [Jamer José](https://github.com/jamerrq)
+- [Edgar Juan](https://github.com/ejguercio)
+- [Roberto Jardines](https://github.com/charliejp21)
+- [Basilio Romero](https://github.com/bachiromero)
 
 ## Description
 This is the backend server for the Pinturas App.
