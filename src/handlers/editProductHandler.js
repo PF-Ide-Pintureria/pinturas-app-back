@@ -40,9 +40,7 @@ const editProductHandler = async (req, res) => {
 
             status: "success",
             mesage: "Producto editado exitosamente",
-            product,
-            image: req.file
-
+            product
         });
     }
     catch (error) {

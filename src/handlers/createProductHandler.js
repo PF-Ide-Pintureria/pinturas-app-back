@@ -47,9 +47,7 @@ const createProductHandler = async (req, res) => {
 
             status: "success",
             message: "Producto publicado exitosamente",
-            product,
-            image: req.file
-
+            product
         });
 
     } catch (error) {
