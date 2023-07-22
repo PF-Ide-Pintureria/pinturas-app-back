@@ -19,6 +19,12 @@ const filterAndOrderProductsController = async ({
 
     // Construir la condición de búsqueda para los términos proporcionados
     let searchCondition = {
+        //Busqueda por nombre
+        ...(name ? {
+            name: {
+                [Op.iLike]: `%${name}%`,
+            },
+        } : {}),
         // Búsqueda por categoría si se proporciona una categoría específica
         ...(category && { category }),
 
