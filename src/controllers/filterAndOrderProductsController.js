@@ -100,7 +100,7 @@ const filterAndOrderProductsController = async ({
     // Calcular la cantidad total de páginas
     const totalPages = Math.ceil(totalResults / PRODUCTS_PER_PAGE);
 
-    if (!products.rows.lengths) {
+    if (!products.rows?.length) {
         throw new Error('No se encontraron resultados. Prueba de otra manera.');
     };
 
