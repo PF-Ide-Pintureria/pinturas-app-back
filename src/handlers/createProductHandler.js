@@ -7,11 +7,9 @@ const createProductHandler = async (req, res) => {
 
     try {
 
-        if (!req.file) return res.status(400)
-            .send("No se ha proporcionado la imagen del producto.");
-
-        //Obtener nombre de la imagen;
-        let imgProduct = req.file.originalname;
+        const defaultImagePath = 'http://www.pinturasfadepa.com.ar' +
+            "/latex/imgnotas/prof_interior_opt.jpg";
+        const imgProduct = req.file?.filename ?? defaultImagePath;
 
         //Sacar la extensión;
         let extension = imgProduct.split(".").pop();
@@ -39,7 +37,7 @@ const createProductHandler = async (req, res) => {
         };
 
         // si la imagen es correcta agregar a la bd;
-        const saveImage = req.file.filename;
+        const saveImage = req.file ? req.file.path : defaultImagePath;
 
         req.body.image = saveImage;
         const [product] = await createProductController(req.body);
