@@ -23,10 +23,7 @@ const getAllProductsHandler = async (req, res) => {
             color, active,
             sortBy, orderBy,
         );
-        return res.status(200).json({
-            "status": "success",
-            "products": filteredProducts
-        });
+        return res.status(200).json(filteredProducts);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     };
