@@ -22,6 +22,8 @@ This project is deployed on Render.com at the following URL:
 https://pinturas-app-backend.onrender.com/
 
 ## Testing (in progress)
+[![Node.js CI](https://github.com/PF-Ide-Pintureria/pinturas-app-back/actions/workflows/node.js.yml/badge.svg)](https://github.com/PF-Ide-Pintureria/pinturas-app-back/actions/workflows/node.js.yml)
+
 To run the tests, run the following command:
 ```bash
 npm test
