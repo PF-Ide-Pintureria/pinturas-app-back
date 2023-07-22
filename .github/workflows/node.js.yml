@@ -10,10 +10,10 @@ on:
     branches: [ "develop" ]
 
 env:
-  DB_NAME: qhnwsefy
-  DB_HOST: motty.db.elephantsql.com
-  DB_USER: qhnwsefy
-  DB_PASS: zvLxT7oNYfPCdUrFxYwPH1TbHO4jfl17
+  DB_NAME: ${{ vars.DB_NAME }}
+  DB_HOST: ${{ vars.DB_HOST }}
+  DB_USER: ${{ vars.DB_USER }}
+  DB_PASS: ${{ vars.DB_PASS }}
   PORT: 3000
 
 jobs:
