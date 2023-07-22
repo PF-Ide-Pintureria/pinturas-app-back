@@ -1,134 +1,114 @@
+const { Op } = require('sequelize');
 const { Products } = require('../db.js');
 
-const productsPerPage = 12;
+const PRODUCTS_PER_PAGE = 12;
 
+const filterAndOrderProductsController = async ({
+    name, category,
+    lowPrice, highPrice,
+    minRating, maxRating,
+    minStock, maxStock,
+    page, color,
+    active, limit,
+    sortBy, orderBy,
+}) => {
 
-const filterAndOrderProductsController =
-    async (name, category,
-        lowPrice, highPrice,
-        minRating, maxRating,
-        minStock, maxStock,
-        limit, page,
-        color, active,
-        sortBy, orderBy,
-    ) => {
-        // si no se especifica un nombre, se devuelven todos los productos
-        let filteredProducts = await Products.findAll();
-        // si se especifica un nombre, se filtran los productos por nombre
-        if (name) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.name.toLowerCase().includes(name.toLowerCase());
-            });
-        };
-        // si se especifica una categoría, se filtran los productos por
-        // categoría
-        if (category) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.category === category;
-            });
-        };
-        // si se especifica un precio mínimo, se filtran los productos por
-        // precio mínimo
-        if (lowPrice) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.price >= lowPrice;
-            });
-        };
-        // si se especifica un precio máximo, se filtran los productos por
-        // precio máximo
-        if (highPrice) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.price <= highPrice;
-            });
-        };
-        // si se especifica una calificación mínima, se filtran los productos
-        // por calificación mínima
-        if (minRating) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.rating >= minRating;
-            });
-        };
-        // si se especifica una calificación máxima, se filtran los productos
-        // por calificación máxima
-        if (maxRating) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.rating <= maxRating;
-            });
-        };
-        // si se especifica un stock mínimo, se filtran los productos por
-        // stock mínimo
-        if (minStock) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.stock >= minStock;
-            });
-        };
-        // si se especifica un stock máximo, se filtran los productos por
-        // stock máximo
-        if (maxStock) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.stock <= maxStock;
-            });
-        };
-        // si se especifica un color, se filtran los productos por color
-        if (color) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.color === color;
-            });
-        };
-        // si se especifica un estado, se filtran los productos por estado
-        // console.log('active: ', active);
-        if (active === true || active === 'true') {
-            filteredProducts = filteredProducts.filter((product) => {
-                // console.log('product.active: ', product.active);
-                return product.active;
-            });
-        };
-        // si se especifica un orden, se ordenan los productos por orden
-        if (sortBy && orderBy) {
-            const validSortBy = ['name', 'price', 'rating', 'stock'];
-            const validOrderBy = ['asc', 'desc'];
-            if (!validSortBy.includes(sortBy) ||
-                !validOrderBy.includes(orderBy)) {
-                throw new Error('Invalid sortBy or orderBy');
-            };
-            compareFunc = sortBy === 'name' ? (a, b) => {
-                if (orderBy === 'asc') {
-                    return a[sortBy].localeCompare(b[sortBy]);
-                } else {
-                    return b[sortBy].localeCompare(a[sortBy]);
-                };
-            } : (a, b) => {
-                if (orderBy === 'asc') {
-                    return a[sortBy] - b[sortBy];
-                } else {
-                    return b[sortBy] - a[sortBy];
-                };
-            };
-            filteredProducts.sort(compareFunc);
-        };
-        // añadir paginación
-        const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-        filteredProducts = filteredProducts.map((product, index) => {
-            return {
-                ...product.dataValues,
-                page: Math.ceil((index + 1) / productsPerPage),
-                totalPages,
-            };
-        });
-        // si se especifica una página, se devuelven los productos de esa
-        // página
-        if (page) {
-            filteredProducts = filteredProducts.filter((product) => {
-                return product.page === parseInt(page);
-            });
-        };
-        // si se especifica un límite, se limita la cantidad de productos
-        // devueltos
-        if (limit) {
-            filteredProducts = filteredProducts.slice(0, limit);
-        };
-        return filteredProducts;
+    const pageSet = page || 1; // Página actual, por defecto 1
+
+    const offset = (pageSet - 1) * PRODUCTS_PER_PAGE;
+
+    // Construir la condición de búsqueda para los términos proporcionados
+    let searchCondition = {
+        // Búsqueda por categoría si se proporciona una categoría específica
+        ...(category && { category }),
+
+        // Búsqueda por color
+        ...(color && { color }),
+
+        // Búsqueda por activos
+        ...(active && { active }),
+
+        // Búsqueda por rango de precios
+        ...((lowPrice && highPrice) ?
+            {
+                price: {
+                    [Op.between]: [lowPrice, highPrice],
+                },
+            } : (lowPrice ? {
+                price: {
+                    [Op.gte]: lowPrice,
+                },
+            } : (highPrice ? {
+                price: {
+                    [Op.lte]: highPrice,
+                },
+            } : {}))),
+
+        // Búsqueda por rating
+        ...((minRating && maxRating) ?
+            {
+                rating: {
+                    [Op.between]: [minRating, maxRating],
+                },
+            } : (minRating ? {
+                rating: {
+                    [Op.gte]: minRating,
+                },
+            } : (maxRating ? {
+                rating: {
+                    [Op.lte]: maxRating,
+                },
+            } : {}))),
+
+        // Búsqueda por stock
+        ...((minStock && maxStock) ?
+            {
+                stock: {
+                    [Op.between]: [minStock, maxStock],
+                },
+            } : (minStock ? {
+                stock: {
+                    [Op.gte]: minStock,
+                },
+            } : (maxStock ? {
+                stock: {
+                    [Op.lte]: maxStock,
+                },
+            } : {}))),
+
     };
 
+    let products = await Products.findAndCountAll({
+        where: searchCondition,
+        limit: limit || PRODUCTS_PER_PAGE,
+        offset: offset,
+        order: [
+            // Ordenar por precio
+            ...(sortBy === 'price' ? [['price', orderBy || 'ASC']] : []),
+            // Ordenar por rating
+            ...(sortBy === 'rating' ? [['rating', orderBy || 'ASC']] : []),
+            // Ordenar por stock
+            ...(sortBy === 'stock' ? [['stock', orderBy || 'ASC']] : []),
+            // Ordenar por nombre
+            ...(sortBy === 'name' ? [['name', orderBy || 'ASC']] : []),
+        ],
+    });
+
+    // Consulta adicional para obtener la cantidad total de resultados
+    const totalResults = products.count;
+
+    // Calcular la cantidad total de páginas
+    const totalPages = Math.ceil(totalResults / PRODUCTS_PER_PAGE);
+
+    if (!products.rows.lengths) {
+        throw new Error('No se encontraron resultados. Prueba de otra manera.');
+    };
+
+    return {
+        results: products,
+        pages: totalPages,
+    };
+
+};
 
 module.exports = filterAndOrderProductsController;
