@@ -10,4 +10,5 @@ const getCategoriesController = async () => {
     return categories;
 };
 
+
 module.exports = getCategoriesController;
