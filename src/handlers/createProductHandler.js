@@ -5,14 +5,10 @@ const sanitize = require("sanitize-filename");
 
 const createProductHandler = async (req, res) => {
 
-    console.log('Estamos en el handler de createProductHandler');
-    console.log('req.body', req.body);
-    console.log('req.file', req.file);
-    console.log('Objeto req', req);
-
     try {
 
-        const defaultImagePath = 'http://www.pinturasfadepa.com.ar/latex/imgnotas/prof_interior_opt.jpg';
+        const defaultImagePath = 'http://www.pinturasfadepa.com.ar' +
+            "/latex/imgnotas/prof_interior_opt.jpg";
         const imgProduct = req.file?.filename ?? defaultImagePath;
 
         //Sacar la extensión;
