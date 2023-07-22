@@ -9,6 +9,13 @@ on:
   pull_request:
     branches: [ "develop" ]
 
+env:
+  DB_NAME: qhnwsefy
+  DB_HOST: motty.db.elephantsql.com
+  DB_USER: qhnwsefy
+  DB_PASS: zvLxT7oNYfPCdUrFxYwPH1TbHO4jfl17
+  PORT: 3000
+
 jobs:
   build:
 
