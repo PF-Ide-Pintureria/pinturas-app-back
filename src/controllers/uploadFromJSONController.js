@@ -14,10 +14,10 @@ const uploadFromJSONController = async () => {
                 rating: product.rating,
                 description: product.description,
                 color: product.color,
-                package: product.package
+                package: product.package,
+                stock: product.stock,
             },
         });
-        // console.log('Product created');
     });
     console.log('Products created');
 };
