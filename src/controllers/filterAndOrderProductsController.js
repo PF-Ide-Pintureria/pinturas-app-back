@@ -91,6 +91,9 @@ const filterAndOrderProductsController = async ({
             ...(sortBy === 'stock' ? [['stock', orderBy || 'ASC']] : []),
             // Ordenar por nombre
             ...(sortBy === 'name' ? [['name', orderBy || 'ASC']] : []),
+            // En caso de no especificar un orden, ordenar por id
+            ...((!sortBy || sortBy === 'idProduct') ?
+                [['idProduct', orderBy || 'ASC']] : [['id', 'ASC']]),
         ],
     });
 
