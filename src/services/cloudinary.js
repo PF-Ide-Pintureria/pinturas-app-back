@@ -1,7 +1,6 @@
 const cloudinary = require("cloudinary").v2;
 require('dotenv').config();
 const { CLOUD_NAME, CLOUDINARY_KEY, CLOUDINARY_SECRET } = process.env;
-const fs = require("fs")
 const sanitize = require("sanitize-filename");
 
 cloudinary.config({
@@ -24,13 +23,7 @@ const uploadImage = async (file) => {
     //Comprobar extension;
     if (!["png", "jpg", "jpeg", "gif", "webp"]
         .includes(extension.toLowerCase())) {
-            
-       //Si no es el correcto, borrar archivo 
-       const filePath = file.path;
-
-       fs.unlinkSync(filePath)
-
-       throw new Error("Por favor sube extensión de imagen permitida");
+        throw new Error("Por favor sube extensión de imagen permitida");
     };
 
     const fileName = file.filename || DEFAULT_IMAGE;
@@ -38,9 +31,6 @@ const uploadImage = async (file) => {
     // Validar si el path es seguro;
     const safePath = sanitize(fileName, { replacement: "_" });
     if (safePath !== fileName) {
-
-        fs.unlinkSync(file.path);
-
         throw new Error("Por favor sube un formato válido de imagen");
     };
 
