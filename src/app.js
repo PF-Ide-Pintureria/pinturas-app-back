@@ -31,14 +31,14 @@ server.use((req, res, next) => {
 });
 // Middleware para capturar la dirección
 // IP del encabezado X - Forwarded - For cuando esté presente
-app.use((req, res, next) => {
+server.use((req, res, next) => {
     const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     req.clientIp = clientIp;
     next();
 });
 // Utilizar el middleware express.static para servir
 // archivos estáticos desde la carpeta "public"
-app.use(express.static(path.join(__dirname, 'public')));
+server.use(express.static(path.join(__dirname, 'public')));
 
 server.use('/', routes);
 
