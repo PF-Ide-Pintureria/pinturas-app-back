@@ -11,7 +11,11 @@ require('./db.js');
 const server = express();
 
 // Proxy configuration
-server.set('trust proxy', true);
+const trustProxyFn = (ip) => {
+    // Por ahora, confiamos en todas las conexiones
+    return true;
+};
+server.set('trust proxy', trustProxyFn);
 server.use(rateLimiter);
 // Middleware para capturar la dirección
 // IP del encabezado X - Forwarded - For cuando esté presente
