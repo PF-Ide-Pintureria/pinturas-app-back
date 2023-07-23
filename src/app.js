@@ -8,6 +8,9 @@ require('./db.js');
 
 const server = express();
 
+// Proxy configuration
+server.set('trust proxy', true);
+
 server.name = 'API';
 //MIDDLEWARES
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
@@ -28,7 +31,8 @@ server.use((req, res, next) => {
 server.use('/', routes);
 
 // Error catching endware.
-server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+server.use((err, req, res, next) => {
+    // eslint-disable-line no-unused-vars
     const status = err.status || 500;
     const message = err.message || err;
     console.error(err);
