@@ -40,6 +40,6 @@
     },
     "http.proxySupport": "off",
     "engines": {
-        "node": ">=16.19.1"
+        "node": ">=16 <17"
     }
 }

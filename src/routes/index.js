@@ -7,12 +7,11 @@ const {
     getProductByIdHandler,
     destroyProductHandler,
 } = require('../handlers/');
+const { productsUploads, } = require('../middlewares/');
 const { Router } = require('express');
+
 const router = Router();
-const { productsUploads, rateLimiter } = require('../middlewares/');
 
-
-router.use(rateLimiter);
 router.get('/products', getAllProductsHandler);
 router.get('/categories', getCategoriesHandler);
 router.get('/details/:id', getProductByIdHandler);

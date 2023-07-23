@@ -3,13 +3,15 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+const { rateLimiter } = require('./middlewares/');
 
 require('./db.js');
 
 const server = express();
 
 // Proxy configuration
-server.set('trust proxy', true);
+server.set('trust proxy', false);
+server.use(rateLimiter);
 
 server.name = 'API';
 //MIDDLEWARES
