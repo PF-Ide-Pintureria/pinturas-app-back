@@ -11,8 +11,15 @@ require('./db.js');
 const server = express();
 
 // Proxy configuration
-server.set('trust proxy', false);
+server.set('trust proxy', true);
 server.use(rateLimiter);
+// Middleware para capturar la dirección
+// IP del encabezado X - Forwarded - For cuando esté presente
+server.use((req, res, next) => {
+    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    req.clientIp = clientIp;
+    next();
+});
 
 server.name = 'API';
 //MIDDLEWARES
@@ -28,13 +35,6 @@ server.use((req, res, next) => {
         'Origin, X-Requested-With, Content-Type, Accept');
     res.header('Access-Control-Allow-Methods',
         'GET, POST, OPTIONS, PUT, DELETE');
-    next();
-});
-// Middleware para capturar la dirección
-// IP del encabezado X - Forwarded - For cuando esté presente
-server.use((req, res, next) => {
-    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    req.clientIp = clientIp;
     next();
 });
 // Utilizar el middleware express.static para servir
