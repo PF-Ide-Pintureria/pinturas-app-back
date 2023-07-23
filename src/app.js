@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { rateLimiter } = require('./middlewares/');
+const path = require('path');
 
 require('./db.js');
 
