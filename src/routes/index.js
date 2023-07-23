@@ -12,6 +12,20 @@ const { Router } = require('express');
 
 const router = Router();
 
+// Default message for root path
+const routesDescription = {
+    '/': 'Welcome to the API',
+    '/products': 'Get all products',
+    '/categories': 'Get all categories',
+    '/details/:id': 'Get product by id',
+    '/products/:id': 'Edit product by id',
+    '/products': 'Create product',
+    '/products/:id': 'Delete product by id',
+};
+router.get('/', (req, res) => {
+    return res.json(routesDescription);
+});
+
 router.get('/products', getAllProductsHandler);
 router.get('/categories', getCategoriesHandler);
 router.get('/details/:id', getProductByIdHandler);
