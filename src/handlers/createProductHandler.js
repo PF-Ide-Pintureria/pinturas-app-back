@@ -1,51 +1,25 @@
 const { createProductController } = require('../controllers');
-const fs = require("fs");
-const sanitize = require("sanitize-filename");
+const uploadImage = require('../services/cloudinary');
 
 
 const createProductHandler = async (req, res) => {
 
     try {
 
-        const defaultImagePath = 'http://www.pinturasfadepa.com.ar' +
-            "/latex/imgnotas/prof_interior_opt.jpg";
-        const imgProduct = req.file?.filename ?? defaultImagePath;
+        if(req.file){
 
-        //Sacar la extensión;
-        let extension = imgProduct.split(".").pop();
+            const secure_url = await uploadImage(req.file);
 
-        //Comprobar extension;
-        if (!["png", "jpg", "jpeg", "gif", "webp"]
-            .includes(extension.toLowerCase())) {
+            req.body.image = secure_url;    
+            
+        }
 
-            //Si no es la extensión correcta eliminar el archivo;
-            const filePath = req.file.path;
+        const postProduct = await createProductController(req.body);
 
-            // Validar si el path es seguro;
-            const safePath = sanitize(filePath, { replacement: "_" });
-            if (safePath !== filePath) {
-                throw new Error("El path no es seguro");
-            };
-
-            fs.unlinkSync(filePath);
-
-            return res.status(400).json({
-                status: "error",
-                mensaje: "Por favor sube un formato válido de imagen"
-            });
-
-        };
-
-        // si la imagen es correcta agregar a la bd;
-        const saveImage = req.file ? req.file.path : defaultImagePath;
-
-        req.body.image = saveImage;
-        const [product] = await createProductController(req.body);
         return res.status(201).json({
-
             status: "success",
-            message: "Producto publicado exitosamente",
-            product
+            message: "Producto creado exitosamente",
+            product: postProduct
         });
 
     } catch (error) {
