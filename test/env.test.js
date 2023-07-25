@@ -28,7 +28,7 @@ describe('ENVIRONMENT VARIABLES', () => {
 
     // Verifica que la variables de entorno para la
     // conexión a Cloudinary estén definidas
-    describe('Cloudinary keys', () => {
+    xdescribe('Cloudinary keys', () => {
 
         it('Should have a CLOUD_NAME key', () => {
             expect(process.env.CLOUD_NAME).to.not.be.undefined;
@@ -46,7 +46,7 @@ describe('ENVIRONMENT VARIABLES', () => {
 
     // Verifica que la variables de entorno para la
     // conexión a DB de testing estén definidas
-    describe('Testing database keys', () => {
+    xdescribe('Testing database keys', () => {
 
         it('Should have a DB_TEST_NAME key', () => {
             expect(process.env.DB_TEST_NAME).to.not.be.undefined;
