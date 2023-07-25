@@ -1,5 +1,5 @@
 const { ProductsControllers } = require('../../controllers');
-const { editProductController } = ProductsControllers;
+const { editProduct } = ProductsControllers;
 const { uploadImage } = require('../../services/');
 
 
@@ -17,7 +17,7 @@ const editProductHandler = async (req, res) => {
 
         }
 
-        const product = await editProductController(id, req.body);
+        const product = await editProduct(id, req.body);
 
         return res.status(201).json({
             status: "success",
@@ -27,6 +27,7 @@ const editProductHandler = async (req, res) => {
 
 
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ error: error.message });
     };
 

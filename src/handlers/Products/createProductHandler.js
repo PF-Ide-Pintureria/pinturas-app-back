@@ -1,5 +1,7 @@
 const { ProductsControllers } = require('../../controllers');
 const { createProduct } = ProductsControllers;
+const { uploadImage } = require('../../services/');
+
 
 const createProductHandler = async (req, res) => {
 
@@ -22,9 +24,11 @@ const createProductHandler = async (req, res) => {
         });
 
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ error: error.message });
     };
 
 };
+
 
 module.exports = createProductHandler;

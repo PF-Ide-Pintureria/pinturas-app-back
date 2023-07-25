@@ -1,5 +1,5 @@
-const { UserControllers } = require('../../controllers');
-const { registerUser } = UserControllers;
+const { UsersControllers } = require('../../controllers');
+const { registerUser } = UsersControllers;
 
 
 const registerUserHandler = async (req, res) => {
