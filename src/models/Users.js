@@ -17,7 +17,6 @@ module.exports = (sequelize) => {
                     msg: "Debe ser un email valido",
                 },
             },
-            unique: true,
         },
         password: {
             type: DataTypes.STRING,
@@ -45,10 +44,6 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: true, //de momento para facilitar pruebas
-            validate: {
-                isAlpha: true,
-            },
-
         },
         lastName: {
             type: DataTypes.STRING,
@@ -65,9 +60,6 @@ module.exports = (sequelize) => {
         locality: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-                isAlpha: true,
-            },
         },
         province: {
             type: DataTypes.STRING,

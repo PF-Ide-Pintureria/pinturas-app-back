@@ -4,7 +4,7 @@ const { registerUserController } = require('../controllers/');
 const registerUserHandler = async (req, res) => {
 
     //Recoger datos de la petición
-    const { email, password, rol, name, lastname, adress } = req.body;
+    const { email, password, rol, name, lastName, adress, locality, province, phone } = req.body;
 
     //Comprobar que me llegan bien los datos(validacion)
     //Respuesta "clara" o personalizada de ususarios duplicados(pendiente)
@@ -22,7 +22,7 @@ const registerUserHandler = async (req, res) => {
 
     try {
 
-        const newUser = await registerUserController(email, password, rol);
+        const newUser = await registerUserController(email, password, rol, name, lastName, adress, locality, province, phone);
 
         return res.status(200).json({
 
@@ -32,7 +32,7 @@ const registerUserHandler = async (req, res) => {
 
     } catch (error) {
 
-        return res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.errors[0].message });
 
     }
 
