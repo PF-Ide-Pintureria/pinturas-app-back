@@ -6,7 +6,8 @@
     "scripts": {
         "start": "nodemon -L",
         "resetDB": "node ./src/controllers/resetDBController.js",
-        "test": "mocha --recursive --timeout 10000 --exit"
+        "test": "mocha --recursive --timeout 10000 --exit",
+        "testEnv": "mocha -g 'ENVIRONMENT VARIABLES' --recursive --timeout 10000 --exit"
     },
     "keywords": [],
     "author": "",
