@@ -19,3 +19,8 @@
 
 # Dependencias específicas de IDE
 /.idea
+
+# Sólo una imagen en el Repositorio
+src/assets/products/*
+!src/assets/products/product-1689813391810-image.png
+```
