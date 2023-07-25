@@ -6,6 +6,7 @@ const {
     editProductHandler,
     getProductByIdHandler,
     destroyProductHandler,
+    registerUserHandler
 } = require('../handlers/');
 const { productsUploads, } = require('../middlewares/');
 const { Router } = require('express');
@@ -21,6 +22,7 @@ const routesDescription = {
     '/products/:id': 'Edit product by id',
     '/products': 'Create product',
     '/products/:id': 'Delete product by id',
+    '/register' : 'Register user'
 };
 router.get('/', (req, res) => {
     return res.json(routesDescription);
@@ -35,6 +37,6 @@ router.post('/products', [productsUploads.single("image")],
     createProductHandler);
 router.delete("/products/:id", deleteProductHandler);
 router.delete("/products/destroy/:id", destroyProductHandler);
-
+router.post("/register", registerUserHandler)
 
 module.exports = router;
