@@ -1,42 +1,17 @@
-const {
-    getAllProductsHandler,
-    getCategoriesHandler,
-    createProductHandler,
-    deleteProductHandler,
-    editProductHandler,
-    getProductByIdHandler,
-    destroyProductHandler,
-    registerUserHandler
-} = require('../handlers/');
-const { productsUploads, } = require('../middlewares/');
+// Init router
 const { Router } = require('express');
+// Bring Routers
+const productsRoutes = require('./productsRoutes');
+const categoriesRoutes = require('./categoriesRoutes');
+const usersRoutes = require('./usersRoutes');
 
 const router = Router();
 
-// Default message for root path
-const routesDescription = {
-    '/': 'Welcome to the API',
-    '/products': 'Get all products',
-    '/categories': 'Get all categories',
-    '/details/:id': 'Get product by id',
-    '/products/:id': 'Edit product by id',
-    '/products': 'Create product',
-    '/products/:id': 'Delete product by id',
-    '/register': 'Register user'
-};
-router.get('/', (req, res) => {
-    return res.json(routesDescription);
-});
-
-router.get('/products', getAllProductsHandler);
-router.get('/categories', getCategoriesHandler);
-router.get('/details/:id', getProductByIdHandler);
-router.put("/products/:id", [productsUploads.single("image")],
-    editProductHandler);
-router.post('/products', [productsUploads.single("image")],
-    createProductHandler);
-router.delete("/products/:id", deleteProductHandler);
-router.delete("/products/destroy/:id", destroyProductHandler);
-router.post("/register", registerUserHandler);
+// Categories routes
+router.use('/categories', categoriesRoutes);
+// Products routes
+router.use('/products', productsRoutes);
+// Users routes
+router.use('/users', usersRoutes);
 
 module.exports = router;
