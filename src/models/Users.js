@@ -57,7 +57,7 @@ module.exports = (sequelize) => {
                 isAlpha: true,
             },
         },
-        adress: {
+        address: {
             type: DataTypes.STRING,
             allowNull: true,
 

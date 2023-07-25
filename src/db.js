@@ -3,9 +3,19 @@ require('dotenv').config();
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 const fs = require('fs');
 const path = require('path');
+const { NODE_ENV } = process.env;
 
-
-const dataBaseUrl = `postgres://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}`;
+let dataBaseUrl = `postgres://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}`;
+// En caso que estemos en environment de prueba se cambia la url de la base de
+// datos
+if (NODE_ENV === 'test') {
+    const {
+        DB_TEST_USER, DB_TEST_PASS, DB_TEST_HOST, DB_TEST_NAME
+    } = process.env;
+    const hostInfo = `${DB_TEST_HOST}/${DB_TEST_NAME}`;
+    dataBaseUrl = `postgres://${DB_TEST_USER}:${DB_TEST_PASS}@${hostInfo}`;
+    console.log('TESTING ENVIRONMENT');
+}
 const sequelize = new Sequelize(dataBaseUrl, {
     // set to console.log to see the raw SQL queries
     logging: false,
@@ -44,8 +54,8 @@ const { Blogs, Products, Reviews, Users } = sequelize.models;
 // Aca vendrian las relaciones:
 //FAVORITOS
 // un usuario puede tener muchos productos favoritos y un producto puede ser favorito para muchos usuarios.
-Users.belongsToMany(Products, { through: "favorite_products" })
-Products.belongsToMany(Users, { through: "favorite_products" })
+Users.belongsToMany(Products, { through: "favorite_products" });
+Products.belongsToMany(Users, { through: "favorite_products" });
 //BLOGS
 //un usuario puede tener varios blogs, pero cada blog pertenece a un único usuario
 Users.hasMany(Blogs);
