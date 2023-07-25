@@ -10,6 +10,7 @@ const filterAndOrderProductsController = require("./filterAndOrderProductsContro
 const destroyProductController = require("./destroyProductController");
 const registerUserController = require("./registerUserController");
 
+
 module.exports = {
     getAllProductsController,
     getProductByNameController,

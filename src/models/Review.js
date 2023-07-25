@@ -7,17 +7,17 @@ module.exports = (sequelize) => {
         description: {
             type: DataTypes.STRING,
             allowNull: false,
-            
+
         },
         rating: { //validar que solo sea entre 1 y 5
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                max: 5,                
+                max: 5,
                 min: 1,
             },
         },
-        
+
     },
         { timestamps: true });
 };
