@@ -1,20 +1,9 @@
-const getAllProductsHandler = require('./getAllProductsHandler');
-const getCategoriesHandler = require('./getCategoriesHandler');
-const createProductHandler = require('./createProductHandler');
-const deleteProductHandler = require("./deleteProductHandler");
-const editProductHandler = require("./editProductHandler");
-const getProductByIdHandler = require("./getProductByIdHandler");
-const destroyProductHandler = require("./destroyProductHandler");
-const registerUserHandler = require("./registerUserHandler");
-
+const CategoriesHandlers = require('./Categories');
+const ProductsHandlers = require('./Products');
+const UsersHandlers = require('./Users');
 
 module.exports = {
-    getAllProductsHandler,
-    getCategoriesHandler,
-    createProductHandler,
-    deleteProductHandler,
-    editProductHandler,
-    getProductByIdHandler,
-    destroyProductHandler,
-    registerUserHandler
+    CategoriesHandlers,
+    ProductsHandlers,
+    UsersHandlers,
 };

@@ -1,5 +1,6 @@
-const { editProductController } = require('../controllers/');
-const uploadImage = require('../services/cloudinary');
+const { ProductsControllers } = require('../../controllers');
+const { editProductController } = ProductsControllers;
+const { uploadImage } = require('../../services/');
 
 
 const editProductHandler = async (req, res) => {
@@ -8,12 +9,12 @@ const editProductHandler = async (req, res) => {
 
         const { id } = req.params;
 
-        if(req.file){
+        if (req.file) {
 
             const secure_url = await uploadImage(req.file);
 
-            req.body.image = secure_url;    
-            
+            req.body.image = secure_url;
+
         }
 
         const product = await editProductController(id, req.body);
@@ -24,7 +25,7 @@ const editProductHandler = async (req, res) => {
             product: product
         });
 
-    
+
     } catch (error) {
         return res.status(500).json({ error: error.message });
     };

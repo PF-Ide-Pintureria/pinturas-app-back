@@ -1,4 +1,6 @@
-const getCategoriesController = require('../controllers/getCategoriesController');
+const { CategoriesControllers } = require('../../controllers');
+const { getCategoriesController } = CategoriesControllers;
+
 
 const getCategoriesHandler = async (req, res) => {
     try {

@@ -1,4 +1,4 @@
-const { Products } = require('../db.js');
+const { Products } = require('../../db.js');
 
 const deleteProductController = async (id) => {
     // Buscar el producto por su ID en la base de datos

@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Products } = require('../db.js');
+const { Products } = require('../../db.js');
 
 const PRODUCTS_PER_PAGE = 12;
 

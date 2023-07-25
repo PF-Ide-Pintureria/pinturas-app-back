@@ -1,20 +1,19 @@
-const { createProductController } = require('../controllers');
-const uploadImage = require('../services/cloudinary');
-
+const { ProductsControllers } = require('../../controllers');
+const { createProduct } = ProductsControllers;
 
 const createProductHandler = async (req, res) => {
 
     try {
 
-        if(req.file){
+        if (req.file) {
 
             const secure_url = await uploadImage(req.file);
 
-            req.body.image = secure_url;    
-            
+            req.body.image = secure_url;
+
         }
 
-        const postProduct = await createProductController(req.body);
+        const postProduct = await createProduct(req.body);
 
         return res.status(201).json({
             status: "success",

@@ -1,10 +1,12 @@
-const { getProductByIdController } = require('../controllers/');
+const { ProductsControllers } = require('../../controllers');
+const { getProductById } = ProductsControllers;
 
 
 const getProductByIdHandler = async (req, res) => {
+
     try {
         const { id } = req.params;
-        const product = await getProductByIdController(id);
+        const product = await getProductById(id);
 
         return res.status(200).json({
             "status": "success",
@@ -15,6 +17,7 @@ const getProductByIdHandler = async (req, res) => {
         console.error(error);
         return res.status(500).json({ error: error.message });
     };
+
 };
 
 module.exports = getProductByIdHandler;

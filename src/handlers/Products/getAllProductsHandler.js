@@ -1,7 +1,9 @@
-const { filterAndOrderProductsController } = require('../controllers');
+const { ProductsControllers } = require('../../controllers');
+const { filterAndOrderProducts } = ProductsControllers;
 
 
 const getAllProductsHandler = async (req, res) => {
+
     try {
 
         const {
@@ -14,7 +16,7 @@ const getAllProductsHandler = async (req, res) => {
             sortBy, orderBy,
         } = req.query;
 
-        const filteredProducts = await filterAndOrderProductsController({
+        const filteredProducts = await filterAndOrderProducts({
             name, category,
             lowPrice, highPrice,
             minRating, maxRating,
@@ -29,6 +31,7 @@ const getAllProductsHandler = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ error: error.message });
     };
+
 };
 
 module.exports = getAllProductsHandler;
