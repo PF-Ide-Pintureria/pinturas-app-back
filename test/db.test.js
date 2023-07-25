@@ -1,8 +1,8 @@
 const { conn } = require('../src/db.js');
 
 // Conexión a la base de datos
-describe('Database connection', () => {
-    it('Should connect to the database', (done) => {
+describe('DATABASE CONNECTIONS', () => {
+    it('Should connect to the main database', (done) => {
         conn.authenticate().then(() => {
             done();
             conn.close();

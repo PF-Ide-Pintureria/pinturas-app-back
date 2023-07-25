@@ -1,9 +1,15 @@
+const Controllers = require('../../src/controllers/');
+const { ProductsControllers, CategoriesControllers, } = Controllers;
+
 const {
-    createProductController, destroyProductController,
-    deleteProductController, editProductController,
-    getAllProductsController, getProductByIdController,
-    getProductByNameController, getCategoriesController,
-} = require('../../src/controllers');
+    createProduct, destroyProduct,
+    deleteProduct, editProduct,
+    getAllProducts, getProductById,
+    getProductByName,
+} = ProductsControllers;
+
+const { getCategories } = CategoriesControllers;
+
 const { conn, Products } = require('../../src/db.js');
 const { expect } = require('chai');
 
@@ -40,14 +46,14 @@ describe('CONTROLLERS', () => {
 
         // Crear el producto
         it('Should create a product', async () => {
-            const [product] = await createProductController(testProduct);
+            const [product] = await createProduct(testProduct);
             expect(product).to.have.property('idProduct');
             testProduct.idProduct = product.idProduct;
         });
 
         // Eliminar el producto creado
         after(async () => {
-            await destroyProductController(testProduct.idProduct);
+            await destroyProduct(testProduct.idProduct);
         });
 
     });
@@ -57,14 +63,14 @@ describe('CONTROLLERS', () => {
 
         // Crear un producto
         before(async () => {
-            const [product] = await createProductController(testProduct);
+            const [product] = await createProduct(testProduct);
             expect(product).to.have.property('idProduct');
             testProduct.idProduct = product.idProduct;
         });
 
         // Eliminar el producto creado
         it('Should delete a product', async () => {
-            await deleteProductController(testProduct.idProduct);
+            await deleteProduct(testProduct.idProduct);
             // Ahora el producto debería estar inactivo
             const product = await Products.findByPk(testProduct.idProduct);
             expect(product.active).to.be.false;
@@ -72,7 +78,7 @@ describe('CONTROLLERS', () => {
 
         // Destruye el producto creado
         after(async () => {
-            await destroyProductController(testProduct.idProduct);
+            await destroyProduct(testProduct.idProduct);
         });
 
     });
@@ -82,14 +88,14 @@ describe('CONTROLLERS', () => {
 
         // Crear un producto
         before(async () => {
-            const [product] = await createProductController(testProduct);
+            const [product] = await createProduct(testProduct);
             expect(product).to.have.property('idProduct');
             testProduct.idProduct = product.idProduct;
         });
 
         // Editar el producto creado
         it('Should edit a product', async () => {
-            const editedProduct = await editProductController(
+            const editedProduct = await editProduct(
                 testProduct.idProduct,
                 { ...testProduct, name: 'Edited test product', });
             expect(editedProduct.name).to.equal('Edited test product');
@@ -97,7 +103,7 @@ describe('CONTROLLERS', () => {
 
         // Destruye el producto creado
         after(async () => {
-            await destroyProductController(testProduct.idProduct);
+            await destroyProduct(testProduct.idProduct);
         });
 
     });
@@ -105,7 +111,7 @@ describe('CONTROLLERS', () => {
     describe('Get all products controller', () => {
 
         it('Should get all products', async () => {
-            const products = await getAllProductsController();
+            const products = await getAllProducts();
             expect(products).to.be.an('array');
         });
 
@@ -115,7 +121,7 @@ describe('CONTROLLERS', () => {
 
         it('Should get a product by id', async () => {
             const id = 1;
-            const product = await getProductByIdController(id);
+            const product = await getProductById(id);
             expect(product).to.have.property('idProduct');
             expect(product.idProduct).to.equal(id);
         });
@@ -125,20 +131,20 @@ describe('CONTROLLERS', () => {
     describe('Get product by name controller', () => {
 
         before(async () => {
-            const [product] = await createProductController(testProduct);
+            const [product] = await createProduct(testProduct);
             expect(product).to.have.property('idProduct');
             testProduct.idProduct = product.idProduct;
         });
 
         it('Should get a product by name', async () => {
             const name = testProduct.name;
-            const product = await getProductByNameController(name);
+            const product = await getProductByName(name);
             expect(product).to.be.an('array');
             expect(product[0].name).to.equal(name);
         });
 
         after(async () => {
-            await destroyProductController(testProduct.idProduct);
+            await destroyProduct(testProduct.idProduct);
         });
 
     });
@@ -146,7 +152,7 @@ describe('CONTROLLERS', () => {
     describe('Get categories controller', () => {
 
         it('Should get all categories', async () => {
-            const categories = await getCategoriesController();
+            const categories = await getCategories();
             expect(categories).to.be.an('array');
         });
 
