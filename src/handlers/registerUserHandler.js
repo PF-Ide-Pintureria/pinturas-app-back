@@ -31,7 +31,7 @@ const registerUserHandler = async (req, res) => {
         
     } catch (error) {
 
-        return res.status(500).send(error.message)
+        return res.status(500).json({error : error.message});
         
     }
    
