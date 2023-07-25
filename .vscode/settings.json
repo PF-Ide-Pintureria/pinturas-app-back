@@ -20,4 +20,5 @@
         "editor.detectIndentation": false,
         "editor.formatOnSave": true
     },
+    "javascript.format.semicolons": "insert"
 }

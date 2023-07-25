@@ -1,4 +1,4 @@
-const { Users } = require('../db');
+const { Users } = require('../../db');
 
 const registerUserController = async (email, password, rol) => {
 

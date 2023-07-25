@@ -1,14 +1,15 @@
-const { deleteProductController } = require("../controllers");
+const { ProductsControllers } = require('../../controllers');
+const { deleteProduct } = ProductsControllers;
 
 
 const deleteProductHandler = async (req, res) => {
     try {
         const { id } = req.params;
-        await deleteProductController(id);
+        const deletedProduct = await deleteProduct(id);
 
         return res.status(200).json({
             "status": "success",
-            "productDELETED": deleteProductController
+            "productDELETED": deletedProduct
         });
 
     } catch (error) {

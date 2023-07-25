@@ -1,10 +1,11 @@
-const { destroyProductController } = require('../controllers/');
+const { ProductsControllers } = require('../../controllers');
+const { destroyProduct } = ProductsControllers;
 
 
 const destroyProductHandler = async (req, res) => {
     try {
         const { id } = req.params;
-        const product = await destroyProductController(id);
+        const product = await destroyProduct(id);
         return res.status(200).json({
             "status": "success",
             "product": product
@@ -13,6 +14,5 @@ const destroyProductHandler = async (req, res) => {
         return res.status(500).json({ error: error.message });
     };
 };
-
 
 module.exports = destroyProductHandler;

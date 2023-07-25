@@ -1,4 +1,5 @@
-const { registerUserController } = require('../controllers/');
+const { UsersControllers } = require('../../controllers');
+const { registerUser } = UsersControllers;
 
 
 const registerUserHandler = async (req, res) => {
@@ -22,7 +23,7 @@ const registerUserHandler = async (req, res) => {
 
     try {
 
-        const newUser = await registerUserController(email, password, rol);
+        const newUser = await registerUser(email, password, rol);
 
         return res.status(200).json({
 
