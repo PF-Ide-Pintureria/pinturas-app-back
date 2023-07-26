@@ -1,5 +1,5 @@
-const { conn } = require('../db.js');
-const { uploadFromJSONController } = require('./');
+const { conn } = require('../../db.js');
+const { uploadFromJSONController } = require('../index.js');
 
 
 const resetDBController = async () => {
@@ -12,5 +12,7 @@ const resetDBController = async () => {
     };
 };
 
-
 resetDBController();
+
+
+module.exports = resetDBController;

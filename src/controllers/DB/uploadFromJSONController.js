@@ -1,5 +1,5 @@
-const { Products } = require('../db.js');
-const producstFromJSON = require('../utils/products.json');
+const { Products } = require('../../db.js');
+const producstFromJSON = require('../../utils/products.json');
 
 
 const uploadFromJSONController = async () => {
