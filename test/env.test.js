@@ -1,5 +1,8 @@
 require('dotenv').config();
 const { expect } = require('chai');
+const logKeys = require('../src/utils/logKeys');
+
+logKeys();
 
 // Verifica que las variables de entorno estén definidas
 describe('ENVIRONMENT VARIABLES', () => {
