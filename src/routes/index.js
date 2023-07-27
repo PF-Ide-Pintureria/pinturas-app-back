@@ -60,6 +60,11 @@ const description = {
                 "url": "/users/register",
                 "description": "Register user"
             },
+            "loginUser": {
+                "method": "POST",
+                "url": "/users/login",
+                "description": "Login user"
+            },
         },
     },
 };
