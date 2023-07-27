@@ -44,8 +44,5 @@
         "supertest": "^6.0.1",
         "supertest-session": "^4.1.0"
     },
-    "http.proxySupport": "off",
-    "engines": {
-        "node": ">=16 <17"
-    }
+    "http.proxySupport": "off"
 }
