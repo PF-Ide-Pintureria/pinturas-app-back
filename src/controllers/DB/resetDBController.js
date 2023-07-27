@@ -1,11 +1,11 @@
 const { conn } = require('../../db.js');
-const { uploadFromJSONController } = require('../index.js');
+const uploadFromJSON = require('./uploadFromJSONController');
 
 
 const resetDBController = async () => {
     try {
         await conn.sync({ force: true });
-        await uploadFromJSONController();
+        await uploadFromJSON();
         console.log('Database reset successfully');
     } catch (error) {
         console.error(error);
