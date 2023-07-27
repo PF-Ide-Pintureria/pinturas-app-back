@@ -8,6 +8,6 @@ const { NODE_PORT } = process.env || 3001;
 conn.sync({ force: false }).then(() => {
     server.listen(NODE_PORT, "0.0.0.0", async () => {
         // eslint-disable-next-line no-console
-        console.log(`Server listening on port ${PORT}`);
+        console.log(`Server listening on port ${NODE_PORT}`);
     });
 });
