@@ -9,7 +9,8 @@ const loginUserController = async (email, password) => {
 
         if (findUser) {
 
-            const pwdMatch = await bcrypt.compareSync(password, findUser.password);
+            const pwdMatch =
+                await bcrypt.compareSync(password, findUser.password);
 
             if (pwdMatch) {
 

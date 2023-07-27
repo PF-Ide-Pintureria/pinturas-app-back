@@ -1,8 +1,8 @@
 const { UsersControllers } = require('../../controllers');
 const { loginUsers } = UsersControllers;
+// Importar JWT
+const { createToken } = require("../../services/");
 
-//importar servicios
-const createToken = require("../../services/jwt");
 
 const loginUserHandler = async (req, res) => {
 

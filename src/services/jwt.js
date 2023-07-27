@@ -1,7 +1,7 @@
 const jwt = require("jwt-simple");
 const moment = require("moment");
 require('dotenv').config();
-const { SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 
 const createToken = (user) => {
 

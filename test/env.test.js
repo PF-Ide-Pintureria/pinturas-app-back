@@ -7,7 +7,7 @@ describe('ENVIRONMENT VARIABLES', () => {
 
     // Verifica que la variables de entorno para la
     // conexión a la base de datos estén definidas
-    describe('Database keys', () => {
+    describe('[Database keys]', () => {
 
         it('Should have a DB_NAME key', () => {
             expect(process.env.DB_NAME).to.not.be.undefined;
@@ -29,25 +29,25 @@ describe('ENVIRONMENT VARIABLES', () => {
 
     // Verifica que la variables de entorno para la
     // conexión a Cloudinary estén definidas
-    describe('Cloudinary keys', () => {
+    describe('[Cloudinary keys]', () => {
 
         it('Should have a CLOUD_NAME key', () => {
             expect(process.env.CLOUD_NAME).to.not.be.undefined;
         });
 
-        it('Should have a CLOUDINARY_KEY key', () => {
-            expect(process.env.CLOUDINARY_KEY).to.not.be.undefined;
+        it('Should have a CLOUD_KEY key', () => {
+            expect(process.env.CLOUD_KEY).to.not.be.undefined;
         });
 
-        it('Should have a CLOUDINARY_SECRET key', () => {
-            expect(process.env.CLOUDINARY_SECRET).to.not.be.undefined;
+        it('Should have a CLOUD_SECRET key', () => {
+            expect(process.env.CLOUD_SECRET).to.not.be.undefined;
         });
 
     });
 
     // Verifica que la variables de entorno para la
     // conexión a DB de testing estén definidas
-    describe('Testing database keys', () => {
+    describe('[Testing database ke]ys', () => {
 
         it('Should have a DB_TEST_NAME key', () => {
             expect(process.env.DB_TEST_NAME).to.not.be.undefined;
@@ -68,16 +68,38 @@ describe('ENVIRONMENT VARIABLES', () => {
     });
 
     // Nodemailer
-    describe('Nodemailer keys', () => {
+    describe('[Nodemailer keys]', () => {
 
         it('Should have a NODEMAILER_USER key', () => {
-            expect(process.env.SENDER_EMAIL).to.not.be.undefined;
+            expect(process.env.SENDER_MAIL).to.not.be.undefined;
         });
 
         it('Should have a APPLICATION_PASSWORD key', () => {
-            expect(process.env.APPLICATION_PASSWORD).to.not.be.undefined;
+            expect(process.env.SENDER_PASS).to.not.be.undefined;
         });
 
+    });
+
+    // JWT
+    describe('[JWT keys]', () => {
+
+        it('Should have a JWT_SECRET key', () => {
+            expect(process.env.JWT_SECRET).to.not.be.undefined;
+        });
+
+    });
+
+    // MercadoPago
+    describe('[MercadoPago keys]', () => {
+
+        it('Should have a MELI_ACCESS_TOKEN key', () => {
+            expect(process.env.MELI_ACCESS_TOKEN).to.not.be.undefined;
+        });
+
+    });
+
+    after(() => {
+        console.log('You got the keys!');
     });
 
 });

@@ -39,7 +39,7 @@ describe('CONTROLLERS', () => {
         console.error('Unable to connect to the database:', err);
     }));
 
-    describe('[PRODUCTS]', () => {
+    describe('[Products]', () => {
 
         describe('Create product controller', () => {
 
@@ -151,7 +151,7 @@ describe('CONTROLLERS', () => {
     });
 
 
-    describe('[CATEGORIES]', () => {
+    describe('[Categories]', () => {
 
         describe('Get categories controller', () => {
 
