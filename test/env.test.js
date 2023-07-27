@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { expect } = require('chai');
 
+
 // Verifica que las variables de entorno estén definidas
 describe('ENVIRONMENT VARIABLES', () => {
 
@@ -28,7 +29,7 @@ describe('ENVIRONMENT VARIABLES', () => {
 
     // Verifica que la variables de entorno para la
     // conexión a Cloudinary estén definidas
-    xdescribe('Cloudinary keys', () => {
+    describe('Cloudinary keys', () => {
 
         it('Should have a CLOUD_NAME key', () => {
             expect(process.env.CLOUD_NAME).to.not.be.undefined;
@@ -46,7 +47,7 @@ describe('ENVIRONMENT VARIABLES', () => {
 
     // Verifica que la variables de entorno para la
     // conexión a DB de testing estén definidas
-    xdescribe('Testing database keys', () => {
+    describe('Testing database keys', () => {
 
         it('Should have a DB_TEST_NAME key', () => {
             expect(process.env.DB_TEST_NAME).to.not.be.undefined;
@@ -62,6 +63,19 @@ describe('ENVIRONMENT VARIABLES', () => {
 
         it('Should have a DB_TEST_PASSWORD key', () => {
             expect(process.env.DB_TEST_PASS).to.not.be.undefined;
+        });
+
+    });
+
+    // Nodemailer
+    describe('Nodemailer keys', () => {
+
+        it('Should have a NODEMAILER_USER key', () => {
+            expect(process.env.SENDER_EMAIL).to.not.be.undefined;
+        });
+
+        it('Should have a APPLICATION_PASSWORD key', () => {
+            expect(process.env.APPLICATION_PASSWORD).to.not.be.undefined;
         });
 
     });
