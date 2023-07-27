@@ -17,7 +17,8 @@ const getUsersHandler = async (req, res) => {
 
     } catch (error) {
 
-        console.error(error.errors[0].message);
+        // console.error(error.errors[0].message);
+        console.error(error);
         return res.status(500).json({ error: error.message });
 
     }
