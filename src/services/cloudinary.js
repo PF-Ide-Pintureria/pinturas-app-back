@@ -1,12 +1,12 @@
 const cloudinary = require("cloudinary").v2;
 require('dotenv').config();
-const { CLOUD_NAME, CLOUDINARY_KEY, CLOUDINARY_SECRET } = process.env;
+const { CLOUD_NAME, CLOUD_KEY, CLOUD_SECRET } = process.env;
 const sanitize = require("sanitize-filename");
 
 cloudinary.config({
     cloud_name: CLOUD_NAME,
-    api_key: CLOUDINARY_KEY,
-    api_secret: CLOUDINARY_SECRET
+    api_key: CLOUD_KEY,
+    api_secret: CLOUD_SECRET
 });
 
 

@@ -15,15 +15,16 @@ env:
   DB_USER: ${{ secrets.DB_USER }}
   DB_PASS: ${{ secrets.DB_PASS }}
   CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
-  CLOUDINARY_KEY: ${{ secrets.CLOUDINARY_KEY }}
-  CLOUDINARY_SECRET: ${{ secrets.CLOUDINARY_SECRET }}
-  SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-  ACCESS_TOKEN : ${{ secrets.ACCESS_TOKEN }}
-  APPLICATION_PASSWORD : ${{ secrets.APPLICATION_PASSWORD }}
+  CLOUD_KEY: ${{ secrets.CLOUD_KEY }}
+  CLOUD_SECRET: ${{ secrets.CLOUD_SECRET }}
+  SENDER_MAIL: ${{ secrets.SENDER_MAIL }}
+  SENDER_PASS : ${{ secrets.SENDER_PASS }}
+  MELI_ACCESS_TOKEN : ${{ secrets.MELI_ACCESS_TOKEN }}
   DB_TEST_NAME: ${{ secrets.DB_TEST_NAME }}
   DB_TEST_HOST: ${{ secrets.DB_TEST_HOST }}
   DB_TEST_USER: ${{ secrets.DB_TEST_USER }}
   DB_TEST_PASS: ${{ secrets.DB_TEST_PASS }}
+  JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
 
 jobs:

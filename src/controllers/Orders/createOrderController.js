@@ -1,17 +1,13 @@
-const mercadopago = require("mercadopago");
-require("dotenv").config();
-const { ACCESS_TOKEN } = process.env;
+const { mercadopago } = require("../../services");
 
 
 const createOrder = () => {
 
-    mercadopago?.configure({
-        access_token: ACCESS_TOKEN,
-    });
-
     return {
         "message": "createOrder controller",
     };
+
 };
+
 
 module.exports = createOrder;
