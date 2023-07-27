@@ -67,4 +67,17 @@ describe('ENVIRONMENT VARIABLES', () => {
 
     });
 
+    // Nodemailer
+    describe('Nodemailer keys', () => {
+
+        it('Should have a NODEMAILER_USER key', () => {
+            expect(process.env.SENDER_EMAIL).to.not.be.undefined;
+        });
+
+        it('Should have a APPLICATION_PASSWORD key', () => {
+            expect(process.env.APPLICATION_PASSWORD).to.not.be.undefined;
+        });
+
+    });
+
 });
