@@ -34,7 +34,7 @@ const loginUserHandler = async (req, res) => {
 
             return res.status(200).json({
 
-                status: "error",
+                status: "success",
                 mensaje: "Te has identificado exitosamente",
                 acceso: {
 
