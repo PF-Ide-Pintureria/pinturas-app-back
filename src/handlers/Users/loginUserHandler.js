@@ -4,7 +4,7 @@ const { loginUsers } = UsersControllers;
 //importar servicios
 const createToken = require("../../services/jwt");
 
-const loginUserHandler = (req, res) => {
+const loginUserHandler = async (req, res) => {
 
     const { email, password } = req.body;
 
@@ -22,21 +22,21 @@ const loginUserHandler = (req, res) => {
 
     try {
 
-        const findUser = loginUsers(email, password);
+        const findUser = await loginUsers(email, password);
 
         if (findUser) {
 
             //Crear token
 
-            const token = createToken(findUser);
+            const token = await createToken(findUser);
 
             //Devolver datos
 
             return res.status(200).json({
 
-                status: "error",
+                status: "success",
                 mensaje: "Te has identificado exitosamente",
-                userInfo: {
+                acceso: {
 
                     user: findUser,
                     token: token
@@ -44,7 +44,6 @@ const loginUserHandler = (req, res) => {
                 }
 
             });
-
 
         } else {
 
@@ -62,7 +61,7 @@ const loginUserHandler = (req, res) => {
         return res.status(500).json({
 
             status: "error",
-            mensaje: "Error del servidor al ejecutar el login del usuario"
+            mensaje: "Error del servidor al ejecutar el login del usuario",
 
         });
 

@@ -13,7 +13,7 @@ const loginUserController = async (email, password) => {
 
             if (pwdMatch) {
 
-                delete findUser.password;
+                delete findUser.dataValues.password;
 
                 return findUser;
 
