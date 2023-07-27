@@ -6,10 +6,10 @@ const registerUserHandler = async (req, res) => {
 
     //Recoger datos de la petición
     const { email, password, rol, name, lastName,
-        adress, locality, province, phone } = req.body;
+        address, locality, province, phone } = req.body;
 
-    //Comprobar que me llegan bien los datos(validacion)
-    //Respuesta "clara" o personalizada de ususarios duplicados(pendiente)
+    // Comprobar que me llegan bien los datos(validacion)
+    // Respuesta "clara" o personalizada de ususarios duplicados(pendiente)
 
     if (!email || !password) {
 

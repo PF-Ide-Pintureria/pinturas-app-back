@@ -5,6 +5,7 @@ const productsRoutes = require('./productsRoutes');
 const categoriesRoutes = require('./categoriesRoutes');
 const usersRoutes = require('./usersRoutes');
 const ordersRoutes = require("./ordersRoutes");
+const mailRoutes = require("./mailRoutes");
 
 const router = Router();
 
@@ -83,5 +84,7 @@ router.use('/products', productsRoutes);
 router.use('/users', usersRoutes);
 // Orders routes
 router.use("/orders", ordersRoutes);
+// Mail routes
+router.use("/mail", mailRoutes);
 
 module.exports = router;
