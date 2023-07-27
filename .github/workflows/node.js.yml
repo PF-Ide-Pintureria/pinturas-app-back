@@ -14,7 +14,11 @@ env:
   DB_HOST: ${{ secrets.DB_HOST }}
   DB_USER: ${{ secrets.DB_USER }}
   DB_PASS: ${{ secrets.DB_PASS }}
-  PORT: 3000
+  CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
+  CLOUDINARY_KEY: ${{ secrets.CLOUDINARY_KEY }}
+  CLOUDINARY_SECRET: ${{ secrets.CLOUDINARY_SECRET }}
+  SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+  
 
 jobs:
   build:
