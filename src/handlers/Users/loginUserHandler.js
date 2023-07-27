@@ -1,7 +1,5 @@
 const { UsersControllers } = require('../../controllers');
 const { loginUsers } = UsersControllers;
-// Importar JWT
-const { createToken } = require("../../services/");
 
 
 const loginUserHandler = async (req, res) => {
@@ -22,16 +20,11 @@ const loginUserHandler = async (req, res) => {
 
     try {
 
-        const findUser = await loginUsers(email, password);
+        const { findUser, token } = await loginUsers(email, password);
 
         if (findUser) {
 
-            //Crear token
-
-            const token = await createToken(findUser);
-
             //Devolver datos
-
             return res.status(200).json({
 
                 status: "success",
@@ -67,5 +60,6 @@ const loginUserHandler = async (req, res) => {
 
     }
 };
+
 
 module.exports = loginUserHandler;

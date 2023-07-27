@@ -1,7 +1,8 @@
-const jwt = require("jwt-simple");
+const jwt = require("jsonwebtoken");
 const moment = require("moment");
 require('dotenv').config();
 const { JWT_SECRET } = process.env;
+
 
 const createToken = (user) => {
 
@@ -21,7 +22,9 @@ const createToken = (user) => {
 
     };
 
-    return jwt.encode(payload, SECRET);
+    return jwt.sign(payload, JWT_SECRET);
+
 };
+
 
 module.exports = createToken;

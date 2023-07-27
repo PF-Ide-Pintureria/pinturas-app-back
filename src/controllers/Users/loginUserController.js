@@ -1,7 +1,10 @@
 const bcrypt = require('bcrypt');
 const { Users } = require('../../db');
+const { createToken } = require("../../services/");
 
 const loginUserController = async (email, password) => {
+
+    let findUser, token;
 
     if (email && password) {
 
@@ -9,19 +12,20 @@ const loginUserController = async (email, password) => {
 
         if (findUser) {
 
-            const pwdMatch =
-                await bcrypt.compareSync(password, findUser.password);
+            const pwdMatch = bcrypt.compareSync(password, findUser.password);
 
             if (pwdMatch) {
 
                 delete findUser.dataValues.password;
 
-                return findUser;
+                //Crear token
+                const token = createToken(findUser);
 
             }
         }
     }
 
+    return { findUser, token };
 
 };
 
