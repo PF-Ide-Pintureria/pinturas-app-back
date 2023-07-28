@@ -1,6 +1,7 @@
 const { UsersControllers } = require('../../controllers');
 const { loginUsers } = UsersControllers;
 
+const createToken = require("../../services/jwt")
 
 const loginUserHandler = async (req, res) => {
 
@@ -23,9 +24,11 @@ const loginUserHandler = async (req, res) => {
 
     try {
 
-        const { findUser, token } = await loginUsers(email, password);
+        const findUser= await loginUsers(email, password);
 
         if (findUser) {
+
+            const token = await createToken(findUser)
 
             //Devolver datos
             return res.status(200).json({
