@@ -1,25 +1,33 @@
 const bcrypt = require('bcrypt');
 const { Users } = require('../../db');
+const { createToken } = require("../../services/");
+
+
 const loginUserController = async (email, password) => {
 
     if (email && password) {
 
-        const findUser = await Users.findOne({ where: { email:email } });
+        const findUser = await Users.findOne({ where: { email: email } });
 
-        console.log('findUser:', findUser);
+        let user, token;
 
         if (findUser) {
 
-            const pwdMatch = await bcrypt.compareSync(password, findUser.password);
+            const pwdMatch = bcrypt.compareSync(password, findUser.password);
 
             if (pwdMatch) {
 
-                delete findUser.dataValues.password;
-
-                return findUser;
+                token = createToken(findUser);
 
             }
+
+            user = {
+                ...findUser.dataValues,
+                [password]: undefined
+            };
         }
+
+        return { user, token };
     }
 
 };
