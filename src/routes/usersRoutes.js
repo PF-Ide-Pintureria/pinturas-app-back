@@ -12,4 +12,7 @@ router.get('/', UsersHandlers.getUsers);
 // 3. POST /users/login
 router.post('/login', UsersHandlers.loginUsers);
 
+//4. DELETE /users
+router.delete("/:id", UsersHandlers.deleteUser);
+
 module.exports = router;

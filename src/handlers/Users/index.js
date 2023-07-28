@@ -4,12 +4,14 @@ const registerUser = require('./registerUserHandler');
 const getUsers = require('./getUsersHandler');
 // 3. Login usuario
 const loginUsers = require('./loginUserHandler');
-
+//4. Delete Usuario
+const deleteUser = require("./deleteUserHandler");
 
 const UserHandlers = {
     registerUser,
     getUsers,
-    loginUsers
+    loginUsers,
+    deleteUser
 };
 
 module.exports = UserHandlers;
