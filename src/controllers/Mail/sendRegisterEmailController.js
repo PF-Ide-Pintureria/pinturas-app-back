@@ -1,6 +1,6 @@
 const { transporter } = require('../../services');
 require('dotenv').config();
-const { SENDER_EMAIL: sender_email } = process.env;
+const { SENDER_MAIL: sender_email } = process.env;
 const { Users } = require('../../db');
 
 
