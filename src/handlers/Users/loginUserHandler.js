@@ -5,10 +5,7 @@ const loginUserHandler = async (req, res) => {
 
     const { email, password } = req.body;
 
-    console.log('email:', email);
-    console.log('password:', password);
-
-    //Buscar en bd si existe y comparar contraseña
+    // Buscar en bd si existe y comparar contraseña
     if (!email || !password) {
 
         return res.status(400).json({
