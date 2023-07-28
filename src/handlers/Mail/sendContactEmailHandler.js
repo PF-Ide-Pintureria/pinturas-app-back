@@ -4,15 +4,15 @@ const { sendContactEmail } = MailControllers;
 
 const sendContactEmailHandler = async (req, res) => {
 
-    const { name, message } = req.body;
-    if (!name || !message) return res.status(400).json({
+    const { name, message, replyTo } = req.body;
+    if (!name || !message || !replyTo) return res.status(400).json({
         message: "Missing required fields"
     });
 
     try {
 
         const { message: messageSent } = await
-            sendContactEmail({ name, message });
+            sendContactEmail({ name, message, replyTo });
         return res.status(200).json({ message: messageSent });
 
     } catch (error) {
