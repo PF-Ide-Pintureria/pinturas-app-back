@@ -1,31 +1,54 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
-const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
+let { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 const fs = require('fs');
 const path = require('path');
-const { NODE_ENV } = process.env;
 
-let dataBaseUrl = `postgres://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}`;
-// En caso que estemos en environment de prueba se cambia la url de la base de
-// datos
+let sequelize;
+const { NODE_ENV } = process.env;
 if (NODE_ENV === 'test') {
     const {
-        DB_TEST_USER, DB_TEST_PASS, DB_TEST_HOST, DB_TEST_NAME
+        DB_TEST_USER, DB_TEST_PASS,
+        DB_TEST_HOST, DB_TEST_NAME
     } = process.env;
-    const hostInfo = `${DB_TEST_HOST}/${DB_TEST_NAME}`;
-    dataBaseUrl = `postgres://${DB_TEST_USER}:${DB_TEST_PASS}@${hostInfo}`;
-    console.log('TESTING ENVIRONMENT');
+    createDBInstance(DB_TEST_USER, DB_TEST_PASS,
+        DB_TEST_HOST, DB_TEST_NAME);
+    console.log('[DB] TESTING ENVIRONMENT');
+} else if (NODE_ENV === 'local') {
+    const {
+        DB_LOCAL_USER, DB_LOCAL_PASS,
+        DB_LOCAL_HOST, DB_LOCAL_NAME
+    } = process.env;
+    createDBInstance(DB_LOCAL_USER, DB_LOCAL_PASS,
+        DB_LOCAL_HOST, DB_LOCAL_NAME);
+    console.log('[DB] LOCAL ENVIRONMENT');
+} else {
+    createDBInstance();
+    console.log('[DB] MAIN ENVIRONMENT');
 }
-const sequelize = new Sequelize(dataBaseUrl, {
-    // set to console.log to see the raw SQL queries
-    logging: false,
-    // lets Sequelize know we can use pg-native for ~30% more speed
-    native: false,
-    ssl: {
-        rejectUnauthorized: false,
-        require: true,
+
+function createDBInstance(user = DB_USER, pass = DB_PASS,
+    host = DB_HOST, name = DB_NAME) {
+    let dataBaseUrl = `postgres://${user}:${pass}@${host}/${name}`;
+    try {
+        sequelize = new Sequelize(dataBaseUrl, {
+            // set to console.log to see the raw SQL queries
+            logging: false,
+            // lets Sequelize know we can use pg-native for ~30% more speed
+            native: false,
+            ssl: {
+                rejectUnauthorized: false,
+                require: true,
+            }
+        });
     }
-});
+    catch (error) {
+        console.log('Error al cargar la base de datos :(');
+        console.error(error);
+    }
+}
+
+
 const basename = path.basename(__filename);
 const modelDefiners = [];
 // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al

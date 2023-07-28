@@ -24,6 +24,8 @@ const registerUserController = async ({ email, password, rol = "client", name,
         id: newUser.id,
         email: newUser.email,
         rol: newUser.rol,
+        idUser: newUser.idUser,
+        idCart: newUser.idCart,
     };
 
 };

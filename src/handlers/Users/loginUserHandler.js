@@ -1,13 +1,11 @@
 const { UsersControllers } = require('../../controllers');
 const { loginUsers } = UsersControllers;
 
-const createToken = require("../../services/jwt")
-
 const loginUserHandler = async (req, res) => {
 
     const { email, password } = req.body;
 
-    //Buscar en bd si existe y comparar contraseña
+    // Buscar en bd si existe y comparar contraseña
     if (!email || !password) {
 
         return res.status(400).json({
@@ -21,21 +19,19 @@ const loginUserHandler = async (req, res) => {
 
     try {
 
-        const findUser= await loginUsers(email, password);
+        const { user, token } = await loginUsers(email, password);
 
-        if (findUser) {
+        if (user && token) {
 
-            const token = await createToken(findUser)
-
-            //Devolver datos
+            // Devolver datos
             return res.status(200).json({
 
                 status: "success",
                 mensaje: "Te has identificado exitosamente",
                 acceso: {
 
-                    user: findUser,
-                    token: token
+                    user,
+                    token
 
                 }
 
@@ -54,6 +50,7 @@ const loginUserHandler = async (req, res) => {
 
     } catch (error) {
 
+        console.error(error);
         return res.status(500).json({
 
             status: "error",

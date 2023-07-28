@@ -9,6 +9,8 @@ const getUsersController = async () => {
             email: user.email,
             rol: user.rol,
             name: user.name,
+            idCart: user.idCart,
+            idUser: user.idUser,
         };
     });
 };

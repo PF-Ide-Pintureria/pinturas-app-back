@@ -1,8 +1,8 @@
 const { Products } = require('../../db.js');
-const uploadFromJSON = require('./uploadFromJSONController');
+const uploadFromJSON = require('./uploadFromJSONController.js');
 
 
-const resetDBController = async () => {
+const resetAndUploadProducts = async () => {
     try {
         await Products.sync({ force: true });
         await uploadFromJSON();
@@ -12,7 +12,7 @@ const resetDBController = async () => {
     };
 };
 
-await resetDBController();
+resetAndUploadProducts();
 
 
-module.exports = resetDBController;
+module.exports = resetAndUploadProducts;
