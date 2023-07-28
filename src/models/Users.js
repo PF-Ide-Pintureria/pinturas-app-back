@@ -83,5 +83,17 @@ module.exports = (sequelize) => {
                 isNumeric: true,
             },
         },
+        active: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
+        },
+        authZero: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+        isBanned: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        }
     }, { timestamps: true });
 };
