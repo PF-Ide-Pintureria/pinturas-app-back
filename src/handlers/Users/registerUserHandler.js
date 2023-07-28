@@ -1,5 +1,6 @@
-const { UsersControllers } = require('../../controllers');
+const { UsersControllers, CartsControllers } = require('../../controllers');
 const { registerUser } = UsersControllers;
+const { createCart } = CartsControllers;
 
 
 const registerUserHandler = async (req, res) => {
@@ -25,20 +26,25 @@ const registerUserHandler = async (req, res) => {
     try {
 
         const newUser = await registerUser(req.body);
+        const createdCart = await createCart({
+            idUser: newUser.id,
+        });
 
         return res.status(200).json({
 
             status: "success",
-            user: newUser
+            user: newUser,
+            idCart: createdCart.idCart,
 
         });
 
     } catch (error) {
 
-        const { message } = error.errors[0];
-        console.error(message);
+        console.error(error);
         return res.status(500).json({
-            message,
+            name: error.name,
+            routine: error.routine,
+            detail: error.detail,
         });
 
     }

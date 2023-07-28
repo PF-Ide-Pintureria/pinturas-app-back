@@ -35,7 +35,9 @@ const testProduct = {
 describe('CONTROLLERS', () => {
 
     // Conexión a la base de datos
-    before(() => conn.authenticate().catch((err) => {
+    before(() => conn.authenticate().then(() => {
+        Products.sync({ force: false });
+    }).catch((err) => {
         console.error('Unable to connect to the database:', err);
     }));
 
@@ -118,11 +120,24 @@ describe('CONTROLLERS', () => {
 
         describe('Get product by id controller', () => {
 
+            // Crear un producto
+            before(async () => {
+                const [product] = await createProduct(testProduct);
+                expect(product).to.have.property('idProduct');
+                testProduct.idProduct = product.idProduct;
+            });
+
             it('Should get a product by id', async () => {
-                const id = 1;
+                const id = testProduct.idProduct;
                 const product = await getProductById(id);
                 expect(product).to.have.property('idProduct');
                 expect(product.idProduct).to.equal(id);
+            });
+
+            // Destruye el producto creado
+            after(async () => {
+                await destroyProduct(testProduct.idProduct);
+                delete testProduct.idProduct;
             });
 
         });

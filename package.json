@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon -L",
-        "resetDB": "node ./src/controllers/DB/resetDBController.js",
+        "resetProducts": "node ./src/controllers/DB/resetProductsController.js",
+        "resetUsers": "node ./src/controllers/DB/resetUsersController.js",
         "test": "mocha --recursive --timeout 10000 --exit",
         "testEnv": "mocha -g 'ENVIRONMENT VARIABLES' --recursive --timeout 10000 --exit",
         "testControllers": "mocha -g 'CONTROLLERS' --recursive --timeout 10000 --exit"

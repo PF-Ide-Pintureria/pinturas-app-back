@@ -25,10 +25,10 @@ module.exports = (sequelize) => {
             /* validate: {
                 isPasswordValid(value) {
                   // Expresión regular para una contraseña segura
-                  const passwordRegex = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/;
-                  if (!passwordRegex.test(value)) {
+                    const passwordRegex = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/;
+                    if (!passwordRegex.test(value)) {
                     throw new Error('La contraseña debe contener al menos una letra mayúscula o minúscula, un dígito y un carácter especial (@ $ ! % # ? &), y tener una longitud mínima de 8 caracteres.');
-                  }
+                    }
             },
             validate: {
                 //is: /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/,
@@ -83,5 +83,9 @@ module.exports = (sequelize) => {
                 isNumeric: true,
             },
         },
+        idCart: {
+            type: DataTypes.UUID,
+            default: null,
+        }
     }, { timestamps: true });
 };
