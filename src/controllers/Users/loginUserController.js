@@ -10,6 +10,8 @@ const loginUserController = async (email, password) => {
 
         const findUser = await Users.findOne({ where: { email: email } });
 
+        console.log('findUser:', findUser);
+
         if (findUser) {
 
             const pwdMatch = bcrypt.compareSync(password, findUser.password);

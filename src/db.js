@@ -24,7 +24,7 @@ if (NODE_ENV === 'test') {
     console.log('[DB] LOCAL ENVIRONMENT');
 } else {
     createDBInstance();
-    console.log('[DB] DEPLOY ENVIRONMENT');
+    console.log('[DB] MAIN ENVIRONMENT');
 }
 
 function createDBInstance(user = DB_USER, pass = DB_PASS,

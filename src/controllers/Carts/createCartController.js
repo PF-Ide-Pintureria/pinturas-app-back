@@ -8,7 +8,7 @@ const createCartController = async ({ idUser, products = [] }) => {
     const user = await Users.findByPk(idUser) || null;
     // console.log('user:', user);
 
-    const jsonProducts = products.map(product => JSON.JSON(product));
+    const jsonProducts = products.map(product => JSON.stringify(product));
 
     const idCart = v4();
     // console.log('idCart:', idCart);
@@ -18,7 +18,7 @@ const createCartController = async ({ idUser, products = [] }) => {
     }) : null;
 
     const createdCart = await Carts.create({
-        idUser,
+        idUser : idUser || null,
         products: jsonProducts,
         idCart
     });

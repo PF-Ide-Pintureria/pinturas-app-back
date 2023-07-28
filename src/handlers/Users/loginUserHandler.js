@@ -6,6 +6,9 @@ const loginUserHandler = async (req, res) => {
 
     const { email, password } = req.body;
 
+    console.log('email:', email);
+    console.log('password:', password);
+
     //Buscar en bd si existe y comparar contraseña
     if (!email || !password) {
 
@@ -51,6 +54,7 @@ const loginUserHandler = async (req, res) => {
 
     } catch (error) {
 
+        console.error(error);
         return res.status(500).json({
 
             status: "error",
