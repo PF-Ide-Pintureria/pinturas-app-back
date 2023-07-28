@@ -9,7 +9,8 @@
         "resetUsers": "node ./src/controllers/DB/resetUsersController.js",
         "test": "mocha --recursive --timeout 10000 --exit",
         "testEnv": "mocha -g 'ENVIRONMENT VARIABLES' --recursive --timeout 10000 --exit",
-        "testControllers": "mocha -g 'CONTROLLERS' --recursive --timeout 10000 --exit"
+        "testControllers": "mocha -g 'CONTROLLERS' --recursive --timeout 10000 --exit",
+        "testCartsControllers": "mocha -g 'Carts Controllers' --recursive --timeout 10000 --exit"
     },
     "keywords": [],
     "author": "",

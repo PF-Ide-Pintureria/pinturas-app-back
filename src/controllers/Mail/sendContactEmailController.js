@@ -1,6 +1,6 @@
 const { transporter } = require('../../services');
 require('dotenv').config();
-const { SENDER_EMAIL: email } = process.env;
+const { SENDER_MAIL: email } = process.env;
 
 
 const sendContactEmailController = ({ name, message }) => {

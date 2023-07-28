@@ -7,7 +7,7 @@ const registerUserHandler = async (req, res) => {
 
     //Recoger datos de la petición
     const { email, password, rol, name, lastName,
-        address, locality, province, phone } = req.body;
+        address, locality, province, phone, createCartForUser } = req.body;
 
     // Comprobar que me llegan bien los datos(validacion)
     // Respuesta "clara" o personalizada de ususarios duplicados(pendiente)
@@ -26,15 +26,16 @@ const registerUserHandler = async (req, res) => {
     try {
 
         const newUser = await registerUser(req.body);
-        const createdCart = await createCart({
-            idUser: newUser.id,
-        });
+        if (newUser && createCartForUser) {
+            const createdCart = await createCart({
+                idUser: newUser.id,
+            });
+        }
 
         return res.status(200).json({
 
             status: "success",
             user: newUser,
-            idCart: createdCart.idCart,
 
         });
 

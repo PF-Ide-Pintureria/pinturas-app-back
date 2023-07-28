@@ -10,8 +10,8 @@ module.exports = (sequelize) => {
         idUser: {
             type: DataTypes.INTEGER,
         },
-        products : {
-            type: DataTypes.ARRAY(DataTypes.JSON),
+        products: {
+            type: DataTypes.ARRAY(DataTypes.STRING),
         }
     }, {
         timestamps: true,

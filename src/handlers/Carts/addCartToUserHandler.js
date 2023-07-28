@@ -1,14 +1,12 @@
 const { CartsControllers } = require('../../controllers');
-const { findCartById } = CartsControllers;
+const { addCartToUser } = CartsControllers;
 
 
-const findCartByIdHandler = async (req, res) => {
+const addCartToUserHandler = async (req, res) => {
 
-    console.log('Entra a findCartByIdHandler');
+    const { idUser, idCart } = req.body;
 
-    const { idCart, idUser } = req.body;
-
-    if (!idCart && !idUser) {
+    if (!idUser) {
         return res.status(400).json({
             status: "fail",
             message: "Faltan datos para poder completar esta solicitud",
@@ -17,23 +15,24 @@ const findCartByIdHandler = async (req, res) => {
 
     try {
 
-        const cart = await findCartById({ idCart, idUser });
-        console.log('cart', cart);
+        const cart = await addCartToUser({ idUser, idCart });
 
         return res.status(200).json(cart);
 
     }
 
     catch (error) {
-        // console.error(error);
+
+        console.error(error);
+
         return res.status(500).json({
             name: error.name,
             routine: error.routine,
             detail: error.detail,
         });
-    }
 
+    }
 
 };
 
-module.exports = findCartByIdHandler;
+module.exports = addCartToUserHandler;

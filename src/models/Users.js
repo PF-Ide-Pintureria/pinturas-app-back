@@ -81,6 +81,15 @@ module.exports = (sequelize) => {
         isBanned: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
-        }
+        },
+        idUser: {
+            type: DataTypes.UUID,
+            allowNull: true,
+        },
+        idCart: {
+            type: DataTypes.UUID,
+            allowNull: true,
+            defaultValue: DataTypes.UUIDV4,
+        },
     }, { timestamps: true });
 };

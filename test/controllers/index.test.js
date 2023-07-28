@@ -1,5 +1,7 @@
 const Controllers = require('../../src/controllers/');
-const { ProductsControllers, CategoriesControllers, } = Controllers;
+const {
+    ProductsControllers, CategoriesControllers, CartsControllers
+} = Controllers;
 
 const {
     createProduct, destroyProduct,
@@ -10,9 +12,13 @@ const {
 
 const { getCategories } = CategoriesControllers;
 
-const { conn, Products } = require('../../src/db.js');
+const { conn, Products, Carts, Users } = require('../../src/db.js');
 const { expect } = require('chai');
 
+
+const generateRandomEmail = () => {
+    return Math.random().toString(36).substring(2, 15) + '@gmail.com';
+};
 
 const testProduct = {
     name: 'Test product',
@@ -31,17 +37,28 @@ const testProduct = {
     active: true,
 };
 
+const testUser = {
+    name: "Test user",
+    password: "Prueba-1234567@.",
+    email: generateRandomEmail(),
+    rol: "client",
+};
+
 
 describe('CONTROLLERS', () => {
 
     // Conexión a la base de datos
     before(() => conn.authenticate().then(() => {
-        Products.sync({ force: false });
+        conn.sync({ force: false });
     }).catch((err) => {
         console.error('Unable to connect to the database:', err);
     }));
 
-    describe('[Products]', () => {
+    describe('[Products controllers]', () => {
+
+        before(async () => {
+            await Products.sync({ alter: true });
+        });
 
         describe('Create product controller', () => {
 
@@ -166,7 +183,7 @@ describe('CONTROLLERS', () => {
     });
 
 
-    describe('[Categories]', () => {
+    describe('[Categories controllers]', () => {
 
         describe('Get categories controller', () => {
 
@@ -176,6 +193,38 @@ describe('CONTROLLERS', () => {
             });
 
         });
+
+    });
+
+    describe('[Carts Controllers]', () => {
+
+        let cart;
+        let idUser;
+
+        before(async () => {
+            await Carts.sync({ alter: true });
+            await Users.sync({ alter: true });
+            const [user] = await Users.findOrCreate({
+                where: { email: testUser.email },
+                defaults: testUser,
+            });
+            idUser = user.id;
+            console.log(idUser);
+            console.log(user.dataValues);
+        });
+
+        describe('Create cart controller', () => {
+
+            it('Should create a empty cart', async () => {
+                cart = await CartsControllers.createCart({ idUser });
+                expect(cart).to.not.be.null;
+                expect(cart).to.have.property('idCart');
+                expect(cart).to.have.property('idUser');
+            });
+
+        });
+
+        describe('Add Cart To User', () => { });
 
     });
 
