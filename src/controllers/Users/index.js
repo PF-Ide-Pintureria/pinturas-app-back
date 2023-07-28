@@ -6,12 +6,15 @@ const getUsers = require('./getUsersController');
 const loginUsers = require('./loginUserController');
 //4. Delete Usuario
 const deleteUser = require("./deleteUserController");
+//5. Actualizar usuario
+const putUser = require("./putUserController");
 
 const UsersControllers = {
     registerUser,
     getUsers,
     loginUsers,
-    deleteUser
+    deleteUser,
+    putUser
 };
 
 module.exports = UsersControllers;

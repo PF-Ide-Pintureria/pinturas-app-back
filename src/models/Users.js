@@ -45,17 +45,10 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: true, //de momento para facilitar pruebas
-            validate: {
-                isAlpha: true,
-            },
-
         },
         lastName: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-                isAlpha: true,
-            },
         },
         address: {
             type: DataTypes.STRING,
@@ -65,16 +58,10 @@ module.exports = (sequelize) => {
         locality: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-                isAlpha: true,
-            },
         },
         province: {
             type: DataTypes.STRING,
             allowNull: true,
-            validate: {
-                isAlpha: true,
-            },
         },
         phone: {
             type: DataTypes.STRING,
