@@ -1,6 +1,6 @@
 const mercadopago = require("mercadopago");
-const { parsed: ENV } = require('dotenv').config();
-const { MELI_ACCESS_TOKEN } = ENV;
+// eslint-disable-next-line no-undef
+const { MELI_ACCESS_TOKEN } = process.env;
 
 
 mercadopago ? mercadopago.configure({

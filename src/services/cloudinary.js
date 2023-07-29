@@ -1,6 +1,6 @@
 const cloudinary = require("cloudinary").v2;
-const { parsed: ENV } = require('dotenv').config();
-const { CLOUD_NAME, CLOUD_KEY, CLOUD_SECRET } = ENV;
+// eslint-disable-next-line no-undef
+const { CLOUD_NAME, CLOUD_KEY, CLOUD_SECRET } = process.env;
 const sanitize = require("sanitize-filename");
 
 cloudinary.config({

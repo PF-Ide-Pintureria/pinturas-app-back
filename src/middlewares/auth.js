@@ -1,7 +1,8 @@
 const jwt = require("jwt-simple");
 const moment = require("moment");
-const { parsed: ENV } = require('dotenv').config();
-const { SECRET } = ENV;
+// const { parsed: ENV } = require('dotenv').config();
+// eslint-disable-next-line no-undef
+const { JWT_SECRET } = process.env;
 
 const auth = (req, res, next) => {
 
@@ -20,7 +21,7 @@ const auth = (req, res, next) => {
     //Decodificar token
     try {
 
-        let payload = jwt.decode(token, SECRET);
+        let payload = jwt.decode(token, JWT_SECRET);
 
         if (payload.exp <= moment.unix()) {
 
