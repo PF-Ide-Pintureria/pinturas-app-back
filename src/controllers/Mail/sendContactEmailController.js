@@ -1,5 +1,6 @@
 const { transporter } = require('../../services');
-require('dotenv').config();
+// const { parsed: ENV } = require('dotenv').config();
+// eslint-disable-next-line no-undef
 const { SENDER_MAIL: email } = process.env;
 
 
@@ -17,7 +18,7 @@ const sendContactEmailController = ({ name, message, replyTo }) => {
             replyTo,
         };
 
-        transporter.sendMail(mail_configs, function (error, info) {
+        transporter.sendMail(mail_configs, function (error,) {
             if (error) {
                 console.log(error);
                 return reject({ message: `An error has occured` });

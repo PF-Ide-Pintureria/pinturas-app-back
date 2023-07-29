@@ -1,5 +1,5 @@
 const cloudinary = require("cloudinary").v2;
-require('dotenv').config();
+// eslint-disable-next-line no-undef
 const { CLOUD_NAME, CLOUD_KEY, CLOUD_SECRET } = process.env;
 const sanitize = require("sanitize-filename");
 
@@ -24,7 +24,7 @@ const uploadImage = async (file) => {
     if (!["png", "jpg", "jpeg", "gif", "webp"]
         .includes(extension.toLowerCase())) {
         throw new Error("Por favor sube extensión de imagen permitida");
-    };
+    }
 
     const fileName = file.filename || DEFAULT_IMAGE;
 
@@ -32,16 +32,16 @@ const uploadImage = async (file) => {
     const safePath = sanitize(fileName, { replacement: "_" });
     if (safePath !== fileName) {
         throw new Error("Por favor sube un formato válido de imagen");
-    };
+    }
 
     // Subir la imagen a cloudinary
     const { secure_url } = await cloudinary.uploader.upload(
         file.path,
         { public_id: `${file.filename}` },
-        function (error, result) {
+        function (error,) {
             if (error) {
                 throw new Error(error);
-            };
+            }
         },
     );
 

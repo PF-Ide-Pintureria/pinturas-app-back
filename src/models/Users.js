@@ -85,11 +85,11 @@ module.exports = (sequelize) => {
         idUser: {
             type: DataTypes.UUID,
             allowNull: true,
+            defaultValue: DataTypes.UUIDV4,
         },
         idCart: {
             type: DataTypes.UUID,
             allowNull: true,
-            defaultValue: DataTypes.UUIDV4,
         },
     }, { timestamps: true });
 };

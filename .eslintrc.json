@@ -1,23 +1,16 @@
 {
     "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true,
         "node": true,
-        "es6": true,
-        "mocha": true
+        "mocha": true,
+        "jest": true
     },
-    "extends": "airbnb/base",
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "moduleDirectory": [
-                    "src",
-                    "node_modules"
-                ]
-            }
-        }
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": "latest"
     },
     "rules": {
-        "no-underscore-dangle": 0,
-        "no-param-reassign": 0,
-        "import/no-unresolved": 0
     }
 }
