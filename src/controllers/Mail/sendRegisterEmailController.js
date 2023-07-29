@@ -1,6 +1,7 @@
 const { transporter } = require('../../services');
-const { parsed: ENV } = require('dotenv').config();
-const { SENDER_MAIL: sender_email } = ENV;
+// const { parsed: ENV } = require('dotenv').config();
+// eslint-disable-next-line no-undef
+const { SENDER_MAIL: sender_email } = process.env;
 const { Users } = require('../../db');
 
 
