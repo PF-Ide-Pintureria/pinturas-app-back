@@ -7,6 +7,7 @@ const {
     DB_LOCAL_USER, DB_LOCAL_PASS,
     DB_LOCAL_HOST, DB_LOCAL_NAME
 } = process.env; // eslint-disable-line no-undef
+const { expect } = require('chai');
 
 // Conexiones a la bases de datos
 describe('DATABASE CONNECTIONS', () => {

@@ -1,5 +1,6 @@
 const Controllers = require('../../src/controllers/');
 const { ProductsControllers } = Controllers;
+const { expect } = require('chai');
 
 const {
     createProduct, destroyProduct,

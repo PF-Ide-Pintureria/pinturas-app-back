@@ -1,5 +1,6 @@
 const { Carts, Users } = require('../../src/db');
 const { CartsControllers } = require('../../src/controllers');
+const { expect } = require('chai');
 
 function generateRandomEmail() {
     return Math.random().toString(36).substring(2, 15) + '@gmail.com';
