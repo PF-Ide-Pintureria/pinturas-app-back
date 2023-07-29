@@ -11,6 +11,7 @@ const getUsersController = async () => {
             name: user.name,
             idCart: user.idCart,
             idUser: user.idUser,
+            active: user.active,
         };
     });
 };
