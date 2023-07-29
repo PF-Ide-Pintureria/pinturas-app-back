@@ -1,15 +1,14 @@
 const { describe, it, before, xdescribe } = require('mocha');
 const { expect } = require('chai');
 const { conn, createDBInstance } = require('../src/db.js');
-const { parsed: ENV } = require('dotenv').config();
 const {
     DB_TEST_USER, DB_TEST_PASS,
     DB_TEST_HOST, DB_TEST_NAME
-} = ENV;
+} = process.env; // eslint-disable-line no-undef
 const {
     DB_LOCAL_USER, DB_LOCAL_PASS,
     DB_LOCAL_HOST, DB_LOCAL_NAME
-} = ENV;
+} = process.env; // eslint-disable-line no-undef
 
 // Conexiones a la bases de datos
 describe('DATABASE CONNECTIONS', () => {

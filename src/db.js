@@ -11,7 +11,7 @@ if (NODE_ENV === 'test') {
     const {
         DB_TEST_USER, DB_TEST_PASS,
         DB_TEST_HOST, DB_TEST_NAME
-    } = ENV;
+    } = process.env; // eslint-disable-line no-undef
     sequelizeInstance = createDBInstance(DB_TEST_USER, DB_TEST_PASS,
         DB_TEST_HOST, DB_TEST_NAME);
     console.log('[DB] TESTING ENVIRONMENT');
