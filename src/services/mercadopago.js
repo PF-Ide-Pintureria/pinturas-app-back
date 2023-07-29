@@ -1,6 +1,6 @@
 const mercadopago = require("mercadopago");
-require("dotenv").config();
-const { MELI_ACCESS_TOKEN } = process.env;
+const { parsed: ENV } = require('dotenv').config();
+const { MELI_ACCESS_TOKEN } = ENV;
 
 
 mercadopago ? mercadopago.configure({

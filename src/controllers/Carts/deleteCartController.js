@@ -21,7 +21,7 @@ const deleteUserController = async ({ idUser, idCart }) => {
 
     if (!cart && !user) {
         throw new Error('No user or cart found');
-    };
+    }
 
     await user.update({
         idCart: null

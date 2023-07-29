@@ -9,7 +9,7 @@ const resetAndUploadProducts = async () => {
         console.log('Database reset successfully');
     } catch (error) {
         console.error(error);
-    };
+    }
 };
 
 resetAndUploadProducts();

@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
-require('dotenv').config();
-const { JWT_SECRET } = process.env;
+const { parsed: ENV } = require('dotenv').config();
+const { JWT_SECRET } = ENV;
 
 
 const createToken = (user) => {

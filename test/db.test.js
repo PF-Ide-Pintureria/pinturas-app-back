@@ -1,8 +1,7 @@
 const { describe, it, before, } = require('mocha');
 const { expect } = require('chai');
 const { conn, createDBInstance } = require('../src/db.js');
-let ENV = {};
-require('dotenv').config({ processEnv: ENV });
+const { parsed: ENV } = require('dotenv').config();
 const {
     DB_TEST_USER, DB_TEST_PASS,
     DB_TEST_HOST, DB_TEST_NAME

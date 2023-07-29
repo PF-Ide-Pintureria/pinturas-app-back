@@ -1,6 +1,6 @@
 const { transporter } = require('../../services');
-require('dotenv').config();
-const { SENDER_MAIL: email } = process.env;
+const { parsed: ENV } = require('dotenv').config();
+const { SENDER_MAIL: email } = ENV;
 
 
 const sendContactEmailController = ({ name, message, replyTo }) => {
@@ -17,7 +17,7 @@ const sendContactEmailController = ({ name, message, replyTo }) => {
             replyTo,
         };
 
-        transporter.sendMail(mail_configs, function (error, info) {
+        transporter.sendMail(mail_configs, function (error,) {
             if (error) {
                 console.log(error);
                 return reject({ message: `An error has occured` });

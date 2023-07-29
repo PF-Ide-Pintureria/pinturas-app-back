@@ -5,9 +5,8 @@ const { createCart } = CartsControllers;
 
 const registerUserHandler = async (req, res) => {
 
-    //Recoger datos de la petición
-    const { email, password, rol, name, lastName,
-        address, locality, province, phone, createCartForUser } = req.body;
+    // Recoger datos de la petición
+    const { email, password, createCartForUser, } = req.body;
 
     // Comprobar que me llegan bien los datos(validacion)
     // Respuesta "clara" o personalizada de ususarios duplicados(pendiente)
@@ -27,7 +26,7 @@ const registerUserHandler = async (req, res) => {
 
         const newUser = await registerUser(req.body);
         if (newUser && createCartForUser) {
-            const createdCart = await createCart({
+            await createCart({
                 idUser: newUser.id,
             });
         }

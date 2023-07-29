@@ -1,17 +1,17 @@
 const { Sequelize } = require('sequelize');
-require('dotenv').config();
-let { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
+const { parsed: ENV } = require('dotenv').config();
+let { DB_USER, DB_PASS, DB_HOST, DB_NAME } = ENV;
 const fs = require('fs');
 const path = require('path');
 
 
 let sequelizeInstance = null;
-const { NODE_ENV } = process.env;
+const { NODE_ENV } = ENV;
 if (NODE_ENV === 'test') {
     const {
         DB_TEST_USER, DB_TEST_PASS,
         DB_TEST_HOST, DB_TEST_NAME
-    } = process.env;
+    } = ENV;
     sequelizeInstance = createDBInstance(DB_TEST_USER, DB_TEST_PASS,
         DB_TEST_HOST, DB_TEST_NAME);
     console.log('[DB] TESTING ENVIRONMENT');
@@ -19,7 +19,7 @@ if (NODE_ENV === 'test') {
     const {
         DB_LOCAL_USER, DB_LOCAL_PASS,
         DB_LOCAL_HOST, DB_LOCAL_NAME
-    } = process.env;
+    } = ENV;
     sequelizeInstance = createDBInstance(DB_LOCAL_USER, DB_LOCAL_PASS,
         DB_LOCAL_HOST, DB_LOCAL_NAME);
     console.log('[DB] LOCAL ENVIRONMENT');
@@ -62,16 +62,19 @@ function createDBInstance(user = DB_USER, pass = DB_PASS,
 
 function injectModels(sequelizeInstance) {
 
+    // eslint-disable-next-line no-undef
     const basename = path.basename(__filename);
     const modelDefiners = [];
     // Leemos todos los archivos de la carpeta Models, los requerimos y agregamos al
     // arreglo modelDefiners
+    // eslint-disable-next-line no-undef
     fs.readdirSync(path.join(__dirname, '/models'))
         .filter((file) =>
             (file.indexOf('.') !== 0) &&
             (file !== basename) &&
             (file.slice(-3) === '.js')
         ).forEach((file) => {
+            // eslint-disable-next-line no-undef
             modelDefiners.push(require(path.join(__dirname, '/models', file)));
         });
 

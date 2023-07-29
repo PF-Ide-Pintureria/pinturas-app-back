@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { expect } = require('chai');
 const { describe, it, after } = require('mocha');
-let { parsed: ENV } = require('dotenv').config();
+const { parsed: ENV } = require('dotenv').config();
 
 
 // Verifica que las variables de entorno estén definidas

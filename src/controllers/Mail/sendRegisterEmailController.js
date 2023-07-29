@@ -1,6 +1,6 @@
 const { transporter } = require('../../services');
-require('dotenv').config();
-const { SENDER_MAIL: sender_email } = process.env;
+const { parsed: ENV } = require('dotenv').config();
+const { SENDER_MAIL: sender_email } = ENV;
 const { Users } = require('../../db');
 
 
@@ -9,7 +9,7 @@ const sendRegisterEmailController = async ({ message, id }) => {
 
     const subject = `Bienvenido a la familia de IDE Pinturería`;
     const user = await Users.findOne({ where: { id } });
-    if(!user) return reject({ message: `An error has occured` });
+    if (!user) throw new Error(`User with id ${id} not found`);
     const email = user.email;
 
     return new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ const sendRegisterEmailController = async ({ message, id }) => {
             html: message,
         };
 
-        transporter.sendMail(mail_configs, function (error, info) {
+        transporter.sendMail(mail_configs, function (error,) {
             if (error) {
                 console.log(error);
                 return reject({ message: `An error has occured` });

@@ -111,7 +111,7 @@ const filterAndOrderProductsController = async ({
 
     if (!products.rows?.length) {
         throw new Error('No se encontraron resultados. Prueba de otra manera.');
-    };
+    }
 
     return {
         results: products,
