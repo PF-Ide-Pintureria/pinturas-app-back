@@ -1,5 +1,3 @@
-const { describe, it, before, xdescribe } = require('mocha');
-const { expect } = require('chai');
 const { conn, createDBInstance } = require('../src/db.js');
 const {
     DB_TEST_USER, DB_TEST_PASS,

@@ -8,9 +8,6 @@ const {
     getProductByName,
 } = ProductsControllers;
 
-const { expect, } = require('chai');
-const { it, describe, before, after } = require('mocha');
-
 const testProduct = {
     name: 'Test product',
     price: 100,

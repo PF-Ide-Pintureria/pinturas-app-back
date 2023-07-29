@@ -1,12 +1,9 @@
-const { describe, before, } = require('mocha');
 const { conn, } = require('../../src/db.js');
-
 
 const productsTests = require('./productsControllersTests');
 const categoriesTests = require('./categoriesControllersTests');
 const cartsTests = require('./cartsControllersTests');
 const usersTests = require('./usersControllersTests');
-
 
 
 describe('CONTROLLERS', () => {

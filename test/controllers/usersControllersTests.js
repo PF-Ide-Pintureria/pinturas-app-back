@@ -1,5 +1,3 @@
-const { expect, } = require('chai');
-const { it, describe, before, after } = require('mocha');
 const { Users } = require('../../src/db');
 const { UsersControllers } = require('../../src/controllers');
 
