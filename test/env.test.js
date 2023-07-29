@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { expect } = require('chai');
 
 
 // Verifica que las variables de entorno estén definidas
@@ -9,20 +8,23 @@ describe('ENVIRONMENT VARIABLES', () => {
     // conexión a la base de datos estén definidas
     describe('[Database keys]', () => {
 
-        it('Should have a DB_NAME key', () => {
-            expect(process.env.DB_NAME).to.not.be.undefined;
+        // eslint-disable-next-line no-undef
+        const { DB_NAME, DB_HOST, DB_USER, DB_PASS } = process.env;
+
+        it('', () => {
+            expect(DB_NAME).to.not.be.undefined;
         });
 
-        it('Should have a DB_HOST key', () => {
-            expect(process.env.DB_HOST).to.not.be.undefined;
+        it('', () => {
+            expect(DB_HOST).to.not.be.undefined;
         });
 
-        it('Should have a DB_USER key', () => {
-            expect(process.env.DB_USER).to.not.be.undefined;
+        it('', () => {
+            expect(DB_USER).to.not.be.undefined;
         });
 
-        it('Should have a DB_PASSWORD key', () => {
-            expect(process.env.DB_PASS).to.not.be.undefined;
+        it('', () => {
+            expect(DB_PASS).to.not.be.undefined;
         });
 
     });
@@ -31,38 +33,46 @@ describe('ENVIRONMENT VARIABLES', () => {
     // conexión a Cloudinary estén definidas
     describe('[Cloudinary keys]', () => {
 
-        it('Should have a CLOUD_NAME key', () => {
-            expect(process.env.CLOUD_NAME).to.not.be.undefined;
+        // eslint-disable-next-line no-undef
+        const { CLOUD_NAME, CLOUD_KEY, CLOUD_SECRET } = process.env;
+
+        it('', () => {
+            expect(CLOUD_NAME).to.not.be.undefined;
         });
 
-        it('Should have a CLOUD_KEY key', () => {
-            expect(process.env.CLOUD_KEY).to.not.be.undefined;
+        it('', () => {
+            expect(CLOUD_KEY).to.not.be.undefined;
         });
 
-        it('Should have a CLOUD_SECRET key', () => {
-            expect(process.env.CLOUD_SECRET).to.not.be.undefined;
+        it('', () => {
+            expect(CLOUD_SECRET).to.not.be.undefined;
         });
 
     });
 
     // Verifica que la variables de entorno para la
     // conexión a DB de testing estén definidas
-    describe('[Testing database ke]ys', () => {
+    describe('[Testing database keys]', () => {
 
-        it('Should have a DB_TEST_NAME key', () => {
-            expect(process.env.DB_TEST_NAME).to.not.be.undefined;
+        const {
+            DB_TEST_NAME, DB_TEST_HOST,
+            DB_TEST_USER, DB_TEST_PASS
+        } = process.env; // eslint-disable-line no-undef
+
+        it('', () => {
+            expect(DB_TEST_NAME).to.not.be.undefined;
         });
 
-        it('Should have a DB_TEST_HOST key', () => {
-            expect(process.env.DB_TEST_HOST).to.not.be.undefined;
+        it('', () => {
+            expect(DB_TEST_HOST).to.not.be.undefined;
         });
 
-        it('Should have a DB_TEST_USER key', () => {
-            expect(process.env.DB_TEST_USER).to.not.be.undefined;
+        it('', () => {
+            expect(DB_TEST_USER).to.not.be.undefined;
         });
 
-        it('Should have a DB_TEST_PASSWORD key', () => {
-            expect(process.env.DB_TEST_PASS).to.not.be.undefined;
+        it('', () => {
+            expect(DB_TEST_PASS).to.not.be.undefined;
         });
 
     });
@@ -70,12 +80,15 @@ describe('ENVIRONMENT VARIABLES', () => {
     // Nodemailer
     describe('[Nodemailer keys]', () => {
 
-        it('Should have a NODEMAILER_USER key', () => {
-            expect(process.env.SENDER_MAIL).to.not.be.undefined;
+        // eslint-disable-next-line no-undef
+        const { SENDER_MAIL, SENDER_PASS } = process.env;
+
+        it('', () => {
+            expect(SENDER_MAIL).to.not.be.undefined;
         });
 
-        it('Should have a APPLICATION_PASSWORD key', () => {
-            expect(process.env.SENDER_PASS).to.not.be.undefined;
+        it('', () => {
+            expect(SENDER_PASS).to.not.be.undefined;
         });
 
     });
@@ -83,8 +96,11 @@ describe('ENVIRONMENT VARIABLES', () => {
     // JWT
     describe('[JWT keys]', () => {
 
-        it('Should have a JWT_SECRET key', () => {
-            expect(process.env.JWT_SECRET).to.not.be.undefined;
+        // eslint-disable-next-line no-undef
+        const { JWT_SECRET } = process.env;
+
+        it('', () => {
+            expect(JWT_SECRET).to.not.be.undefined;
         });
 
     });
@@ -92,8 +108,11 @@ describe('ENVIRONMENT VARIABLES', () => {
     // MercadoPago
     describe('[MercadoPago keys]', () => {
 
-        it('Should have a MELI_ACCESS_TOKEN key', () => {
-            expect(process.env.MELI_ACCESS_TOKEN).to.not.be.undefined;
+        // eslint-disable-next-line no-undef
+        const { MELI_ACCESS_TOKEN } = process.env;
+
+        it('', () => {
+            expect(MELI_ACCESS_TOKEN).to.not.be.undefined;
         });
 
     });

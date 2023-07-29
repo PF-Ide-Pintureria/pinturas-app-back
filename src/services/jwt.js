@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
-require('dotenv').config();
+// eslint-disable-next-line no-undef
 const { JWT_SECRET } = process.env;
 
 
