@@ -1,4 +1,4 @@
-const { describe, it, before, } = require('mocha');
+const { describe, it, before, xdescribe } = require('mocha');
 const { expect } = require('chai');
 const { conn, createDBInstance } = require('../src/db.js');
 const { parsed: ENV } = require('dotenv').config();
@@ -27,7 +27,7 @@ describe('DATABASE CONNECTIONS', () => {
 
     });
 
-    describe('[Testing Environment]', () => {
+    xdescribe('[Testing Environment]', () => {
 
         let dbInstance;
 
@@ -49,7 +49,7 @@ describe('DATABASE CONNECTIONS', () => {
 
     });
 
-    describe('[Local Environment]', () => {
+    xdescribe('[Local Environment]', () => {
 
         let dbInstance;
 

@@ -1,12 +1,12 @@
 const { Sequelize } = require('sequelize');
 const { parsed: ENV } = require('dotenv').config();
-let { DB_USER, DB_PASS, DB_HOST, DB_NAME } = ENV;
+// eslint-disable-next-line no-undef
+let { DB_USER, DB_PASS, DB_HOST, DB_NAME, NODE_ENV } = process.env;
 const fs = require('fs');
 const path = require('path');
 
 
 let sequelizeInstance = null;
-const { NODE_ENV } = ENV;
 if (NODE_ENV === 'test') {
     const {
         DB_TEST_USER, DB_TEST_PASS,
