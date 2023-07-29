@@ -1,5 +1,6 @@
 const { Users } = require('../../src/db');
 const { UsersControllers } = require('../../src/controllers');
+const { expect } = require('chai');
 
 
 const generateRandomEmail = () => {

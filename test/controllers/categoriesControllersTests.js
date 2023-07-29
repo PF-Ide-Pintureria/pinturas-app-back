@@ -1,4 +1,5 @@
 // const { Categories } = require('../../src/db.js');
+const { expect } = require('chai');
 
 const { CategoriesControllers } = require('../../src/controllers');
 
