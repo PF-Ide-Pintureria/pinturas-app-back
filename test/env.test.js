@@ -1,4 +1,5 @@
 require('dotenv').config();
+const { expect } = require('chai');
 
 
 // Verifica que las variables de entorno estén definidas
