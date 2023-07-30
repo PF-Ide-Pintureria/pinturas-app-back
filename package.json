@@ -7,12 +7,14 @@
         "start": "nodemon -L",
         "resetProducts": "node ./src/controllers/DB/resetProductsController.js",
         "resetUsers": "node ./src/controllers/DB/resetUsersController.js",
+        "resetCategories": "node ./src/controllers/DB/resetCategoriesController.js",
         "test": "mocha --recursive --timeout 10000 --exit",
         "testDB": "mocha -g 'DATABASE CONNECTIONS' --recursive --timeout 10000 --exit",
         "testEnv": "mocha -g 'ENVIRONMENT VARIABLES' --recursive --timeout 10000 --exit",
         "testControllers": "mocha -g 'CONTROLLERS' --recursive --timeout 10000 --exit",
         "testCartsControllers": "mocha -g 'Carts Controllers' --recursive --timeout 10000 --exit",
-        "testUsersControllers": "mocha -g 'Users Controllers' --recursive --timeout 10000 --exit"
+        "testUsersControllers": "mocha -g 'Users Controllers' --recursive --timeout 10000 --exit",
+        "testOrdersModels": "mocha -g 'Orders Models' --recursive --timeout 10000 --exit"
     },
     "keywords": [],
     "author": "",

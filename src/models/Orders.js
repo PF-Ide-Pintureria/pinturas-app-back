@@ -5,15 +5,12 @@ module.exports = (sequelize) => {
         idOrder: {
             type: DataTypes.UUID,
             defaultValue: v4,
-        },
-        idUser: {
-            type: DataTypes.UUID,
-            defaultValue: v4,
-            allowNull: true
+            allowNull: false,
         },
         products: {
             type: DataTypes.ARRAY(DataTypes.STRING),
-            allowNull: false
+            allowNull: false,
+            defaultValue: []
         },
         subtotal: {
             type: DataTypes.FLOAT
