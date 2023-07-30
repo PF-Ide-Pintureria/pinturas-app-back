@@ -44,7 +44,7 @@ const ordersModelTests = async () => {
         // });
 
         expect(orderForTest).to.not.be.null;
-        expect(orderForTest).to.have.property('idUser');
+        expect(orderForTest).to.have.property('userId');
         expect(orderForTest).to.have.property('products');
 
     });
@@ -71,7 +71,7 @@ const ordersModelTests = async () => {
         // });
 
         expect(orderForTest).to.not.be.null;
-        expect(orderForTest).to.have.property('idUser');
+        expect(orderForTest).to.have.property('userId');
         expect(orderForTest).to.have.property('products');
         expect(orderForTest.products).to.have.lengthOf(producstForTest.length);
 
