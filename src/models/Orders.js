@@ -2,10 +2,11 @@ const { DataTypes, UUIDV4: v4 } = require('sequelize');
 
 module.exports = (sequelize) => {
     sequelize.define('orders', {
-        idOrder: {
+        id: {
             type: DataTypes.UUID,
             defaultValue: v4,
             allowNull: false,
+            primaryKey: true
         },
         products: {
             type: DataTypes.ARRAY(DataTypes.STRING),
@@ -19,7 +20,8 @@ module.exports = (sequelize) => {
             type: DataTypes.FLOAT
         },
         state: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: "pending"
         }
     }, {
         timestamps: true,

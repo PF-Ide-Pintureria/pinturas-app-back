@@ -1,10 +1,28 @@
 // const { mercadopago } = require("../../services");
+const { Orders, Users } = require("../../db");
 
+const createOrder = async (products, idUser) => {
+    console.log(idUser);
+    const userOrder = await Users.findByPk(idUser);
+    if (!userOrder) throw Error("Error: Usuario no encontrado");
 
-const createOrder = () => {
+    // products.map((product) => {
 
+    //     return {
+    //         name: product.name,
+    //         price: product.price,
+    //         quantity: product.quantity
+    //     };
+    // });
+    const order = await Orders.create({
+
+        products: products.map(product => JSON.stringify(product)),
+
+    });
+    await userOrder.createOrder(order);
     return {
-        "message": "createOrder controller",
+        order,
+        userOrder
     };
 
 };
