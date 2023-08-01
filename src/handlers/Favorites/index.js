@@ -1,9 +1,11 @@
 const addFavorite = require("./addFavoriteHandler");
 const deleteFavorite = require("./deleteFavoriteHandler");
+const getFavorites = require("./getFavoritesHandler");
 
 const FavoritesHandlers = {
     addFavorite,
-    deleteFavorite
+    deleteFavorite,
+    getFavorites
 };
 
 module.exports = FavoritesHandlers;

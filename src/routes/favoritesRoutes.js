@@ -6,5 +6,7 @@ const router = Router();
 router.post("/", FavoritesHandlers.addFavorite);
 //. Delete favorites
 router.delete("/", FavoritesHandlers.deleteFavorite);
+//. Get favorites
+router.get("/", FavoritesHandlers.getFavorites);
 
 module.exports = router;

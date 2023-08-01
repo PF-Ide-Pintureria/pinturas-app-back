@@ -1,9 +1,10 @@
 const addFavorite = require("./addFavoriteController");
 const deleteFavorite = require("./deleteFavoriteController");
-
+const getFavorites = require("./getFavoritesController");
 const FavoritesControllers = {
     addFavorite,
-    deleteFavorite
+    deleteFavorite,
+    getFavorites
 };
 
 module.exports = FavoritesControllers;
