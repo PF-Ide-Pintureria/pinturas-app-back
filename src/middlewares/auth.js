@@ -1,4 +1,4 @@
-const jwt = require("jwt-simple");
+const jwt = require("jsonwebtoken");
 const moment = require("moment");
 // const { parsed: ENV } = require('dotenv').config();
 // eslint-disable-next-line no-undef
