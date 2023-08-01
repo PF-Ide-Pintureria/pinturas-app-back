@@ -21,7 +21,7 @@ router.delete("/:id", UsersHandlers.deleteUser);
 router.put("/:id", UsersHandlers.putUser);
 
 //6.  GET /users/profile
-router.get("/profile", [auth], UsersHandlers.profileUser);
+router.get("/profile", [auth], UsersHandlers.myProfile);
 
 //7. GET /users/registered-authzero
 router.get("/registered-authzero", [requiresAuth()], UsersHandlers.registerUserAuthZero);
