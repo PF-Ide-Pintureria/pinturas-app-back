@@ -1,24 +1,14 @@
-// 1. Crear Producto
-const createProduct = require('./createProductHandler');
-// 2. Borra Producto
-const deleteProduct = require('./deleteProductHandler');
-// 3. Editar Producto
-const editProduct = require('./editProductHandler');
-// 4. Obtener todos los productos
-const getAllProducts = require('./getAllProductsHandler');
-// 5. Obtener producto por id
-const getProductById = require('./getProductByIdHandler');
-// 8. Destruir producto (borrar de la base de datos) (no usar)
-const destroyProduct = require('./destroyProductHandler');
+const fs = require('fs');
+const path = require('path');
 
+// Buscamos todos los archivos en el directorio actual que no sean index.js
+const files = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
 
-const ProductsHandlers = {
-    createProduct,
-    editProduct,
-    deleteProduct,
-    getAllProducts,
-    getProductById,
-    destroyProduct,
-};
+// Exportamos todos los archivos encontrados
+const Handlers = {};
+files.forEach(file => {
+    Handlers[file.split('Handler')[0]] =
+        require(path.join(__dirname, file));
+});
 
-module.exports = ProductsHandlers;
+module.exports = Handlers;

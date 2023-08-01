@@ -12,7 +12,7 @@ const resetAndUploadProducts = async () => {
     }
 };
 
-resetAndUploadProducts();
+// resetAndUploadProducts();
 
 
 module.exports = resetAndUploadProducts;
