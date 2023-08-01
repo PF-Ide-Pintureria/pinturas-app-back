@@ -9,7 +9,13 @@ const loginUserController = async (email, password) => {
 
         const findUser = await Users.findOne({ where: { email: email } });
 
-        let user, token;
+        if (!findUser) throw new Error("El usuario no existe");
+
+        if (findUser.dataValues.isBanned === true) throw new Error("El usuario se encuentra bloqueado");
+
+        if (findUser.dataValues.active === false) throw new Error("El usuario ha sido eliminado");
+
+        let user, token, userToToken;
 
         if (findUser) {
 
@@ -19,16 +25,17 @@ const loginUserController = async (email, password) => {
 
                 delete findUser.password;
 
-                user = {
+                userToToken = {
                     email: findUser.dataValues.email,
                     name: findUser.dataValues.name,
-                    rol: findUser.dataValues.rol,
+                    rol: findUser.dataValues.rol
                 };
 
-                token = createToken(user);
+                token = createToken(userToToken);
+
+                user = findUser.dataValues;
 
             }
-
 
         }
 
