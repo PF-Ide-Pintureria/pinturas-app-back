@@ -21,7 +21,6 @@ module.exports = (sequelize) => {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
             /* validate: {
                 isPasswordValid(value) {
                   // Expresión regular para una contraseña segura
@@ -69,6 +68,14 @@ module.exports = (sequelize) => {
             validate: {
                 isNumeric: true,
             },
+        },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true,
+            validate: {
+                isUrl: true
+            },
+            defaultValue: "https://res.cloudinary.com/dbiibtzo5/image/upload/v1690830660/product-1690830659840-Archivo_002.png.png"
         },
         active: {
             type: DataTypes.BOOLEAN,

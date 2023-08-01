@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const { Users } = require('../../db');
-const { createToken } = require("../../services/");
+const createToken = require("../../services/jwt");
 
 
 const loginUserController = async (email, password) => {
@@ -17,14 +17,19 @@ const loginUserController = async (email, password) => {
 
             if (pwdMatch) {
 
-                token = createToken(findUser);
+                delete findUser.password;
+
+                user = {
+                    email: findUser.dataValues.email,
+                    name: findUser.dataValues.name,
+                    rol: findUser.dataValues.rol,
+                };
+
+                token = createToken(user);
 
             }
 
-            user = {
-                ...findUser.dataValues,
-                [password]: undefined
-            };
+
         }
 
         return { user, token };
