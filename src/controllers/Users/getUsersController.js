@@ -6,7 +6,7 @@ const getUsersController = async () => {
     return usersdb.map((user) => {
         return {
             id: user.id,
-            isUser: user.idUser,
+            idUser: user.idUser,
             email: user.email,
             rol: user.rol,
             name: user.name,
@@ -17,7 +17,6 @@ const getUsersController = async () => {
             phone: user.phone,
             image: user.image,
             idCart: user.idCart,
-            idUser: user.idUser,
             active: user.active,
             isBanned: user.isBanned,
             authZero: user.authZero

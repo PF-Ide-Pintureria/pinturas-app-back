@@ -5,17 +5,7 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { rateLimiter } = require('./middlewares/');
 const path = require('path');
-const { SECRET_AUTH_ZERO, CLIENT_ID_AUTH_ZERO, ISSUER_BASE_URL, BASE_URL_LOCAL_AUTH_ZERO } = process.env;
-const { auth } = require('express-openid-connect');
-
-const config = {
-    authRequired: false,
-    auth0Logout: true,
-    secret: SECRET_AUTH_ZERO,
-    baseURL: BASE_URL_LOCAL_AUTH_ZERO,
-    clientID: CLIENT_ID_AUTH_ZERO,
-    issuerBaseURL: ISSUER_BASE_URL
-};
+const authZero = require('./services/');
 
 require('./db.js');
 
@@ -58,7 +48,7 @@ server.use((req, res, next) => {
 server.use(express.static(path.join(__dirname, 'public')));
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
-server.use(auth(config));
+server.use(authZero);
 server.use('/', routes);
 
 // Without middleware
