@@ -8,6 +8,8 @@ router.post("/payment", OrdersHandlers.paymentOrder);
 // 2. POST /orders
 router.post("/", OrdersHandlers.createOrder);
 // 3. GET /orders/success
-router.get("/sucess/:idOrder", OrdersHandlers.successOrder);
+router.post("/sucess/:idOrder", OrdersHandlers.successOrder);
+// 4. GET /orders/failure
+router.post("/failure/:idOrder", OrdersHandlers.failureOrder);
 
 module.exports = router;
