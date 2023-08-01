@@ -4,6 +4,7 @@ const UsersHandlers = require('./Users');
 const OrdersHandlers = require("./Orders");
 const MailHandlers = require("./Mail");
 const CartsHandlers = require("./Carts");
+const FavoritesHandlers = require("./Favorites");
 
 module.exports = {
     CategoriesHandlers,
@@ -11,5 +12,6 @@ module.exports = {
     UsersHandlers,
     OrdersHandlers,
     MailHandlers,
-    CartsHandlers
+    CartsHandlers,
+    FavoritesHandlers
 };

@@ -7,8 +7,8 @@ function createRelations(sequelizeInstance) {
     // Aca vendrian las relaciones:
     //FAVORITOS
     // un usuario puede tener muchos productos favoritos y un producto puede ser favorito para muchos usuarios.
-    Users.belongsToMany(Products, { through: "favorite_products" });
-    Products.belongsToMany(Users, { through: "favorite_products" });
+    Users.belongsToMany(Products, { through: "favorite_products", foreignKey: "userId" });
+    Products.belongsToMany(Users, { through: "favorite_products", foreignKey: "productId" });
     //BLOGS
     //un usuario puede tener varios blogs, pero cada blog pertenece a un único usuario
     Users.hasMany(Blogs);

@@ -4,6 +4,7 @@ const UsersControllers = require('./Users');
 const OrdersControllers = require("./Orders");
 const MailControllers = require("./Mail");
 const CartsControllers = require("./Carts");
+const FavoritesControllers = require("./Favorites");
 
 
 module.exports = {
@@ -13,4 +14,5 @@ module.exports = {
     OrdersControllers,
     MailControllers,
     CartsControllers,
+    FavoritesControllers
 };
