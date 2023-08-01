@@ -8,6 +8,7 @@
         "resetProducts": "node ./src/controllers/DB/resetProductsController.js",
         "resetUsers": "node ./src/controllers/DB/resetUsersController.js",
         "resetCategories": "node ./src/controllers/DB/resetCategoriesController.js",
+        "resetOrders": "node ./src/controllers/DB/resetOrdersController.js",
         "test": "mocha --recursive --timeout 10000 --exit",
         "testDB": "mocha -g 'DATABASE CONNECTIONS' --recursive --timeout 10000 --exit",
         "testEnv": "mocha -g 'ENVIRONMENT VARIABLES' --recursive --timeout 10000 --exit",

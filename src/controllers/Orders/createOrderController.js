@@ -1,6 +1,7 @@
 // const { mercadopago } = require("../../services");
 const { Orders, Users } = require("../../db");
 
+
 const createOrder = async (products, idUser) => {
     console.log(idUser);
     const userOrder = await Users.findByPk(idUser);
@@ -14,12 +15,13 @@ const createOrder = async (products, idUser) => {
     //         quantity: product.quantity
     //     };
     // });
+
     const order = await Orders.create({
 
         products: products.map(product => JSON.stringify(product)),
 
     });
-    await userOrder.createOrder(order);
+    await userOrder.addOrder(order);
     return {
         order,
         userOrder
