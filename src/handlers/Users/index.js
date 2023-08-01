@@ -8,13 +8,19 @@ const loginUsers = require('./loginUserHandler');
 const deleteUser = require("./deleteUserHandler");
 //5. Actualizar usuario
 const putUser = require("./putUserHandler");
+//6. Mi perfil
+const profileUser = require("./myProfileHandler.js");
+//7. Registrar usuario con authZero
+const registerUserAuthZero = require("./registerUserAuthZeroHandler");
 
 const UserHandlers = {
     registerUser,
     getUsers,
     loginUsers,
     deleteUser,
-    putUser
+    putUser,
+    profileUser,
+    registerUserAuthZero
 };
 
 module.exports = UserHandlers;
