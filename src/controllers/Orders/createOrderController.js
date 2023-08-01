@@ -1,13 +1,13 @@
 // const { mercadopago } = require("../../services");
 
 
-const createOrder = () => {
+const createOrderController = () => {
 
     return {
-        "message": "createOrder controller",
+        mensaje: "CreateOrder controller",
     };
 
 };
 
 
-module.exports = createOrder;
+module.exports = createOrderController;
