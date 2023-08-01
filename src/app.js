@@ -5,9 +5,7 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { rateLimiter } = require('./middlewares/');
 const path = require('path');
-const authZero = require('./services/');
-
-require('./db.js');
+const authZero = require('./services/authZero');
 
 
 const server = express();

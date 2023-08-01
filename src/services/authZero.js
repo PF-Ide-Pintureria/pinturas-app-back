@@ -14,5 +14,7 @@ const config = {
     issuerBaseURL: ISSUER_BASE_URL
 };
 
+const authZero = auth(config);
 
-module.exports = auth(config);
+
+module.exports = authZero;
