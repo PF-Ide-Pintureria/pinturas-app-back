@@ -7,6 +7,7 @@ const usersRoutes = require('./usersRoutes');
 const ordersRoutes = require("./ordersRoutes");
 const mailRoutes = require("./mailRoutes");
 const cartsRoutes = require("./cartsRoutes");
+const { requiresAuth } = require('express-openid-connect');
 const favoritesRoutes = require("./favoritesRoutes");
 const router = Router();
 
@@ -17,7 +18,9 @@ const description = require('./description.json');
 // Use a middleware to render the description and load files from the public
 // folder
 router.get('/', (req, res) => {
+
     return res.json(description);
+
 });
 
 // Categories routes
@@ -27,7 +30,7 @@ router.use('/products', productsRoutes);
 // Users routes
 router.use('/users', usersRoutes);
 // Orders routes
-router.use("/orders", ordersRoutes);
+router.use("/orders", [requiresAuth()], ordersRoutes);
 // Mail routes
 router.use("/mail", mailRoutes);
 // Carts Routes

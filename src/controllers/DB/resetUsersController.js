@@ -10,6 +10,6 @@ const resetUsersController = () => {
     })
 };
 
-resetUsersController();
+// resetUsersController();
 
 module.exports = resetUsersController;

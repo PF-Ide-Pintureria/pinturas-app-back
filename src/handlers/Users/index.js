@@ -1,20 +1,14 @@
-// 1. Registrar usuario
-const registerUser = require('./registerUserHandler');
-// 2. Obtener usuarios
-const getUsers = require('./getUsersHandler');
-// 3. Login usuario
-const loginUsers = require('./loginUserHandler');
-//4. Delete Usuario
-const deleteUser = require("./deleteUserHandler");
-//5. Actualizar usuario
-const putUser = require("./putUserHandler");
+const fs = require('fs');
+const path = require('path');
 
-const UserHandlers = {
-    registerUser,
-    getUsers,
-    loginUsers,
-    deleteUser,
-    putUser
-};
+// Buscamos todos los archivos en el directorio actual que no sean index.js
+const files = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
 
-module.exports = UserHandlers;
+// Exportamos todos los archivos encontrados
+const Handlers = {};
+files.forEach(file => {
+    Handlers[file.split('Handler')[0]] =
+        require(path.join(__dirname, file));
+});
+
+module.exports = Handlers;

@@ -1,10 +1,14 @@
-const addFavorite = require("./addFavoriteController");
-const deleteFavorite = require("./deleteFavoriteController");
-const getFavorites = require("./getFavoritesController");
-const FavoritesControllers = {
-    addFavorite,
-    deleteFavorite,
-    getFavorites
-};
+const fs = require('fs');
+const path = require('path');
 
-module.exports = FavoritesControllers;
+// Buscamos todos los archivos en el directorio actual que no sean index.js
+const files = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
+
+// Exportamos todos los archivos encontrados
+const Controllers = {};
+files.forEach(file => {
+    Controllers[file.split('Controller')[0]] =
+        require(path.join(__dirname, file));
+});
+
+module.exports = Controllers;

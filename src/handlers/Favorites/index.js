@@ -1,11 +1,14 @@
-const addFavorite = require("./addFavoriteHandler");
-const deleteFavorite = require("./deleteFavoriteHandler");
-const getFavorites = require("./getFavoritesHandler");
+const fs = require('fs');
+const path = require('path');
 
-const FavoritesHandlers = {
-    addFavorite,
-    deleteFavorite,
-    getFavorites
-};
+// Buscamos todos los archivos en el directorio actual que no sean index.js
+const files = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
 
-module.exports = FavoritesHandlers;
+// Exportamos todos los archivos encontrados
+const Handlers = {};
+files.forEach(file => {
+    Handlers[file.split('Handler')[0]] =
+        require(path.join(__dirname, file));
+});
+
+module.exports = Handlers;
