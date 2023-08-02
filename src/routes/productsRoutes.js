@@ -7,19 +7,22 @@ const router = Router();
 // 1. GET /products
 router.get('/', ProductsHandlers.getAllProducts);
 
-// 2. GET /details/:id
+// 2. GET /products/allproducts
+router.get('/allproducts', ProductsHandlers.getAllProductsNoFilters);
+
+// 3. GET /details/:id
 router.get('/details/:id', ProductsHandlers.getProductById);
 
-// 3. PUT /products/:id
+// 4. PUT /products/:id
 router.put("/:id", [productsUploads.single("image")], ProductsHandlers.editProduct);
 
-// 4. DELETE /products/:id
+// 5. DELETE /products/:id
 router.delete("/:id", ProductsHandlers.deleteProduct);
 
-// 5. POST /products
+// 6. POST /products
 router.post('/', [productsUploads.single("image")], ProductsHandlers.createProduct);
 
-// 6. DESTROY /products/destroy/:id
+// 7. DESTROY /products/destroy/:id
 router.delete("/destroy/:id", ProductsHandlers.destroyProduct);
 
 module.exports = router;
