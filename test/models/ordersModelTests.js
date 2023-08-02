@@ -85,7 +85,7 @@ const ordersModelTests = async () => {
     });
 
     after(async () => {
-        await Orders.destroy({ where: { idOrder: orderForTest.idOrder } });
+        await Orders.destroy({ where: { id: orderForTest.id } });
         await Users.destroy({ where: { email: userForTest.email } });
     });
 

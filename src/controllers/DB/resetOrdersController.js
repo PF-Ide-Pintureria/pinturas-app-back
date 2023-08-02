@@ -13,7 +13,7 @@ const resetOrdersController = async () => {
 };
 
 
-const result = resetOrdersController();
-console.log(result);
+// const result = resetOrdersController();
+// console.log(result);
 
 module.exports = resetOrdersController;

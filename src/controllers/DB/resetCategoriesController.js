@@ -11,7 +11,7 @@ const resetCategoriesController = async () => {
     }
 };
 
-resetCategoriesController();
+// resetCategoriesController();
 
 
 module.exports = resetCategoriesController;
