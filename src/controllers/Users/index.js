@@ -10,6 +10,8 @@ const deleteUser = require("./deleteUserController");
 const putUser = require("./putUserController");
 //6. Register Auth0
 const registerAuth0 = require("./registerAuthZeroController");
+//7. Obtener usuario por id
+const getUserById = require("./getUserByIdController");
 
 const UsersControllers = {
     registerUser,
@@ -17,7 +19,8 @@ const UsersControllers = {
     loginUsers,
     deleteUser,
     putUser,
-    registerAuth0
+    registerAuth0,
+    getUserById
 };
 
 module.exports = UsersControllers;

@@ -29,5 +29,7 @@ router.get("/registered-authzero", [requiresAuth()], UsersHandlers.registerUserA
 //8. GET /users/login-authzero
 router.get("/login-authzero", [requiresAuth()], UsersHandlers.loginUserAuthZero);
 
+//9. GET /users/id
+router.get("/:id", UsersHandlers.getUserById);
 
 module.exports = router;
