@@ -1,5 +1,5 @@
 const { Users } = require('../../db');
-const { createToken } = require("../../services");
+const { createToken } = require("../../services/");
 
 const registerAuthZeroController = async (user) => {
 
@@ -26,11 +26,19 @@ const registerAuthZeroController = async (user) => {
 
     });
 
-    token = createToken(newUser);
+    const userToToken = {
+
+        email: user.email,
+        rol: "cliente",
+        name: user.given_name,
+
+    };
+
+    token = createToken(userToToken);
 
     return {
 
-        user: createdUser,
+        createdUser,
         token: token
 
     };
