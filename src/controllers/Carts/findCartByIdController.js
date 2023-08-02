@@ -13,7 +13,7 @@ const findCartByIdController = async ({ idCart, idUser }) => {
         }
     }) : Carts.findOne({
         where: {
-            idUser
+            userId: idUser
         }
     });
 
