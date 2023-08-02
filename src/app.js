@@ -5,11 +5,10 @@ const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const { rateLimiter } = require('./middlewares/');
 const path = require('path');
+const authZero = require('./services/authZero');
 
-require('./db.js');
 
 const server = express();
-
 // Proxy configuration
 const trustProxyFn = (/* ip */) => {
     // Por ahora, confiamos en todas las conexiones
@@ -46,7 +45,14 @@ server.use((req, res, next) => {
 // eslint-disable-next-line no-undef
 server.use(express.static(path.join(__dirname, 'public')));
 
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+server.use(authZero);
 server.use('/', routes);
+
+// Without middleware
+server.get('/callback', function (req, res) {
+    res.redirect('/users/registered-authzero');
+});
 
 // Error catching endware.
 server.use((err, req, res, next) => {

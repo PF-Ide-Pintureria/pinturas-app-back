@@ -1,12 +1,14 @@
-// 1. Obtener todas las categorias
-const getCategories = require('./getCategoriesController');
-// 2. Crear categoría
-const createCategories = require('./createCategoriesController');
+const fs = require('fs');
+const path = require('path');
 
+// Buscamos todos los archivos en el directorio actual que no sean index.js
+const files = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
 
-const CategoriesControllers = {
-    getCategories,
-    createCategories
-};
+// Exportamos todos los archivos encontrados
+const Controllers = {};
+files.forEach(file => {
+    Controllers[file.split('Controller')[0]] =
+        require(path.join(__dirname, file));
+});
 
-module.exports = CategoriesControllers;
+module.exports = Controllers;

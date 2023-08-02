@@ -1,15 +1,14 @@
-const createOrder = require("./createOrderHandler");
-const paymentOrder = require("./paymentOrderHandler");
-const successOrder = require("./successOrderHandler");
-const failureOrder = require("./failureOrderHandler");
+const fs = require('fs');
+const path = require('path');
 
+// Buscamos todos los archivos en el directorio actual que no sean index.js
+const files = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
 
-const OrdersHandlers = {
-    createOrder,
-    paymentOrder,
-    successOrder,
-    failureOrder
-};
+// Exportamos todos los archivos encontrados
+const Handlers = {};
+files.forEach(file => {
+    Handlers[file.split('Handler')[0]] =
+        require(path.join(__dirname, file));
+});
 
-
-module.exports = OrdersHandlers;
+module.exports = Handlers;

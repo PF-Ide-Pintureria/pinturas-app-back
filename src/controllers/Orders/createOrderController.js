@@ -2,7 +2,7 @@
 const { Orders, Users } = require("../../db");
 
 
-const createOrder = async (products, idUser) => {
+const createOrderController = async (products, idUser) => {
     console.log(idUser);
     const userOrder = await Users.findByPk(idUser);
     if (!userOrder) throw Error("Error: Usuario no encontrado");
@@ -30,4 +30,4 @@ const createOrder = async (products, idUser) => {
 };
 
 
-module.exports = createOrder;
+module.exports = createOrderController;
