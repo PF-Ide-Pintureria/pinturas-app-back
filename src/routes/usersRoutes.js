@@ -26,5 +26,8 @@ router.get("/profile", [auth], UsersHandlers.myProfile);
 //7. GET /users/registered-authzero
 router.get("/registered-authzero", [requiresAuth()], UsersHandlers.registerUserAuthZero);
 
+//8. GET /users/login-authzero
+router.get("/login-authzero", [requiresAuth()], UsersHandlers.loginUserAuthZero);
+
 
 module.exports = router;

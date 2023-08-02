@@ -42,7 +42,8 @@ const loginUserHandler = async (req, res) => {
             return res.status(500).send({
 
                 status: "error",
-                mensaje: "La datos proporcionados no coinciden"
+                mensaje: "La datos proporcionados no coinciden",
+                error: error.message
 
             });
 
@@ -50,11 +51,11 @@ const loginUserHandler = async (req, res) => {
 
     } catch (error) {
 
-        console.error(error);
         return res.status(500).json({
 
             status: "error",
             mensaje: "Error del servidor al ejecutar el login del usuario",
+            error: error.message,
 
         });
 
