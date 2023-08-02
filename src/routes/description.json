@@ -13,6 +13,11 @@
                 "url": "/products",
                 "description": "Get all products"
             },
+            "getAllProductsNoFilter": {
+                "method": "GET",
+                "url": "/products/allproducts",
+                "description": "Get all products no filtered"
+            },
             "getProductById": {
                 "method": "GET",
                 "url": "/products/details/:id",

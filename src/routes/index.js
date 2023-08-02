@@ -7,7 +7,8 @@ const usersRoutes = require('./usersRoutes');
 const ordersRoutes = require("./ordersRoutes");
 const mailRoutes = require("./mailRoutes");
 const cartsRoutes = require("./cartsRoutes");
-const { requiresAuth } = require('express-openid-connect');
+// const { requiresAuth } = require('express-openid-connect');
+const favoritesRoutes = require("./favoritesRoutes");
 
 const router = Router();
 
@@ -30,10 +31,12 @@ router.use('/products', productsRoutes);
 // Users routes
 router.use('/users', usersRoutes);
 // Orders routes
-router.use("/orders", [requiresAuth()], ordersRoutes);
+router.use("/orders", ordersRoutes);
 // Mail routes
 router.use("/mail", mailRoutes);
 // Carts Routes
 router.use("/carts", cartsRoutes);
+// Favorites routes
+router.use("/favorites", favoritesRoutes);
 
 module.exports = router;

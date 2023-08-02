@@ -1,6 +1,6 @@
 const { Products } = require('../../db.js');
 
-const createProductController = (product) => {
+const createProductController = async (product) => {
     return Products.findOrCreate({
         where: {
             ...product,
