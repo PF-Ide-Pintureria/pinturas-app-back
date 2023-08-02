@@ -13,15 +13,13 @@ const createCartController = async ({ idUser, products = [] }) => {
     const idCart = v4();
     // console.log('idCart:', idCart);
 
-    user ? await user.update({
-        idCart,
-    }) : null;
 
     const createdCart = await Carts.create({
-        idUser : idUser || null,
         products: jsonProducts,
         idCart
     });
+
+    await user.setCart(createdCart);
 
     return createdCart;
 

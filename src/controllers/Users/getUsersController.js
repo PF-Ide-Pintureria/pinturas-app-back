@@ -4,6 +4,8 @@ const { Users } = require('../../db');
 const getUsersController = async () => {
     const usersdb = await Users.findAll();
     return usersdb.map((user) => {
+        // Busco el carrito del usuario
+        const cart = user.cart;
         return {
             id: user.id,
             idUser: user.idUser,
@@ -16,7 +18,7 @@ const getUsersController = async () => {
             province: user.province,
             phone: user.phone,
             image: user.image,
-            idCart: user.idCart,
+            idCart: cart?.id || null,
             active: user.active,
             isBanned: user.isBanned,
             authZero: user.authZero
