@@ -16,3 +16,4 @@ folders.forEach(folder => {
 });
 
 module.exports = Controllers;
+// console.log(Controllers);

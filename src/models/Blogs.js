@@ -15,7 +15,11 @@ module.exports = (sequelize) => {
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
-        }
+        },
+        idUser: {
+            type: DataTypes.UUID,
+            allowNull: false,
+        },
     },
         { timestamps: true });
 };

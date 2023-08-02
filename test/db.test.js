@@ -17,7 +17,7 @@ describe('DATABASE CONNECTIONS', () => {
         it('Should connect to the main database', (done) => {
             conn.authenticate().then(() => {
                 done();
-                conn.close();
+                // conn.close();
             }).catch((err) => {
                 done(err);
             });
@@ -39,7 +39,7 @@ describe('DATABASE CONNECTIONS', () => {
         it('Should connect to the testing database', (done) => {
             dbInstance.authenticate().then(() => {
                 done();
-                dbInstance.close();
+                // dbInstance.close();
             }).catch((err) => {
                 done(err);
             });
@@ -61,7 +61,7 @@ describe('DATABASE CONNECTIONS', () => {
         it('Should connect to the local database', (done) => {
             dbInstance.authenticate().then(() => {
                 done();
-                dbInstance.close();
+                // dbInstance.close();
             }).catch((err) => {
                 done(err);
             });

@@ -1,16 +1,18 @@
-const { Products } = require('../../db.js');
+const { Products, Categories } = require('../../db');
 const uploadFromJSON = require('./uploadFromJSONController.js');
 
 
-const resetAndUploadProducts = async () => {
-    try {
-        await Products.sync({ force: true });
-        await uploadFromJSON();
-        console.log('Database reset successfully');
-    } catch (error) {
-        console.error(error);
-    }
-};
+const resetAndUploadProducts =
+    async (resetProducts = true, resetCategories = true) => {
+        try {
+            resetProducts && await Products.sync({ force: true });
+            resetCategories && await Categories.sync({ force: true });
+            await uploadFromJSON(resetProducts, resetCategories);
+            console.log('Database reset successfully');
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
 // resetAndUploadProducts();
 
