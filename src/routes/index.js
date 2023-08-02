@@ -8,7 +8,7 @@ const ordersRoutes = require("./ordersRoutes");
 const mailRoutes = require("./mailRoutes");
 const cartsRoutes = require("./cartsRoutes");
 const { requiresAuth } = require('express-openid-connect');
-
+const favoritesRoutes = require("./favoritesRoutes");
 const router = Router();
 
 // 1. GET /
@@ -35,5 +35,7 @@ router.use("/orders", [requiresAuth()], ordersRoutes);
 router.use("/mail", mailRoutes);
 // Carts Routes
 router.use("/carts", cartsRoutes);
+// Favorites routes
+router.use("/favorites", favoritesRoutes);
 
 module.exports = router;
