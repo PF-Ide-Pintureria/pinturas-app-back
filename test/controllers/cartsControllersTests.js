@@ -34,7 +34,7 @@ const cartsControllersTests = () => {
             cart = await CartsControllers.createCart({ idUser });
             expect(cart).to.not.be.null;
             expect(cart).to.have.property('idCart');
-            expect(cart).to.have.property('idUser');
+            expect(cart).to.have.property('userId');
         });
 
     });

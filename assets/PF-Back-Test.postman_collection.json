@@ -1,0 +1,1385 @@
+{
+	"info": {
+		"_postman_id": "b69a7d05-7009-4f8f-9c66-042b3c91064f",
+		"name": "PF-Back-Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27311302",
+		"_collection_link": "https://martian-meteor-120774.postman.co/workspace/New-Team-Workspace~34c8ff5c-f2f4-40b2-ac9d-f33064212779/collection/27311302-b69a7d05-7009-4f8f-9c66-042b3c91064f?action=share&creator=27311302&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "MAIL",
+			"item": [
+				{
+					"name": "PR 53",
+					"item": [
+						{
+							"name": "POST REGISTER EMAIL PR 53",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"message\" : \"Gracias por registrate!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/mail/register/1",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"mail",
+										"register",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "POST CONTACT EMAIL LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Jamer-TEST-POSTMAN-28Jul",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "Mensaje de prueba desde postman",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/mail/contact",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mail",
+								"contact"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ORDER EMAIL LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"ide.pintureria.pf@gmail.com\",\n    \"message\" : \"<!DOCTYPE html><html lang=\\\"en\\\"><img src=\\\"https://en1qwzyj4lg39k4.m.pipedream.net/\\\"></html>\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/mail/order",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mail",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST REGISTER EMAIL LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"message\" : \"Gracias por registrate!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/mail/register/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"mail",
+								"register",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "PR 53",
+					"item": [
+						{
+							"name": "GET USERS PR 53",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE USER PR 53",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users/10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UPDATE USER PR 53",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"prueba-ONCE@prueba.com\",\r\n    \"rol\": \"user\",\r\n    \"name\": \"yo\",\r\n    \"lastName\": \"no fui\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{deployUrl}}/users/1",
+									"host": [
+										"{{deployUrl}}"
+									],
+									"path": [
+										"users",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "REGISTER USER LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"email\": \"prua-u2@prueba.com\",\n        \"password\": \"1234asd.a\",\n        \"rol\": \"user\",\n        \"name\": \"yo\",\n        \"lastName\": \"no fui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{deployUrl}}/users/register/",
+							"host": [
+								"{{deployUrl}}"
+							],
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USERS LOCAL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "jguercio@live.com.ar",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Juan-123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USERS DEPLOY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{deployUrl}}/users/",
+							"host": [
+								"{{deployUrl}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN USERS LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"prueba-dos-dos@prueba.com\",\n    \"password\": \"Prueba-123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN USERS DEPLOY",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"prueba-dos-dos@prueba.com\",\n    \"password\": \"Prueba-123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{deploy}}/users/login",
+							"host": [
+								"{{deploy}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER LOCAL",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER LOCAL",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \n    \"rol\": \"admin\",\n    \"name\": \"Pruebas modificacion\",\n    \"lastName\": \"modi\",\n    \"address\": \"Pruebas #123 prueba\",\n    \"locality\": \"Argentina\",\n    \"province\": \"Buenos aires\",\n    \"phone\": \"4412145\",\n    \"isBanned\": false,\n    \"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER DEPLOY",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rol\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{deployUrl}}/users/:id",
+							"host": [
+								"{{deployUrl}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "26"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "USER PROFILE",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBydWViYUBwcnVlYmEuY29tIiwibmFtZSI6bnVsbCwicm9sIjoiY2xpZW50ZSIsImlhdCI6MTY5MDg2MTg5NSwiZXhwIjoxNjkxNTUzMDk1fQ.s8p5RzCyzj7PLWuIwt_rWQMtcg7hbxujn4iQk8YgT70",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/users/profile/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USER BY  ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUCTS",
+			"item": [
+				{
+					"name": "POST PRODUCT LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "714154",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "PROBANDO DEPLOY 2",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "43114.32",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Linea Ecólogica",
+									"type": "text"
+								},
+								{
+									"key": "patent",
+									"value": "FADEPA",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Pastelito",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/jamerrq/Postman/files/image.png"
+								},
+								{
+									"key": "package",
+									"value": "20 Lts.",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "17",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST PRODUCT PR 17",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "714154",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "PROBANDO DEPLOY",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "43114.32",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Linea Ecólogica",
+									"type": "text"
+								},
+								{
+									"key": "patent",
+									"value": "FADEPA",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Pastelito",
+									"type": "text"
+								},
+								{
+									"key": "package",
+									"value": "20 Lts.",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "17",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/jamerrq/Postman/files/image.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://back-server-pinturas-app-pr-17.onrender.com/products",
+							"protocol": "https",
+							"host": [
+								"back-server-pinturas-app-pr-17",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL PRODUCTS PR 21",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://back-server-pinturas-app-pr-21.onrender.com/products",
+							"protocol": "https",
+							"host": [
+								"back-server-pinturas-app-pr-21",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL PRODUCTS LOCAL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "https://back-server-pinturas-app-pr-21.onrender.com/products",
+							"protocol": "https",
+							"host": [
+								"back-server-pinturas-app-pr-21",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DESTROY PRUEBAS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{deployUrl}}/products/destroy/:id",
+							"host": [
+								"{{deployUrl}}"
+							],
+							"path": [
+								"products",
+								"destroy",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "348"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST PRODUCT PR 36",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "714154",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "[TEST-DEPLOY-PR36] 24-Jul Jamer",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "43114.32",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Linea Ecólogica",
+									"type": "text"
+								},
+								{
+									"key": "patent",
+									"value": "FADEPA",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Pastelito",
+									"type": "text"
+								},
+								{
+									"key": "package",
+									"value": "20 Lts.",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "17",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/jamerrq/Downloads/best-node-js-libraries-loggin.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{deployUrlPR36}}/products",
+							"host": [
+								"{{deployUrlPR36}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET PRODUCT BY ID LOCAL",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT PRODUCT LOCAL",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "714154",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "[TEST-2-LOCAL] [25-Jul] [Jamer]",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "43114.32",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Linea Ecólogica",
+									"type": "text"
+								},
+								{
+									"key": "patent",
+									"value": "FADEPA",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Azulejo",
+									"type": "text"
+								},
+								{
+									"key": "package",
+									"value": "28 Lts.",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "17",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/jamerrq/Pictures/profile/plutoSmoking.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/products/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "452"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PRODUCT LOCAL",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "PROBANDO FILTROS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products?category=Linea Fondos&sortBy=rating&page=1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Linea Fondos"
+								},
+								{
+									"key": "lowPrice",
+									"value": "2000",
+									"disabled": true
+								},
+								{
+									"key": "highPrice",
+									"value": "10000",
+									"disabled": true
+								},
+								{
+									"key": "minRating",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "maxRating",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "color",
+									"value": "Blanco",
+									"disabled": true
+								},
+								{
+									"key": "active",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "rating"
+								},
+								{
+									"key": "orderBy",
+									"value": "desc",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "minStock",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "maxStock",
+									"value": "8",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ORDERS",
+			"item": [
+				{
+					"name": "POST ORDER PAYMENT LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "code",
+									"value": "714154",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "PROBANDO DEPLOY",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "43114.32",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Linea Ecólogica",
+									"type": "text"
+								},
+								{
+									"key": "patent",
+									"value": "FADEPA",
+									"type": "text"
+								},
+								{
+									"key": "color",
+									"value": "Pastelito",
+									"type": "text"
+								},
+								{
+									"key": "package",
+									"value": "20 Lts.",
+									"type": "text"
+								},
+								{
+									"key": "stock",
+									"value": "17",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/jamerrq/Postman/files/image.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/payment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ORDER LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\" : [\n        {\n            \"id\" : 98, \n            \"price\": 36000, \n            \"name\": \"producto prueba\", \n            \"quantity\" : 2\n        },\n        {\n            \"id\" : 2, \n            \"price\": 500,\n            \"name\": \"producto de prueba 2\",\n            \"quantity\" : 1\n        }\n    ],\n    \"idUser\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET COMPLETE ORDER BY ID LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/sucess/:idOrder",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"sucess",
+								":idOrder"
+							],
+							"variable": [
+								{
+									"key": "idOrder",
+									"value": "98ebb25d-fa7c-4d9c-a963-8af63eadb77f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET FAILED ORDER BY ID LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/failure/:idOrder",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"failure",
+								":idOrder"
+							],
+							"variable": [
+								{
+									"key": "idOrder",
+									"value": "98ebb25d-fa7c-4d9c-a963-8af63eadb77f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ORDERS LOCAL",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE ORDER BY CARTID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idCart\": \"80c70b4c-12fb-4084-b0ba-b6ef3a4e69e9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/cart",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CATEGORIES",
+			"item": [
+				{
+					"name": "GET CATEGORIES DEPLOY",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GET CATEGORIES LOCAL",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CARTS",
+			"item": [
+				{
+					"name": "GET CARTS LOCAL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idCart\": \"af647df6-2fdc-4dbb-a034-86c2e1b6f77e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET CARTS DEPLOY",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idCart\": \"af647df6-2fdc-4dbb-a034-86c2e1b6f77e\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE CART LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"products\" : [\n        {\"id\" : 1, \"quantity\" : 2},\n        {\"id\" : 2, \"quantity\" : 1}\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT CARTS LOCAL",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/carts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE CARTS LOCAL",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUser\" : 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/carts",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"carts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FAVORITES",
+			"item": [
+				{
+					"name": "GET FAVORITES BY USER LOCAL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUser\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/favorites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADD FAVORITE LOCAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUser\": 1,\n    \"idProduct: 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/favorites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE FAVORITE LOCAL",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idUser\": 1,\n    \"idProduct\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/favorites",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"favorites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "deployUrl",
+			"value": "https://back-server-pinturas-app.onrender.com",
+			"type": "string"
+		},
+		{
+			"key": "deployUrlPR36",
+			"value": "https://back-server-pinturas-app-pr-36.onrender.com"
+		}
+	]
+}
