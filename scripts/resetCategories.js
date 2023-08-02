@@ -1,4 +1,4 @@
 const { DBControllers } = require('../src/controllers');
 const { resetProducts } = DBControllers;
 
-resetProducts(true, false);
+resetProducts(false, true);
