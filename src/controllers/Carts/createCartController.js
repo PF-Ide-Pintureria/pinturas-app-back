@@ -6,6 +6,7 @@ const createCartController = async ({ idUser, products = [] }) => {
 
     // console.log('idUser:', idUser);
     const user = await Users.findByPk(idUser) || null;
+    if (!user) throw new Error('User not found');
     // console.log('user:', user);
 
     const jsonProducts = products.map(product => JSON.stringify(product));

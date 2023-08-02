@@ -3,9 +3,15 @@ const { Users } = require('../../db');
 
 const getUsersController = async () => {
     const usersdb = await Users.findAll();
-    return usersdb.map((user) => {
+    const mappedUsers = usersdb.map(async (user) => {
         // Busco el carrito del usuario
-        const cart = user.cart;
+        let idCart;
+
+        let cart = await user.getCart();
+        if (cart) {
+            idCart = cart.dataValues.idCart;
+        }
+
         return {
             id: user.id,
             idUser: user.idUser,
@@ -18,12 +24,14 @@ const getUsersController = async () => {
             province: user.province,
             phone: user.phone,
             image: user.image,
-            idCart: cart?.id || null,
+            idCart: idCart || null,
             active: user.active,
             isBanned: user.isBanned,
             authZero: user.authZero
         };
     });
+    const users = await Promise.all(mappedUsers);
+    return users;
 };
 
 
