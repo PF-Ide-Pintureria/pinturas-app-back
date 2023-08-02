@@ -4,10 +4,14 @@ function createRelations(sequelizeInstance) {
     // Para relacionarlos hacemos un destructuring
     const { Blogs, Products, Reviews, Users, Orders, Carts, Categories } = sequelizeInstance.models;
 
-    // USERS <-> PRODUCTS (FAVORITES)
-    Users.belongsToMany(Products, { through: "favorite_products" });
-    Products.belongsToMany(Users, { through: "favorite_products" });
-
+    
+    // Aca vendrian las relaciones:
+    //FAVORITOS
+    // un usuario puede tener muchos productos favoritos y un producto puede ser favorito para muchos usuarios.
+    Users.belongsToMany(Products, { through: "favorite_products", foreignKey: "userId" });
+    Products.belongsToMany(Users, { through: "favorite_products", foreignKey: "productId" });
+    // BLOGS
+    // un usuario puede tener varios blogs, pero cada blog pertenece a un único usuario
     // USERS <-> BLOGS
     Users.hasMany(Blogs);
     Blogs.belongsTo(Users);
