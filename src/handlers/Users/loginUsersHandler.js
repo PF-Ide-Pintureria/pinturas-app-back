@@ -1,7 +1,7 @@
 const { UsersControllers } = require('../../controllers');
 const { loginUsers } = UsersControllers;
 
-const loginUserHandler = async (req, res) => {
+const loginUsersHandler = async (req, res) => {
 
     const { email, password } = req.body;
 
@@ -63,4 +63,4 @@ const loginUserHandler = async (req, res) => {
 };
 
 
-module.exports = loginUserHandler;
+module.exports = loginUsersHandler;

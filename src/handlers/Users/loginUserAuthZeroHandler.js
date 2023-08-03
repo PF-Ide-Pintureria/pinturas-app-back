@@ -1,5 +1,5 @@
 const { UsersControllers } = require('../../controllers');
-const { registerAuth0 } = UsersControllers;
+const { loginAuthZero } = UsersControllers;
 
 
 const loginUserAuthZeroHandler = async (req, res) => {
@@ -7,15 +7,19 @@ const loginUserAuthZeroHandler = async (req, res) => {
     try {
 
         //Verificar si el usuario ya esta creado en la bd, sino lo creamos
-        const verifyUserAuthZero = await registerAuth0(req.oidc.user);
+        const verifyUserAuthZero = await loginAuthZero(req.oidc.user);
 
         return res.status(200).json({
+
             status: "success",
-            user: verifyUserAuthZero,
-            mensaje: "Se ha iniciado sesión exitosamente"
+            mensaje: "Te has identificado exitosamente",
+            acceso: verifyUserAuthZero
+
         });
 
     } catch (error) {
+
+        console.log(error);
 
         return res.status(500).json({
 
