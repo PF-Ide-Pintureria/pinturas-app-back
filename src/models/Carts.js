@@ -6,9 +6,7 @@ module.exports = (sequelize) => {
         idCart: {
             type: DataTypes.UUID,
             defaultValue: v4,
-        },
-        idUser: {
-            type: DataTypes.INTEGER,
+            primaryKey: true
         },
         products: {
             type: DataTypes.ARRAY(DataTypes.STRING),

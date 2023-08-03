@@ -11,7 +11,7 @@ const getCartsController = async () => {
 
             id: cart.id,
             idCart: cart.idCart,
-            idUser: cart.idUser,
+            idUser: cart.userId,
             products: cart.products
 
         };
