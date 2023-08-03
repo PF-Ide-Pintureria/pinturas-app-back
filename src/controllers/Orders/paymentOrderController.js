@@ -12,12 +12,25 @@ const paymentOrderController = async ({ idOrder, back_urls }) => {
     const preference = {
 
         items: products.map(productJson => {
-            const product = JSON.parse(productJson);
+            let parsedProduct = JSON.parse(productJson);
+            if (typeof parsedProduct === 'string') {
+                try {
+                    parsedProduct = JSON.parse(parsedProduct);
+                }
+                catch (error) {
+                    console.error(error);
+                    throw Error("Error: No se pudieron parsear correctamente" +
+                        " los productos");
+                }
+            }
+            console.log('parsed product', parsedProduct, typeof parsedProduct);
+            console.log('product', parsedProduct["id"], parsedProduct.name,
+                parsedProduct.quantity, parsedProduct.price);
             return {
-                id: product.id,
-                title: product.name,
-                quantity: parseInt(product.quantity),
-                unit_price: product.price,
+                id: parsedProduct.id,
+                title: parsedProduct.name,
+                quantity: parseInt(parsedProduct.quantity),
+                unit_price: parsedProduct.price,
                 currency_id: "ARS",
             };
 
@@ -26,6 +39,8 @@ const paymentOrderController = async ({ idOrder, back_urls }) => {
         back_urls: JSON.parse(back_urls || '{}'),
 
     };
+
+    console.log('preference', preference);
 
     // DESCONTAR STOCK EN DB EN CASO DE QUE SEA SUCCESS
     const orderMeli = await mercadopago.preferences.create(preference);
