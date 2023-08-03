@@ -23,7 +23,7 @@ const paymentOrderController = async ({ idOrder, back_urls }) => {
 
         }),
 
-        back_urls: JSON.parse(back_urls),
+        back_urls: JSON.parse(back_urls || '{}'),
 
     };
 
