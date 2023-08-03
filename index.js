@@ -5,7 +5,7 @@ const { NODE_PORT } = ENV || 3001;
 
 
 // Syncing all the models at once.
-conn.sync({ alter: true }).then(() => {
+conn.sync({ alter: false }).then(() => {
     server.listen(NODE_PORT, "0.0.0.0", async () => {
         // eslint-disable-next-line no-console
         console.log(`Server listening on port ${NODE_PORT}`);

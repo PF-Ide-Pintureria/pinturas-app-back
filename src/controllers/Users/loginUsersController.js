@@ -3,7 +3,7 @@ const { Users } = require('../../db');
 const createToken = require("../../services/jwt");
 
 
-const loginUserController = async (email, password) => {
+const loginUsersController = async (email, password) => {
 
     if (email && password) {
 
@@ -23,7 +23,7 @@ const loginUserController = async (email, password) => {
 
             if (pwdMatch) {
 
-                delete findUser.password;
+                delete findUser.dataValues.password;
 
                 userToToken = {
                     email: findUser.dataValues.email,
@@ -33,7 +33,7 @@ const loginUserController = async (email, password) => {
 
                 token = createToken(userToToken);
 
-                user = findUser.dataValues;
+                user = findUser;
 
             }
 
@@ -44,4 +44,4 @@ const loginUserController = async (email, password) => {
 
 };
 
-module.exports = loginUserController;
+module.exports = loginUsersController;
