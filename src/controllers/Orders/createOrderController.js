@@ -3,8 +3,9 @@ const { Orders, Users } = require("../../db");
 
 
 const createOrderController = async (products, idUser) => {
-    console.log(idUser);
+    // console.log("idUser", idUser);
     const userOrder = await Users.findByPk(idUser);
+    // console.log("userOrder:", userOrder);
     if (!userOrder) throw Error("Error: Usuario no encontrado");
 
     // products.map((product) => {
@@ -21,7 +22,11 @@ const createOrderController = async (products, idUser) => {
         products: products.map(product => JSON.stringify(product)),
 
     });
-    await userOrder.addOrder(order);
+
+    // console.log("order:", order);
+
+    // await userOrder.addOrder(order);
+
     return {
         order,
         userOrder
