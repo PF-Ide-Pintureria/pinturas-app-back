@@ -25,11 +25,11 @@ const createOrderController = async (products, idUser) => {
 
     // console.log("order:", order);
 
-    // await userOrder.addOrder(order);
+    await userOrder.addOrder(order);
 
     return {
         order,
-        userOrder
+        // userOrder
     };
 
 };
