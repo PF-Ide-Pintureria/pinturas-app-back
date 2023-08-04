@@ -9,7 +9,9 @@ const router = Router();
 router.post("/", BlogsHandlers.createBlogs);
 // 2. DELETE /blogs/:id
 router.delete("/:id", BlogsHandlers.deleteBlogs);
-// 4. GET /details/:id
+// 3. GET /details/:id
 router.get("/details/:id", BlogsHandlers.getBlogsById);
+
+
 
 module.exports = router;
