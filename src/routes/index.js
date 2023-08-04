@@ -20,7 +20,7 @@ const description = require("./description.json");
 // Use a middleware to render the description and load files from the public
 // folder
 router.get("/", (req, res) => {
-  return res.json(description);
+    return res.json(description);
 });
 
 // Categories routes
@@ -38,6 +38,6 @@ router.use("/carts", cartsRoutes);
 // Favorites routes
 router.use("/favorites", favoritesRoutes);
 // Blogs routes
-router.use("/blogs", blogsRoutes);
+//router.use("/blogs", blogsRoutes);
 
 module.exports = router;
