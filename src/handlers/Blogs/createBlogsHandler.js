@@ -1,8 +1,15 @@
 const { BlogsControllers } = require("../../controllers");
 const { createBlogs } = BlogsControllers;
+const { uploadImage } = require("../../services/");
 
 const createBlogsHandler = async (req, res) => {
   try {
+    if (req.file) {
+      const secure_url = await uploadImage(req.file);
+
+      req.body.image = secure_url;
+    }
+
     const postBlog = await createBlogs(req.body);
 
     return res.status(201).json({
