@@ -16,6 +16,8 @@ router.post("/failure/:idOrder", OrdersHandlers.failureOrder);
 router.get("/", OrdersHandlers.getOrders);
 // 6. POST /orders/cart
 router.post("/cart", OrdersHandlers.createOrderByCartId);
+// 7. WEBHOOK /orders/webhook
+router.post("/webhook", OrdersHandlers.webHook);
 
 
 module.exports = router;

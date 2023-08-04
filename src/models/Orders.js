@@ -13,8 +13,8 @@ module.exports = (sequelize) => {
             allowNull: false,
             defaultValue: []
         },
-        subtotal: {
-            type: DataTypes.FLOAT
+        meliQuery: {
+            type: DataTypes.STRING
         },
         total: {
             type: DataTypes.FLOAT
