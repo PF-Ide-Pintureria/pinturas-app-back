@@ -9,6 +9,7 @@ const mailRoutes = require("./mailRoutes");
 const cartsRoutes = require("./cartsRoutes");
 // const { requiresAuth } = require('express-openid-connect');
 const favoritesRoutes = require("./favoritesRoutes");
+const blogsRoutes = require("./blogsRoutes");
 
 const router = Router();
 
