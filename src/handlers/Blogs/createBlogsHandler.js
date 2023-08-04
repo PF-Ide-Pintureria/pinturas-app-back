@@ -11,6 +11,7 @@ const createBlogsHandler = async (req, res) => {
     }
 
     const postBlog = await createBlogs(req.body);
+    console.log(postBlog);
 
     return res.status(201).json({
       status: "success",
