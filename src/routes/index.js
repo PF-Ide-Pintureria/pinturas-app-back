@@ -38,6 +38,6 @@ router.use("/carts", cartsRoutes);
 // Favorites routes
 router.use("/favorites", favoritesRoutes);
 // Blogs routes
-//router.use("/blogs", blogsRoutes);
+router.use("/blogs", blogsRoutes);
 
 module.exports = router;
