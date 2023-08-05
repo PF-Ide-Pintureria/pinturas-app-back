@@ -7,6 +7,6 @@ router.post("/", FavoritesHandlers.addFavorite);
 //. Delete favorites
 router.delete("/", FavoritesHandlers.deleteFavorite);
 //. Get favorites
-router.post("/all", FavoritesHandlers.getFavorites);
+router.post("/user", FavoritesHandlers.getFavorites);
 
 module.exports = router;
