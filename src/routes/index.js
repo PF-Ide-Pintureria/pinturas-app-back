@@ -43,4 +43,5 @@ router.use("/blogs", blogsRoutes);
 // Reviews routes
 router.use("/reviews", reviewsRoutes);
 
+
 module.exports = router;

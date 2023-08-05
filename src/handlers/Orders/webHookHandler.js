@@ -7,6 +7,8 @@ const webHookHandler = async (req, res) => {
 
     console.log('query', query);
 
+    console.log('body', req.body);
+
     return res.status(200).json({});
 
 };

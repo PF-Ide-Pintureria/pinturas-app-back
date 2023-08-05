@@ -12,4 +12,7 @@ router.delete("/:id", BlogsHandlers.deleteBlogs);
 // 3. GET /details/:id
 router.get("/details/:id", BlogsHandlers.getBlogsById);
 
+
+
+
 module.exports = router;
