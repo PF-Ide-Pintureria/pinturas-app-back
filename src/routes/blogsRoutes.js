@@ -18,6 +18,8 @@ router.delete("/:id", BlogsHandlers.deleteBlogs);
 router.get("/details/:id", BlogsHandlers.getBlogsById);
 // 4. GET /blogs
 router.get("/", BlogsHandlers.getAllBlogs);
+//5. PUT /blogs/:id
+router.put("/:id", BlogsHandlers.updateBlog);
 
 
 module.exports = router;
