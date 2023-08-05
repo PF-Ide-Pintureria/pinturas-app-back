@@ -10,6 +10,7 @@ const cartsRoutes = require("./cartsRoutes");
 // const { requiresAuth } = require('express-openid-connect');
 const favoritesRoutes = require("./favoritesRoutes");
 const blogsRoutes = require("./blogsRoutes");
+const reviewsRoutes = require("./reviewsRoutes");
 
 const router = Router();
 
@@ -20,7 +21,7 @@ const description = require("./description.json");
 // Use a middleware to render the description and load files from the public
 // folder
 router.get("/", (req, res) => {
-    return res.json(description);
+  return res.json(description);
 });
 
 // Categories routes
@@ -39,5 +40,8 @@ router.use("/carts", cartsRoutes);
 router.use("/favorites", favoritesRoutes);
 // Blogs routes
 router.use("/blogs", blogsRoutes);
+// Reviews routes
+router.use("/reviews", reviewsRoutes);
+
 
 module.exports = router;

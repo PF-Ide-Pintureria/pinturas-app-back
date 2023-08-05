@@ -6,11 +6,6 @@ const { blogsUploads } = require("../middlewares/");
 
 const router = Router();
 
-// console.log(BlogsHandlers);
-// // 1. POST /blogs/create
-// router.post("/create", BlogsHandlers.createBlogs);
-
-
 // 1. POST /blogs
 router.post("/:userId", [blogsUploads.single("image")], BlogsHandlers.createBlogs);
 // 2. DELETE /blogs/:id
