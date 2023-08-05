@@ -4,6 +4,7 @@ const { getFavorites } = FavoritesControllers;
 
 const getFavoritesHandler = async (req, res) => {
     try {
+        console.log('req.body', req.body);
         const { idUser } = req.body;
         if (!idUser) return res.status(400).json({ error: "faltan datos" });
 
