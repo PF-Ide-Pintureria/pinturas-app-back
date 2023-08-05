@@ -4,10 +4,6 @@ const { requiresAuth } = require("express-openid-connect");
 const auth = require("../middlewares/auth");
 
 const router = Router();
-// console.log(BlogsHandlers);
-// // 1. POST /blogs/create
-// router.post("/create", BlogsHandlers.createBlogs);
-
 
 // 1. POST /blogs
 router.post("/", BlogsHandlers.createBlogs);
@@ -15,6 +11,5 @@ router.post("/", BlogsHandlers.createBlogs);
 router.delete("/:id", BlogsHandlers.deleteBlogs);
 // 3. GET /details/:id
 router.get("/details/:id", BlogsHandlers.getBlogsById);
-
 
 module.exports = router;

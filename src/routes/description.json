@@ -57,6 +57,33 @@
                 "url": "/users/login",
                 "description": "Login user"
             }
+        },
+        "reviews": {
+            "getAllReviews": {
+                "method": "GET",
+                "url": "/reviews",
+                "description": "Get all reviews"
+            },
+            "getReviewsById": {
+                "method": "GET",
+                "url": "/reviews/details/:id",
+                "description": "Get reviews by id"
+            },
+            "editReviews": {
+                "method": "PUT",
+                "url": "/reviews/:id",
+                "description": "Edit reviews"
+            },
+            "deleteReviews": {
+                "method": "DELETE",
+                "url": "/reviews/:id",
+                "description": "Delete reviews"
+            },
+            "createReviews": {
+                "method": "POST",
+                "url": "/reviews",
+                "description": "Create reviews"
+            }
         }
     }
 }
