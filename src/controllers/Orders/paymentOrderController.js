@@ -23,9 +23,7 @@ const paymentOrderController = async ({ idOrder, }) => {
                         " los productos");
                 }
             }
-            // console.log('parsed product', parsedProduct, typeof parsedProduct);
-            // console.log('product', parsedProduct["id"], parsedProduct.name,
-            //     parsedProduct.quantity, parsedProduct.price);
+
             return {
                 id: parsedProduct.id,
                 title: parsedProduct.name,
@@ -43,7 +41,7 @@ const paymentOrderController = async ({ idOrder, }) => {
             success: "http://localhost:5173/payment/successful"
         },
         notification_url:
-            "https://back-server-pinturas-app-pr-71.onrender.com/orders/webhook/",
+            "https://back-server-pinturas-app.onrender.com/orders/webhook/",
 
     };
 
