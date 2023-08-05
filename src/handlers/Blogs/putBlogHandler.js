@@ -1,25 +1,35 @@
 const { BlogsControllers } = require("../../controllers");
-const { createBlogs } = BlogsControllers;
-const { uploadImage } = require("../../services/");
+const { putBlog } = BlogsControllers;
+const { uploadImage } = require('../../services/');
 
-const createBlogsHandler = async (req, res) => {
+const putBlogHandler = async (req, res) => {
+
     try {
+
+        const { id } = req.params;
         if (req.file) {
+
             const secure_url = await uploadImage(req.file);
 
             req.body.image = secure_url;
+
         }
-        const { userId } = req.params;
-        const postBlog = await createBlogs(req.body, userId);
+
+        const blog = await putBlog(id, req.body);
 
         return res.status(201).json({
             status: "success",
-            message: "Blog creado correctamente",
-            blog: postBlog,
+            message: "blog editado exitosamente",
+            blog: blog
         });
+
+
     } catch (error) {
+        console.error(error);
         return res.status(500).json({ error: error.message });
     }
+
 };
 
-module.exports = createBlogsHandler;
+
+module.exports = putBlogHandler;

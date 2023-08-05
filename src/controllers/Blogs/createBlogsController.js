@@ -1,15 +1,16 @@
 const { Blogs, Users } = require("../../db.js");
 
 const createBlogsController = async (blog, userId) => {
-    const userPost = Users.findByPk(userId);
-    if (!userPost) throw Error("No se encontro el usuario");
+    const user = await Users.findByPk(userId);
 
-    //console.log(userId);
-    return Blogs.findOrCreate({
-        where: {
-            ...blog,
-        },
-    });
+    if (!user) throw Error("No se encontro el usuario");
+
+    const newBlog = await Blogs.create(blog);
+
+    await user.addBlog(newBlog);
+
+    return await user.getBlogs();
+
 };
 
 module.exports = createBlogsController;
