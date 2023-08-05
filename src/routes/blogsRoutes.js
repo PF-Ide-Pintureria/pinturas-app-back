@@ -15,6 +15,7 @@ router.post("/", BlogsHandlers.createBlogs);
 router.delete("/:id", BlogsHandlers.deleteBlogs);
 // 3. GET /details/:id
 router.get("/details/:id", BlogsHandlers.getBlogsById);
-
+// 4. GET /blogs
+router.get("/", BlogsHandlers.getAllBlogs);
 
 module.exports = router;
