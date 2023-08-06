@@ -1,15 +1,22 @@
-
+const { Orders } = require('../../db');
 
 
 const webHookHandler = async (req, res) => {
 
-    const query = req.query;
+    const { body, query, params } = req;
+
+    const { idOrder } = params;
+
+    const order = await Orders.findByPk(idOrder);
+    console.log('Esta es la orden', order?.dataValues);
+
+    console.log('params', params);
 
     console.log('query', query);
 
-    console.log('body', req.body);
+    console.log('body', body);
 
-    return res.status(200).json({});
+    res.status(200).send('OK');
 
 };
 
