@@ -1,5 +1,5 @@
-const https = require('https');
-const fs = require('fs');
+// const https = require('https');
+// const fs = require('fs');
 
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
@@ -7,11 +7,10 @@ require('dotenv').config();
 const { NODE_PORT } = process.env;
 
 
-// eslint-disable-next-line no-unused-vars
-const httpsServer = https.createServer({
-    key: fs.readFileSync('./localhost-key.pem'),
-    cert: fs.readFileSync('./localhost.pem'),
-}, server);
+// const httpsServer = https.createServer({
+//     key: fs.readFileSync('./localhost-key.pem'),
+//     cert: fs.readFileSync('./localhost.pem'),
+// }, server);
 
 
 // Syncing all the models at once.
