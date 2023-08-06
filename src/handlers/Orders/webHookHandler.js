@@ -1,22 +1,34 @@
-const { Orders } = require('../../db');
+const { OrdersControllers } = require('../../controllers');
+const { webHook } = OrdersControllers;
 
 
 const webHookHandler = async (req, res) => {
 
-    const { body, query, params } = req;
+    try {
 
-    const { idOrder } = params;
+        const { body, query, params } = req;
 
-    const order = await Orders.findByPk(idOrder);
-    console.log('Esta es la orden', order?.dataValues);
+        const { idOrder } = params;
 
-    console.log('params', params);
+        const bodySTR = JSON.stringify(body);
+        const querySTR = JSON.stringify(query);
 
-    console.log('query', query);
+        const orderResult = webHook({
+            idOrder,
+            action: req.body.action,
+            bodySTR,
+            querySTR
+        });
 
-    console.log('body', body);
+        res.status(200).send(orderResult);
 
-    res.status(200).send('OK');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            error: error.message
+        });
+    }
+
 
 };
 

@@ -16,6 +16,9 @@ module.exports = (sequelize) => {
         meliQuery: {
             type: DataTypes.STRING
         },
+        meliBody: {
+            type: DataTypes.STRING
+        },
         total: {
             type: DataTypes.FLOAT
         },
