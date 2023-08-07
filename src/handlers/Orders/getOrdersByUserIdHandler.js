@@ -3,7 +3,7 @@ const { getOrdersByUserId } = OrdersControllers;
 
 const getOrdersByUserIdHandler = async (req, res) => {
     try {
-        const { userId } = req.query;
+        const { userId } = req.params;
         if (!userId) return res.status(404).json({ error: "bad request" });
 
         const orders = await getOrdersByUserId(userId);
