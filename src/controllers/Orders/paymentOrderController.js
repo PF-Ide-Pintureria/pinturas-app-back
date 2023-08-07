@@ -41,7 +41,7 @@ const paymentOrderController = async ({ idOrder, }) => {
             success: "http://localhost:5173/payment/successful"
         },
         notification_url:
-            "https://back-server-pinturas-app-pr-76.onrender.com" +
+            "https://back-server-pinturas-app.onrender.com" +
             `/orders/webhook/${idOrder}`,
 
     };
