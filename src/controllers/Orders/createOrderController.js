@@ -17,14 +17,9 @@ const createOrderController = async (products, idUser) => {
         products: parsedProducts,
         total,
     });
-
-    // console.log("order:", order);
     await userOrder.addOrder(order);
 
-    return {
-        order,
-        // userOrder
-    };
+    return await Orders.findByPk(order.id);
 
 };
 
