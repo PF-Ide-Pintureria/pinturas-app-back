@@ -7,6 +7,8 @@ const createBlogsHandler = async (req, res) => {
 
     const authorization = decodedToken(req);
 
+    console.log(authorization);
+
     if (authorization.rol !== "admin") {
 
         return res.status(500).json({
@@ -21,8 +23,8 @@ const createBlogsHandler = async (req, res) => {
 
             req.body.image = secure_url;
         }
-        const { userId } = req.params;
-        const postBlog = await createBlogs(req.body, userId);
+
+        const postBlog = await createBlogs(req.body, authorization.id);
 
         return res.status(201).json({
             status: "success",

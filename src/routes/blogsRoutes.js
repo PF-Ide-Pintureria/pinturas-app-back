@@ -6,7 +6,7 @@ const auth = require("../middlewares/auth");
 const router = Router();
 
 // 1. POST /blogs
-router.post("/:userId", [blogsUploads.single("image"), auth], BlogsHandlers.createBlogs);
+router.post("/", [blogsUploads.single("image"), auth], BlogsHandlers.createBlogs);
 // 2. DELETE /blogs/:id
 router.delete("/:id", auth, BlogsHandlers.deleteBlogs);
 // 3. GET /details/:id
