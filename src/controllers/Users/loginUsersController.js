@@ -26,6 +26,7 @@ const loginUsersController = async (email, password) => {
                 delete findUser.dataValues.password;
 
                 userToToken = {
+                    id: findUser.dataValues.id,
                     email: findUser.dataValues.email,
                     name: findUser.dataValues.name,
                     rol: findUser.dataValues.rol
