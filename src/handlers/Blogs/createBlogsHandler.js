@@ -7,8 +7,6 @@ const createBlogsHandler = async (req, res) => {
 
     const authorization = decodedToken(req);
 
-    console.log(authorization);
-
     if (authorization.rol !== "admin") {
 
         return res.status(500).json({

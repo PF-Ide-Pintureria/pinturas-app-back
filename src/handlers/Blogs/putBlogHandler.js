@@ -1,8 +1,19 @@
 const { BlogsControllers } = require("../../controllers");
 const { putBlog } = BlogsControllers;
 const { uploadImage } = require('../../services/');
+const decodedToken = require("../../services/decodedJwt");
 
 const putBlogHandler = async (req, res) => {
+
+    const authorization = decodedToken(req);
+
+    if (authorization.rol !== "admin") {
+
+        return res.status(500).json({
+            status: "error",
+            message: "No cuentas con los permisos para esta sección"
+        });
+    }
 
     try {
 
