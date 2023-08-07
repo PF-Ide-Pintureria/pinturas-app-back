@@ -9,7 +9,8 @@ const createOrderController = async (products, idUser) => {
     let total = 0;
 
     const parsedProducts = products.map(product => {
-        total += product.price * product.quantity;
+        const jsonProduct = JSON.parse(product);
+        total += jsonProduct.price * jsonProduct.quantity;
         return typeof product === 'string' ? product : JSON.stringify(product);
     });
 

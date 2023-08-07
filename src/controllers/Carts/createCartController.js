@@ -9,7 +9,9 @@ const createCartController = async ({ idUser, products = [] }) => {
     if (!user) throw new Error('User not found');
     // console.log('user:', user);
 
-    const jsonProducts = products.map(product => JSON.stringify(product));
+    const jsonProducts = products.map(product => {
+        return typeof product === "string" ? product : JSON.stringify(product);
+    });
 
     const idCart = v4();
     // console.log('idCart:', idCart);
