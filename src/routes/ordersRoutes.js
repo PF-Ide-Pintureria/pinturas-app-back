@@ -18,6 +18,8 @@ router.get("/", OrdersHandlers.getOrders);
 router.post("/cart", OrdersHandlers.createOrderByCartId);
 // 7. WEBHOOK /orders/webhook
 router.post("/webhook", OrdersHandlers.webHook);
+// 8. GET /orders/:userId
+router.get("/user", OrdersHandlers.getOrdersByUserId);
 
 
 module.exports = router;

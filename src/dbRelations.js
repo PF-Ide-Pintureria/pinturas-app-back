@@ -35,8 +35,8 @@ function createRelations(sequelizeInstance) {
     // PRODUCTS <-> CATEGORIES
     // Un producto puede pertenecer a una categorías
     // y una categoría puede tener muchos productos.
-    Products.belongsTo(Categories, { as: "productCategory" });
-    Categories.hasMany(Products);
+    // Products.belongsTo(Categories, { as: "productCategory" });
+    // Categories.hasMany(Products);
 
     // USERS <-> CARTS
     // Un usuario puede tener un carrito
