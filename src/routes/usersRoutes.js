@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const { UsersHandlers } = require('../handlers/');
-const { requiresAuth } = require('express-openid-connect');
 const auth = require("../middlewares/auth");
 
 const router = Router();
@@ -24,12 +23,12 @@ router.put("/:id", UsersHandlers.putUser);
 router.get("/profile", [auth], UsersHandlers.myProfile);
 
 //7. GET /users/registered-authzero
-router.get("/registered-authzero", [requiresAuth()],
-UsersHandlers.registerUserAuthZero);
+router.post("/registered-authzero",
+    UsersHandlers.registerUserAuthZero);
 
 //8. GET /users/login-authzero
-router.get("/login-authzero", [requiresAuth()],
-UsersHandlers.loginUserAuthZero);
+router.post("/login-authzero",
+    UsersHandlers.loginUserAuthZero);
 
 //9. GET /users/id
 router.get("/:id", UsersHandlers.getUserById);

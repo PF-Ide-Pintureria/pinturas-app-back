@@ -7,7 +7,7 @@ const loginUserAuthZeroHandler = async (req, res) => {
     try {
 
         //Verificar si el usuario ya esta creado en la bd, sino lo creamos
-        const verifyUserAuthZero = await loginAuthZero(req.oidc.user);
+        const verifyUserAuthZero = await loginAuthZero(req.body);
 
         return res.status(200).json({
 

@@ -41,13 +41,13 @@ const paymentOrderController = async ({ idOrder, }) => {
             success: "http://localhost:5173/payment/successful"
         },
         notification_url:
-            "https://back-server-pinturas-app.onrender.com/orders/webhook/",
+            "https://back-server-pinturas-app.onrender.com" +
+            `/orders/webhook/${idOrder}`,
 
     };
 
     // console.log('preference', preference);
 
-    // DESCONTAR STOCK EN DB EN CASO DE QUE SEA SUCCESS
     const orderMeli = await mercadopago.preferences.create(preference);
     return orderMeli;
 
