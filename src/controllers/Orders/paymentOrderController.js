@@ -48,7 +48,6 @@ const paymentOrderController = async ({ idOrder, }) => {
 
     // console.log('preference', preference);
 
-    // DESCONTAR STOCK EN DB EN CASO DE QUE SEA SUCCESS
     const orderMeli = await mercadopago.preferences.create(preference);
     return orderMeli;
 

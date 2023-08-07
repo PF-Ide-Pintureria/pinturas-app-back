@@ -16,7 +16,7 @@ const webHookController = async ({ idOrder, action, bodySTR, querySTR }) => {
         orderProducts.forEach(async product => {
             // console.log(product);
             const dbProduct = await Products.findByPk(product.id);
-            console.log('DB Product', dbProduct.dataValues);
+            // console.log('DB Product', dbProduct.dataValues);
             if (!dbProduct) throw new Error('Error: Producto no encontrado');
             await dbProduct?.update({
                 stock: Math.max(0, dbProduct.stock - product.quantity)
