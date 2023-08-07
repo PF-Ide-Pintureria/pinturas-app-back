@@ -1,15 +1,34 @@
-
+const { OrdersControllers } = require('../../controllers');
+const { webHook } = OrdersControllers;
 
 
 const webHookHandler = async (req, res) => {
 
-    const query = req.query;
+    try {
 
-    console.log('query', query);
+        const { body, query, params } = req;
 
-    console.log('body', req.body);
+        const { idOrder } = params;
 
-    return res.status(200).json({});
+        const bodySTR = JSON.stringify(body);
+        const querySTR = JSON.stringify(query);
+
+        const orderResult = webHook({
+            idOrder,
+            action: req.body.action,
+            bodySTR,
+            querySTR
+        });
+
+        res.status(200).send(orderResult);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            error: error.message
+        });
+    }
+
 
 };
 
