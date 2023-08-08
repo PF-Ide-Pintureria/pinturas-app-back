@@ -5,8 +5,8 @@ const router = Router();
 
 // 1. GET /reviews
 router.get("/", ReviewsHandlers.getAllReviews);
-// 2. POST /reviews
-router.post("/", ReviewsHandlers.createReviews);
+// 2. POST /reviews/:id
+router.post("/:id", ReviewsHandlers.createReviews);
 // 3. PUT /reviews/:id
 router.put("/:id", ReviewsHandlers.editReviews);
 // 4. DELETE /reviews/:id
