@@ -1,14 +1,14 @@
-// 1. Registrar usuario
-const registerUser = require('./registerUserController');
-// 2. Obtener usuarios
-const getUsers = require('./getUsersController');
-// 3. Login usuario
-const loginUsers = require('./loginUserController');
+const fs = require('fs');
+const path = require('path');
 
-const UsersControllers = {
-    registerUser,
-    getUsers,
-    loginUsers
-};
+// Buscamos todos los archivos en el directorio actual que no sean index.js
+const files = fs.readdirSync(__dirname).filter(file => file !== 'index.js');
 
-module.exports = UsersControllers;
+// Exportamos todos los archivos encontrados
+const Controllers = {};
+files.forEach(file => {
+    Controllers[file.split('Controller')[0]] =
+        require(path.join(__dirname, file));
+});
+
+module.exports = Controllers;

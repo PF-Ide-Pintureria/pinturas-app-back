@@ -6,12 +6,10 @@ const routes = require('./routes/index.js');
 const { rateLimiter } = require('./middlewares/');
 const path = require('path');
 
-require('./db.js');
 
 const server = express();
-
 // Proxy configuration
-const trustProxyFn = (ip) => {
+const trustProxyFn = (/* ip */) => {
     // Por ahora, confiamos en todas las conexiones
     return true;
 };
@@ -43,8 +41,10 @@ server.use((req, res, next) => {
 });
 // Utilizar el middleware express.static para servir
 // archivos estáticos desde la carpeta "public"
+// eslint-disable-next-line no-undef
 server.use(express.static(path.join(__dirname, 'public')));
 
+// auth router attaches /login, /logout, and /callback routes to the baseURL
 server.use('/', routes);
 
 // Error catching endware.
@@ -54,6 +54,7 @@ server.use((err, req, res, next) => {
     const message = err.message || err;
     console.error(err);
     res.status(status).send(message);
+    next ? next() : null;
 });
 
 module.exports = server;

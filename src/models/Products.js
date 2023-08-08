@@ -65,6 +65,10 @@ module.exports = (sequelize) => {
         description: {
             type: DataTypes.STRING,
             allowNull: true,
+        },
+        nroReviews: {
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
         }
     },
         { timestamps: true });

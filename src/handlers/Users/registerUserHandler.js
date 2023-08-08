@@ -1,12 +1,12 @@
-const { UsersControllers } = require('../../controllers');
+const { UsersControllers, CartsControllers } = require('../../controllers');
 const { registerUser } = UsersControllers;
+const { createCart } = CartsControllers;
 
 
 const registerUserHandler = async (req, res) => {
 
-    //Recoger datos de la petición
-    const { email, password, rol, name, lastName,
-        address, locality, province, phone } = req.body;
+    // Recoger datos de la petición
+    const { email, password, createCartForUser, } = req.body;
 
     // Comprobar que me llegan bien los datos(validacion)
     // Respuesta "clara" o personalizada de ususarios duplicados(pendiente)
@@ -25,20 +25,26 @@ const registerUserHandler = async (req, res) => {
     try {
 
         const newUser = await registerUser(req.body);
+        if (newUser && createCartForUser) {
+            await createCart({
+                idUser: newUser.id,
+            });
+        }
 
         return res.status(200).json({
 
             status: "success",
-            user: newUser
+            user: newUser,
 
         });
 
     } catch (error) {
 
-        const { message } = error.errors[0];
-        console.error(message);
+        console.error(error);
         return res.status(500).json({
-            message,
+            name: error.name,
+            routine: error.routine,
+            detail: error.detail,
         });
 
     }

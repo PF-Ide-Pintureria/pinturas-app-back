@@ -1,9 +1,10 @@
 const { transporter } = require('../../services');
-require('dotenv').config();
-const { SENDER_EMAIL: email } = process.env;
+// const { parsed: ENV } = require('dotenv').config();
+// eslint-disable-next-line no-undef
+const { SENDER_MAIL: email } = process.env;
 
 
-const sendContactEmailController = ({ name, message }) => {
+const sendContactEmailController = ({ name, message, replyTo }) => {
 
     const subject = `Contacto de ${name}`;
 
@@ -13,10 +14,11 @@ const sendContactEmailController = ({ name, message }) => {
             from: email,
             to: email,
             subject,
-            text: message,
+            html: message,
+            replyTo,
         };
 
-        transporter.sendMail(mail_configs, function (error, info) {
+        transporter.sendMail(mail_configs, function (error,) {
             if (error) {
                 console.log(error);
                 return reject({ message: `An error has occured` });
