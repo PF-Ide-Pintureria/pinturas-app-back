@@ -6,7 +6,7 @@ const findCartByIdHandler = async (req, res) => {
 
     console.log('Entra a findCartByIdHandler');
 
-    const { idCart, idUser } = req.body;
+    const { idCart, idUser } = req.query;
 
     if (!idCart && !idUser) {
         return res.status(400).json({

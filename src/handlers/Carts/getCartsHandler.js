@@ -6,7 +6,7 @@ const getCartsHandler = async (req, res) => {
 
     try {
 
-        const { idCart, idUser } = req.body;
+        const { idCart, idUser } = req.query;
 
         if (idCart || idUser) {
 
