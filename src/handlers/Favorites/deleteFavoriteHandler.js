@@ -3,7 +3,7 @@ const { deleteFavorite } = FavoritesControllers;
 
 const addFavoriteHandler = async (req, res) => {
     try {
-        const { idUser, idProduct } = req.body;
+        const { idUser, idProduct } = req.query;
         if (!idUser || !idProduct) return res.status(400).json({ error: "faltan datos" });
 
         const result = await deleteFavorite(idUser, idProduct);
