@@ -67,7 +67,7 @@ module.exports = (sequelize) => {
             allowNull: true,
         },
         nroReviews: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.FLOAT,
             defaultValue: 0,
         }
     },
