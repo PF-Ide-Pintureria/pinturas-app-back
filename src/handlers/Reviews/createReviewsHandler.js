@@ -3,12 +3,15 @@ const { createReview } = ReviewsControllers;
 
 const createReviewsHandler = async (req, res) => {
   try {
-    const postReview = await createReview(req.body);
+
+    const {id}=req.params;
+    const {description, rating} = req.body;
+    const postReview=await createReview({description, rating, orderId:id})
 
     return res.status(201).json({
       status: "success",
       message: "Review creado exitosamente",
-      product: postReview,
+      review: postReview,
     });
   } catch (error) {
     console.error(error);

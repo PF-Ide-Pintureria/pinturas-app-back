@@ -17,20 +17,16 @@ function createRelations(sequelizeInstance) {
     Blogs.belongsTo(Users);
 
     // USERS <-> ORDERS
+    
     Users.hasMany(Orders);
     Orders.belongsTo(Users);
 
-    // REVIEWS <-> USERS
-    // Un usuario puede realizar muchas reseñas y
-    // una reseña pertenece a un único usuario.
-    Users.hasMany(Reviews);
-    Reviews.belongsTo(Users);
+    //REVIEWS <-> ORDERS
+    //Una orden tiene una review
+    //Una review pertenece a una orden
+    Orders.hasOne(Reviews);
+    Reviews.belongsTo(Orders);
 
-    // PRODUCTS <-> REVIEWS
-    // Un producto puede tener muchas reseñas
-    // y una reseña pertenece a un único producto.
-    Products.hasMany(Reviews);
-    Reviews.belongsTo(Products);
 
     // PRODUCTS <-> CATEGORIES
     // Un producto puede pertenecer a una categorías
