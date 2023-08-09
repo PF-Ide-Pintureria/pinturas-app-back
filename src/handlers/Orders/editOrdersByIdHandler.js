@@ -4,6 +4,7 @@ const { editOrder } = OrdersControllers;
 const editOrderHandler = async (req, res) => {
   try {
     const { idOrder } = req.params;
+    console.log(idOrder);
     const order = await editOrder(idOrder, req.body);
 
     return res.status(201).json({
