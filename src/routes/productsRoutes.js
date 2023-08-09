@@ -20,12 +20,8 @@ router.put("/:id", [productsUploads.single("image")], ProductsHandlers.editProdu
 router.delete("/:id", ProductsHandlers.deleteProduct);
 
 // 6. POST /products
-<<<<<<< HEAD
-router.post(
-  "/",
-  [productsUploads.single("image")],
-  ProductsHandlers.createProduct
-);
+router.post(  "/", [productsUploads.single("image")], ProductsHandlers.createProduct);
+
 // 7. DESTROY /products/destroy/:id
 router.delete("/destroy/:id", ProductsHandlers.destroyProduct);
 
