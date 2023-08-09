@@ -26,10 +26,6 @@ router.post(
   [productsUploads.single("image")],
   ProductsHandlers.createProduct
 );
-=======
-router.post("/", [productsUploads.single("image")], ProductsHandlers.createProduct);
->>>>>>> 054ea404e12c510fd6bd7899f0d5f822b8f15e6d
-
 // 7. DESTROY /products/destroy/:id
 router.delete("/destroy/:id", ProductsHandlers.destroyProduct);
 
