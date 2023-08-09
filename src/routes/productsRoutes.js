@@ -26,7 +26,7 @@ router.delete("/:id", ProductsHandlers.deleteProduct);
 // 6. POST /products
 router.post(
   "/",
-  [productsUploads.single("image"), isAdmin],
+  [productsUploads.single("image")],
   ProductsHandlers.createProduct
 );
 

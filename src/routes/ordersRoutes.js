@@ -20,6 +20,6 @@ router.post("/webhook/:idOrder", OrdersHandlers.webHook);
 // 8. GET /orders/user
 router.get("/user/:userId", OrdersHandlers.getOrdersByUserId);
 // 9. PUT /orders/:idOrder
-router.put("/:idOrder", OrdersHandlers.editOrdersByUserId);
+router.put("/:idOrder", OrdersHandlers.editOrdersById);
 
 module.exports = router;

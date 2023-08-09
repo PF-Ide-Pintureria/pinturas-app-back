@@ -3,7 +3,8 @@ const { editOrder } = OrdersControllers;
 
 const editOrderHandler = async (req, res) => {
   try {
-    const order = await editOrder(Id, req.body);
+    const { idOrder } = req.params;
+    const order = await editOrder(idOrder, req.body);
 
     return res.status(201).json({
       status: "success",
