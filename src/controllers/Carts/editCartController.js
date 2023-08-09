@@ -23,11 +23,11 @@ const editCartController = async ({ idUser, idCart, products }) => {
         throw new Error('No user or cart found');
     }
 
-    console.log('products:', products);
-    console.log(JSON.stringify(products[0]));
+    // console.log('products:', products);
+    // console.log(JSON.stringify(products[0]));
 
     const jsonProducts = products ? products.map((product) => {
-        JSON.stringify(product);
+        return JSON.stringify(product);
     }) : [];
 
     await cart.update({
