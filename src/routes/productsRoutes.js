@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const { ProductsHandlers } = require("../handlers/");
 const { productsUploads } = require("../middlewares/");
-const isAdmin = require("../middlewares/routesProtection");
 
 const router = Router();
 
@@ -17,12 +16,12 @@ router.get("/details/:id", ProductsHandlers.getProductById);
 // 4. PUT /products/:id
 router.put(
   "/:id",
-  [productsUploads.single("image"), isAdmin],
+  [productsUploads.single("image")],
   ProductsHandlers.editProduct
 );
 
 // 5. DELETE /products/:id
-router.delete("/:id", [isAdmin], ProductsHandlers.deleteProduct);
+router.delete("/:id", ProductsHandlers.deleteProduct);
 
 // 6. POST /products
 router.post(
