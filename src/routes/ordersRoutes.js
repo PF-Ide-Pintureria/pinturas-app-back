@@ -1,6 +1,5 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const { OrdersHandlers } = require("../handlers");
-
 
 const router = Router();
 
@@ -18,8 +17,9 @@ router.get("/", OrdersHandlers.getOrders);
 router.post("/cart", OrdersHandlers.createOrderByCartId);
 // 7. WEBHOOK /orders/webhook
 router.post("/webhook/:idOrder", OrdersHandlers.webHook);
-// 8. GET /orders/usser
+// 8. GET /orders/user
 router.get("/user/:userId", OrdersHandlers.getOrdersByUserId);
-
+// 9. PUT /orders/:idOrder
+router.put("/:idOrder", OrdersHandlers.editOrdersByUserId);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const { ReviewsHandlers } = require("../handlers/");
+const isAdmin = require("../middlewares/routesProtection");
 
 const router = Router();
 
