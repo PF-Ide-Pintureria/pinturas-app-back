@@ -14,21 +14,13 @@ router.get("/allproducts", ProductsHandlers.getAllProductsNoFilters);
 router.get("/details/:id", ProductsHandlers.getProductById);
 
 // 4. PUT /products/:id
-router.put(
-  "/:id",
-  [productsUploads.single("image")],
-  ProductsHandlers.editProduct
-);
+router.put("/:id", [productsUploads.single("image")], ProductsHandlers.editProduct);
 
 // 5. DELETE /products/:id
 router.delete("/:id", ProductsHandlers.deleteProduct);
 
 // 6. POST /products
-router.post(
-  "/",
-  [productsUploads.single("image"), isAdmin],
-  ProductsHandlers.createProduct
-);
+router.post("/", [productsUploads.single("image")], ProductsHandlers.createProduct);
 
 // 7. DESTROY /products/destroy/:id
 router.delete("/destroy/:id", ProductsHandlers.destroyProduct);
