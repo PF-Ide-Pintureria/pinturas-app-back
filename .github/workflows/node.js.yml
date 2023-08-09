@@ -29,7 +29,7 @@ env:
   CLIENT_ID_AUTH_ZERO: ${{ secrets.CLIENT_ID_AUTH_ZERO }}
   ISSUER_BASE_URL: ${{ secrets.ISSUER_BASE_URL }}
   BASE_URL_LOCAL_AUTH_ZERO: ${{ secrets.BASE_URL_LOCAL_AUTH_ZERO }}
-  NODE_ENV: "test"
+  NODE_ENV: "main"
 
 
 jobs:
