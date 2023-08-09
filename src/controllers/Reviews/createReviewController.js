@@ -45,7 +45,7 @@ const createReviewController = async ({ orderId,
         });
     }));
 
-    // await order.setReview(newReview);
+    await order.setReview(newReview);
 
     return await Reviews.findByPk(newReview.id);
 };
