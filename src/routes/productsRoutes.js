@@ -31,6 +31,6 @@ router.post(
 );
 
 // 7. DESTROY /products/destroy/:id
-router.delete("/destroy/:id", [isAdmin], ProductsHandlers.destroyProduct);
+router.delete("/destroy/:id", ProductsHandlers.destroyProduct);
 
 module.exports = router;
