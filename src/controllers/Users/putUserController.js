@@ -6,7 +6,7 @@ const putUserController = async (id, user) => {
 
     if (!userToEdit) throw Error("USUARIO NO ENCONTRADO");
 
-    if (user.email || user.password && userToEdit.dataValues.authZero)
+    if (userToEdit.dataValues.authZero)
         throw Error("No es posible actualizar un usuario que se registró por medio de authZero");
 
     await userToEdit.update(user);
