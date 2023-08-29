@@ -1,7 +1,6 @@
 const { CartsControllers } = require('../../controllers');
 const { createCart } = CartsControllers;
 
-
 const createCartHandler = async (req, res) => {
 
     try {
@@ -26,6 +25,5 @@ const createCartHandler = async (req, res) => {
     }
 
 };
-
 
 module.exports = createCartHandler;

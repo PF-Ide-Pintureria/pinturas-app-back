@@ -1,12 +1,11 @@
 const { ProductsControllers } = require('../../controllers');
 const { getAllProducts } = ProductsControllers;
 
-
 const getAllProductsNoFilterHandler = async (req, res) => {
 
     try {
 
-       const productsNoFilter = await getAllProducts();
+        const productsNoFilter = await getAllProducts();
 
         return res.status(200).json(productsNoFilter);
 

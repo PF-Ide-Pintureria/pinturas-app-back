@@ -1,7 +1,6 @@
 const { CartsControllers } = require('../../controllers');
 const { deleteCart } = CartsControllers;
 
-
 const deleteCartHandler = async (req, res) => {
 
     const { idUser, idCart } = req.body;

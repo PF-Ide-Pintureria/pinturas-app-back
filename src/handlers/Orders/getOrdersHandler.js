@@ -1,7 +1,6 @@
 const { OrdersControllers } = require("../../controllers");
 const { getOrders } = OrdersControllers;
 
-
 const getOrdersHandler = async (req, res) => {
 
     try {
@@ -16,6 +15,5 @@ const getOrdersHandler = async (req, res) => {
     }
 
 };
-
 
 module.exports = getOrdersHandler;

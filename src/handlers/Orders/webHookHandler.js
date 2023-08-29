@@ -1,13 +1,11 @@
 const { OrdersControllers } = require('../../controllers');
 const { webHook } = OrdersControllers;
 
-
 const webHookHandler = async (req, res) => {
 
     try {
 
         const { body, query, params } = req;
-
         const { idOrder } = params;
 
         const bodySTR = JSON.stringify(body);
@@ -29,8 +27,6 @@ const webHookHandler = async (req, res) => {
         });
     }
 
-
 };
-
 
 module.exports = webHookHandler;

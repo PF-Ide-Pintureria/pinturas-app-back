@@ -1,7 +1,6 @@
 const { ProductsControllers } = require('../../controllers');
 const { destroyProduct } = ProductsControllers;
 
-
 const destroyProductHandler = async (req, res) => {
     try {
         const { id } = req.params;
