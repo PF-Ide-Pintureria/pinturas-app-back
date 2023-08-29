@@ -1,6 +1,5 @@
 const { Carts, Users } = require('../../db');
 
-
 const editCartController = async ({ idUser, idCart, products }) => {
 
     const user = await Users.findOne({
@@ -22,9 +21,6 @@ const editCartController = async ({ idUser, idCart, products }) => {
     if (!cart && !user) {
         throw new Error('No user or cart found');
     }
-
-    // console.log('products:', products);
-    // console.log(JSON.stringify(products[0]));
 
     const jsonProducts = products ? products.map((product) => {
         return JSON.stringify(product);
@@ -48,6 +44,5 @@ const editCartController = async ({ idUser, idCart, products }) => {
     return cart;
 
 };
-
 
 module.exports = editCartController;

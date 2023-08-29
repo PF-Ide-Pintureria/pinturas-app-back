@@ -1,6 +1,5 @@
 const { Orders } = require('../../db');
 
-
 const getOrdersController = async ({ idUser, state, idOrder }) => {
 
     let searchCondition = {};
@@ -10,7 +9,7 @@ const getOrdersController = async ({ idUser, state, idOrder }) => {
 
     const orders = await Orders.findAll({ where: searchCondition });
 
-    if(!orders?.length) throw new Error('No se encontraron ordenes');
+    if (!orders?.length) throw new Error('No se encontraron ordenes');
 
     return orders;
 

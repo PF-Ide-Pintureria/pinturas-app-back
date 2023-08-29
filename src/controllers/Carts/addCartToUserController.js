@@ -1,6 +1,5 @@
 const { Carts, Users } = require('../../db');
 
-
 const addCartToUserController = async ({ idUser, idCart }) => {
     const user = await Users.findOne({
         where: {
@@ -23,6 +22,5 @@ const addCartToUserController = async ({ idUser, idCart }) => {
     });
     return cart;
 };
-
 
 module.exports = addCartToUserController;

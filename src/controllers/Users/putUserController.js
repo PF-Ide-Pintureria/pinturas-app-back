@@ -1,6 +1,5 @@
 const { Users } = require("../../db");
 
-
 const putUserController = async (id, user) => {
     const userToEdit = await Users.findByPk(id);
 
@@ -13,6 +12,5 @@ const putUserController = async (id, user) => {
     delete userToEdit.dataValues.password;
     return userToEdit.dataValues;
 };
-
 
 module.exports = putUserController;

@@ -1,9 +1,8 @@
 const { Users } = require('../../db');
 
-
 const getUsersController = async () => {
-    const usersdb = await Users.findAll();
-    const mappedUsers = usersdb.map(async (user) => {
+    const usersDb = await Users.findAll();
+    const mappedUsers = usersDb.map(async (user) => {
         // Busco el carrito del usuario
         let idCart;
 
@@ -33,6 +32,5 @@ const getUsersController = async () => {
     const users = await Promise.all(mappedUsers);
     return users;
 };
-
 
 module.exports = getUsersController;
