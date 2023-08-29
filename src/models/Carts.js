@@ -1,6 +1,5 @@
 const { DataTypes, UUIDV4: v4 } = require('sequelize');
 
-
 module.exports = (sequelize) => {
     sequelize.define('carts', {
         idCart: {

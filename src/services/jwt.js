@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const moment = require("moment");
 const { JWT_SECRET } = process.env;
 
-
 const createToken = (user) => {
 
     const payload = {
@@ -14,6 +13,5 @@ const createToken = (user) => {
     return jwt.sign(payload, JWT_SECRET);
 
 };
-
 
 module.exports = createToken;

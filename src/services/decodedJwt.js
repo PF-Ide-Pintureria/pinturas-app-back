@@ -13,5 +13,4 @@ const decodedToken = (req) => {
 
 };
 
-
 module.exports = decodedToken;
