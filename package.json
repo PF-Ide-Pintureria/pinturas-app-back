@@ -44,7 +44,8 @@
         "pg-hstore": "^2.3.4",
         "sanitize-filename": "^1.6.3",
         "sequelize": "^6.32.1",
-        "validator": "^13.9.0"
+        "validator": "^13.9.0",
+        "xlsx": "^0.18.5"
     },
     "devDependencies": {
         "chai": "^4.2.0",
