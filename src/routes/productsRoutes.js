@@ -27,6 +27,6 @@ router.post("/", [productsUploads.single("image")], ProductsHandlers.createProdu
 router.delete("/destroy/:id", ProductsHandlers.destroyProduct);
 
 //8. PUT /products/updatePrices
-router.post("/update/prices", uploadXlsx.single("excelFile"), ProductsHandlers.updatePrices);
+router.put("/update/prices", uploadXlsx.single("excelFile"), ProductsHandlers.updatePrices);
 
 module.exports = router;
