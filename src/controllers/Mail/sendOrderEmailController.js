@@ -3,8 +3,6 @@ const { transporter } = require('../../services');
 // eslint-disable-next-line no-undef
 const { SENDER_EMAIL: sender_email } = process.env;
 
-
-
 const sendOrderEmailController = ({ email, message }) => {
 
     const subject = `Resumen de tu orden`;
@@ -29,6 +27,5 @@ const sendOrderEmailController = ({ email, message }) => {
     });
 
 };
-
 
 module.exports = sendOrderEmailController;

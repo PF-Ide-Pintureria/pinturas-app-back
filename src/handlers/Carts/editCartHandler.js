@@ -1,7 +1,6 @@
 const { CartsControllers } = require('../../controllers');
 const { editCart } = CartsControllers;
 
-
 const editCartHandler = async (req, res) => {
 
     try {

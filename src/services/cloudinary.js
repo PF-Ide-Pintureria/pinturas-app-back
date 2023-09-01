@@ -9,7 +9,6 @@ cloudinary.config({
     api_secret: CLOUD_SECRET
 });
 
-
 const DEFAULT_IMAGE = 'http://www.pinturasfadepa.com.ar' +
     "/latex/imgnotas/prof_interior_opt.jpg";
 
@@ -48,6 +47,5 @@ const uploadImage = async (file) => {
     return secure_url;
 
 };
-
 
 module.exports = uploadImage;

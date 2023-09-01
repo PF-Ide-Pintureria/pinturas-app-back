@@ -1,6 +1,5 @@
 const { Carts } = require('../../db');
 
-
 const findCartByIdController = async ({ idCart, idUser }) => {
 
     if (!idCart && !idUser) {
@@ -20,6 +19,5 @@ const findCartByIdController = async ({ idCart, idUser }) => {
     return cart;
 
 };
-
 
 module.exports = findCartByIdController;

@@ -1,7 +1,6 @@
 const { ReviewsControllers } = require("../../controllers");
 const { getAllReviews } = ReviewsControllers;
 
-
 const getAllReviewsHandler = async (req, res) => {
     try {
         const { userId, orderId } = req.query;
@@ -13,6 +12,5 @@ const getAllReviewsHandler = async (req, res) => {
         return res.status(500).json({ error: error.message });
     }
 };
-
 
 module.exports = getAllReviewsHandler;

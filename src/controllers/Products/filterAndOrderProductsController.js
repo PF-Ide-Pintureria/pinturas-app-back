@@ -1,6 +1,5 @@
 const { Op } = require('sequelize');
 const { Products } = require('../../db.js');
-
 const PRODUCTS_PER_PAGE = 12;
 
 const filterAndOrderProductsController = async ({
@@ -14,7 +13,6 @@ const filterAndOrderProductsController = async ({
 }) => {
 
     const pageSet = page || 1; // Página actual, por defecto 1
-
     const offset = (pageSet - 1) * PRODUCTS_PER_PAGE;
 
     // Construir la condición de búsqueda para los términos proporcionados

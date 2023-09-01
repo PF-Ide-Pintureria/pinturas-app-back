@@ -1,7 +1,6 @@
 // const { Products } = require('../../db.js');
 const { Categories } = require('../../db');
 
-
 const getCategoriesController = async () => {
     // const categoriesResults = await Products.findAll({
     //     attributes: ['category'],
@@ -12,6 +11,5 @@ const getCategoriesController = async () => {
         category.name);
     return categories;
 };
-
 
 module.exports = getCategoriesController;

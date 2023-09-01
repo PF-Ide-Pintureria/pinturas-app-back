@@ -1,7 +1,6 @@
 const { OrdersControllers } = require("../../controllers");
 const { paymentOrder } = OrdersControllers;
 
-
 const paymentOrderHandler = async (req, res) => {
 
     try {
@@ -13,6 +12,5 @@ const paymentOrderHandler = async (req, res) => {
     }
 
 };
-
 
 module.exports = paymentOrderHandler;

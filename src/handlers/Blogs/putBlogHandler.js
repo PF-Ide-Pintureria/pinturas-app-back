@@ -42,5 +42,4 @@ const putBlogHandler = async (req, res) => {
 
 };
 
-
 module.exports = putBlogHandler;

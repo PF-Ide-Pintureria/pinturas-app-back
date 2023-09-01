@@ -1,6 +1,5 @@
 const { Categories } = require('../../db');
 
-
 const createCategoriesController = async ({ name }) => {
 
     const category = name ? Categories.findOrCreate({

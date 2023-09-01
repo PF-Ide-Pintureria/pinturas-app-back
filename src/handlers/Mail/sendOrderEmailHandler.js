@@ -1,7 +1,6 @@
 const { MailControllers } = require('../../controllers');
 const { sendOrderEmail } = MailControllers;
 
-
 const sendOrderEmailHandler = async (req, res) => {
 
     const { email, message } = req.body;

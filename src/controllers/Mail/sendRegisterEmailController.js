@@ -4,8 +4,6 @@ const { transporter } = require('../../services');
 const { SENDER_MAIL: sender_email } = process.env;
 const { Users } = require('../../db');
 
-
-
 const sendRegisterEmailController = async ({ message, id }) => {
 
     const subject = `Bienvenido a la familia de IDE Pinturería`;

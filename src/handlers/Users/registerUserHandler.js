@@ -1,25 +1,23 @@
 const { UsersControllers, CartsControllers } = require('../../controllers');
 const { registerUser } = UsersControllers;
 const { createCart } = CartsControllers;
-
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9!@#$%^&*_-]{8,}$/;
 
 const registerUserHandler = async (req, res) => {
 
-    // Recoger datos de la petición
     const { email, password, createCartForUser, } = req.body;
 
-    // Comprobar que me llegan bien los datos(validacion)
-    // Respuesta "clara" o personalizada de ususarios duplicados(pendiente)
+    if (!passwordRegex.test(password)) {
+        return res.status(404).json({ error: 'La contraseña no cumple con los requisitos de seguridad.' });
+    }
 
     if (!email || !password) {
-
         return res.status(400).json({
 
             status: "fail",
             message: "Faltan datos por enviar"
 
         });
-
     }
 
     try {
@@ -39,17 +37,16 @@ const registerUserHandler = async (req, res) => {
         });
 
     } catch (error) {
-
-        console.error(error);
+        if (error.errors[0].type == "Validation error" || error.errors[0].type == "unique violation") {
+            return res.status(404).json({ message: error.errors[0].message });
+        }
         return res.status(500).json({
-            name: error.name,
+            name: error.errors,
             routine: error.routine,
             detail: error.detail,
         });
 
     }
-
 };
-
 
 module.exports = registerUserHandler;

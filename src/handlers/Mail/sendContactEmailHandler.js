@@ -1,7 +1,6 @@
 const { MailControllers } = require("../../controllers");
 const { sendContactEmail } = MailControllers;
 
-
 const sendContactEmailHandler = async (req, res) => {
 
     const { name, message, replyTo } = req.body;
@@ -21,6 +20,5 @@ const sendContactEmailHandler = async (req, res) => {
     }
 
 };
-
 
 module.exports = sendContactEmailHandler;

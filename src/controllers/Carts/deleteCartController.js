@@ -1,6 +1,5 @@
 const { Users, Carts } = require('../../db');
 
-
 const deleteUserController = async ({ idUser, idCart }) => {
 
     const user = idUser ? await Users.findOne({
@@ -32,6 +31,5 @@ const deleteUserController = async ({ idUser, idCart }) => {
     return cart;
 
 };
-
 
 module.exports = deleteUserController;

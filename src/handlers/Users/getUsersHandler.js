@@ -1,7 +1,6 @@
 const { UsersControllers } = require('../../controllers');
 const { getUsers } = UsersControllers;
 
-
 const getUsersHandler = async (req, res) => {
 
     try {
