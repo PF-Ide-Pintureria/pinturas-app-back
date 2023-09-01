@@ -8,6 +8,7 @@ const getAllBlogsHandler = async (req, res) => {
             status: "success",
             blogs: blogs,
         });
+
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }

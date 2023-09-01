@@ -1,11 +1,9 @@
 const { UsersControllers } = require('../../controllers');
 const { loginAuthZero } = UsersControllers;
 
-
 const loginUserAuthZeroHandler = async (req, res) => {
 
     try {
-
         //Verificar si el usuario ya esta creado en la bd, sino lo creamos
         const verifyUserAuthZero = await loginAuthZero(req.body);
 

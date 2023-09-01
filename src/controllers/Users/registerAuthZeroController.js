@@ -1,7 +1,6 @@
 const { Users } = require('../../db');
 const { createToken } = require("../../services");
 
-
 const registerAuthZeroController = async (user) => {
 
     let token;
@@ -55,6 +54,5 @@ const registerAuthZeroController = async (user) => {
     };
 
 };
-
 
 module.exports = registerAuthZeroController;

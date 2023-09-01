@@ -1,6 +1,5 @@
 const { Carts } = require('../../db');
 
-
 const getCartsController = async () => {
 
     const carts = await Carts.findAll();
@@ -19,6 +18,5 @@ const getCartsController = async () => {
     });
 
 };
-
 
 module.exports = getCartsController;

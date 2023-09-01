@@ -2,7 +2,6 @@ const { ProductsControllers } = require('../../controllers');
 const { editProduct } = ProductsControllers;
 const { uploadImage } = require('../../services/');
 
-
 const editProductHandler = async (req, res) => {
 
     try {
@@ -32,6 +31,5 @@ const editProductHandler = async (req, res) => {
     }
 
 };
-
 
 module.exports = editProductHandler;

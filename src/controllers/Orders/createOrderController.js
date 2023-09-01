@@ -1,7 +1,6 @@
 // const { mercadopago } = require("../../services");
 const { Orders, Users } = require("../../db");
 
-
 const createOrderController = async (products, idUser) => {
 
     const userOrder = await Users.findByPk(idUser);
@@ -23,6 +22,5 @@ const createOrderController = async (products, idUser) => {
     return await Orders.findByPk(order.id);
 
 };
-
 
 module.exports = createOrderController;

@@ -1,7 +1,6 @@
 const { ProductsControllers } = require('../../controllers');
 const { getProductById } = ProductsControllers;
 
-
 const getProductByIdHandler = async (req, res) => {
 
     try {

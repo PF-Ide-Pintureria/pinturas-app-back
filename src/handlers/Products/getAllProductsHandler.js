@@ -1,7 +1,6 @@
 const { ProductsControllers } = require('../../controllers');
 const { filterAndOrderProducts } = ProductsControllers;
 
-
 const getAllProductsHandler = async (req, res) => {
 
     try {

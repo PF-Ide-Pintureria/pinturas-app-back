@@ -1,7 +1,6 @@
 const { Users } = require('../../db');
 const bcrypt = require("bcrypt");
 
-
 const registerUserController = async ({ email, password, rol = "client", name,
     lastName, address, locality, province, phone }) => {
 

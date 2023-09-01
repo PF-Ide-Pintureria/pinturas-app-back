@@ -1,7 +1,6 @@
 const { CartsControllers } = require('../../controllers');
 const { findCartById } = CartsControllers;
 
-
 const findCartByIdHandler = async (req, res) => {
 
     console.log('Entra a findCartByIdHandler');
@@ -25,15 +24,13 @@ const findCartByIdHandler = async (req, res) => {
     }
 
     catch (error) {
-        // console.error(error);
+        console.error(error);
         return res.status(500).json({
             name: error.name,
             routine: error.routine,
             detail: error.detail,
         });
     }
-
-
 };
 
 module.exports = findCartByIdHandler;

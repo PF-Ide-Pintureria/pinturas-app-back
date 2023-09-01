@@ -12,9 +12,6 @@ const getAllReviewsController = async ({ userId, orderId }) => {
     if (userId) {
         filteredReviews = reviews.filter((review) => {
             const order = review.order || {};
-            // console.log('order userId', order?.userId);
-            // console.log(typeof userId);
-            // console.log(typeof order?.userId);
             return String(order?.userId) === String(userId);
         });
         // return filteredReviews;

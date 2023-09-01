@@ -1,6 +1,5 @@
 const { DataTypes } = require('sequelize');
 
-
 module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('users', {
@@ -21,18 +20,6 @@ module.exports = (sequelize) => {
         },
         password: {
             type: DataTypes.STRING,
-            /* validate: {
-                isPasswordValid(value) {
-                  // Expresión regular para una contraseña segura
-                    const passwordRegex = /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/;
-                    if (!passwordRegex.test(value)) {
-                    throw new Error('La contraseña debe contener al menos una letra mayúscula o minúscula, un dígito y un carácter especial (@ $ ! % # ? &), y tener una longitud mínima de 8 caracteres.');
-                    }
-            },
-            validate: {
-                //is: /^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/,
-                //is: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/
-            } */
         },
         rol: {
             type: DataTypes.STRING,
@@ -94,5 +81,6 @@ module.exports = (sequelize) => {
             allowNull: true,
             defaultValue: DataTypes.UUIDV4,
         },
-    }, { timestamps: true });
+    }, { timestamps: true }
+    );
 };

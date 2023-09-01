@@ -6,7 +6,6 @@ function createRelations(sequelizeInstance) {
         Blogs, Products, Reviews, Users, Orders, Carts,
     } = sequelizeInstance.models;
 
-
     // Aca vendrian las relaciones:
 
     // FAVORITOS
@@ -47,7 +46,6 @@ function createRelations(sequelizeInstance) {
     return sequelizeInstance;
 
 }
-
 
 module.exports = {
     createRelations

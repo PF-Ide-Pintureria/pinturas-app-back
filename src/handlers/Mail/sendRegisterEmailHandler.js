@@ -1,7 +1,6 @@
 const { MailControllers } = require("../../controllers");
 const { sendRegisterEmail } = MailControllers;
 
-
 const sendRegisterEmailHandler = async (req, res) => {
 
     const { id } = req.params;
@@ -25,6 +24,5 @@ const sendRegisterEmailHandler = async (req, res) => {
     }
 
 };
-
 
 module.exports = sendRegisterEmailHandler;

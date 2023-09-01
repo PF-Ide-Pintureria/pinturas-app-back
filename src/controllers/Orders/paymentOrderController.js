@@ -32,11 +32,6 @@ const paymentOrderController = async ({ idOrder, }) => {
             };
 
         }),
-        // back_urls: {
-        //     failure: "http://localhost:5173/payment/failure",
-        //     pending: "http://localhost:5173/payment/pending",
-        //     success: "http://localhost:5173/payment/successful"
-        // },
         back_urls: {
             failure: `${URL_BASE}/payment/failure`,
             pending: `${URL_BASE}/payment/pending`,
@@ -50,6 +45,5 @@ const paymentOrderController = async ({ idOrder, }) => {
     const orderMeli = await mercadopago.preferences.create(preference);
     return orderMeli;
 };
-
 
 module.exports = paymentOrderController;

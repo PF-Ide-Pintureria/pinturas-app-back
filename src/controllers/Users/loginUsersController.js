@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const { Users } = require('../../db');
 const createToken = require("../../services/jwt");
 
-
 const loginUsersController = async (email, password) => {
 
     if (email && password) {
@@ -39,10 +38,8 @@ const loginUsersController = async (email, password) => {
             }
 
         }
-
         return { user, token };
     }
-
 };
 
 module.exports = loginUsersController;

@@ -1,7 +1,6 @@
 const { ProductsControllers } = require('../../controllers');
 const { deleteProduct } = ProductsControllers;
 
-
 const deleteProductHandler = async (req, res) => {
     try {
         const { id } = req.params;

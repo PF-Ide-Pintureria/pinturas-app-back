@@ -62,5 +62,4 @@ const loginUsersHandler = async (req, res) => {
     }
 };
 
-
 module.exports = loginUsersHandler;
