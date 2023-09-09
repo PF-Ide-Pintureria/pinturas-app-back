@@ -1,4 +1,4 @@
-const { transporter } = require('../../services');
+const { transporter } = require('../../services/nodemailer');
 // const { parsed: ENV } = require('dotenv').config();
 // eslint-disable-next-line no-undef
 const { SENDER_MAIL: email } = process.env;
