@@ -1,0 +1,89 @@
+{
+    "name": "FADEPA Pinturas App Products Backend API",
+    "version": "1.0.0",
+    "description": "This is the backend API for the FADEPA Pinturas App Products",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/PF-Ide-Pintureria/pinturas-app-back"
+    },
+    "routes": {
+        "products": {
+            "getAllProducts": {
+                "method": "GET",
+                "url": "/products",
+                "description": "Get all products"
+            },
+            "getAllProductsNoFilter": {
+                "method": "GET",
+                "url": "/products/allproducts",
+                "description": "Get all products no filtered"
+            },
+            "getProductById": {
+                "method": "GET",
+                "url": "/products/details/:id",
+                "description": "Get product by id"
+            },
+            "editProduct": {
+                "method": "PUT",
+                "url": "/products/:id",
+                "description": "Edit product"
+            },
+            "deleteProduct": {
+                "method": "DELETE",
+                "url": "/products/:id",
+                "description": "Delete product"
+            },
+            "createProduct": {
+                "method": "POST",
+                "url": "/products",
+                "description": "Create product"
+            }
+        },
+        "categories": {
+            "getCategories": {
+                "method": "GET",
+                "url": "/categories",
+                "description": "Get all categories"
+            }
+        },
+        "users": {
+            "registerUser": {
+                "method": "POST",
+                "url": "/users/register",
+                "description": "Register user"
+            },
+            "loginUser": {
+                "method": "POST",
+                "url": "/users/login",
+                "description": "Login user"
+            }
+        },
+        "reviews": {
+            "getAllReviews": {
+                "method": "GET",
+                "url": "/reviews",
+                "description": "Get all reviews"
+            },
+            "getReviewsById": {
+                "method": "GET",
+                "url": "/reviews/details/:id",
+                "description": "Get reviews by id"
+            },
+            "editReviews": {
+                "method": "PUT",
+                "url": "/reviews/:id",
+                "description": "Edit reviews"
+            },
+            "deleteReviews": {
+                "method": "DELETE",
+                "url": "/reviews/:id",
+                "description": "Delete reviews"
+            },
+            "createReviews": {
+                "method": "POST",
+                "url": "/reviews",
+                "description": "Create reviews"
+            }
+        }
+    }
+}

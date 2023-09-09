@@ -1,18 +1,18 @@
-const getAllProductsHandler = require('./getAllProductsHandler');
-const getCategoriesHandler = require('./getCategoriesHandler');
-const createProductHandler = require('./createProductHandler');
-const deleteProductHandler = require("./deleteProductHandler");
-const editProductHandler = require("./editProductHandler");
-const getProductByIdHandler = require("./getProductByIdHandler");
-const destroyProductHandler = require("./destroyProductHandler");
+const fs = require('fs');
+const path = require('path');
 
+// Buscamos todas las carpetas en el directorio actual
+const folders = fs.readdirSync(__dirname, { withFileTypes: true });
+// Cada carpeta es un controlador por entidad
+const Handlers = {};
+folders.forEach(folder => {
+    // El nombre de la carpeta es el nombre del controlador
+    // agregando la palabra Controller al final
+    if (folder.isDirectory()) {
+        Handlers[
+            `${folder.name}Handlers`
+        ] = require(path.join(__dirname, folder.name));
+    }
+});
 
-module.exports = {
-    getAllProductsHandler,
-    getCategoriesHandler,
-    createProductHandler,
-    deleteProductHandler,
-    editProductHandler,
-    getProductByIdHandler,
-    destroyProductHandler,
-};
+module.exports = Handlers;

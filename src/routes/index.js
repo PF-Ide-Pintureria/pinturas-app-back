@@ -1,40 +1,44 @@
-const {
-    getAllProductsHandler,
-    getCategoriesHandler,
-    createProductHandler,
-    deleteProductHandler,
-    editProductHandler,
-    getProductByIdHandler,
-    destroyProductHandler,
-} = require('../handlers/');
-const { productsUploads, } = require('../middlewares/');
-const { Router } = require('express');
+// Init router
+const { Router } = require("express");
+
+// Bring Routers
+const productsRoutes = require("./productsRoutes");
+const categoriesRoutes = require("./categoriesRoutes");
+const usersRoutes = require("./usersRoutes");
+const ordersRoutes = require("./ordersRoutes");
+const mailRoutes = require("./mailRoutes");
+const cartsRoutes = require("./cartsRoutes");
+const favoritesRoutes = require("./favoritesRoutes");
+const blogsRoutes = require("./blogsRoutes");
+const reviewsRoutes = require("./reviewsRoutes");
 
 const router = Router();
 
-// Default message for root path
-const routesDescription = {
-    '/': 'Welcome to the API',
-    '/products': 'Get all products',
-    '/categories': 'Get all categories',
-    '/details/:id': 'Get product by id',
-    '/products/:id': 'Edit product by id',
-    '/products': 'Create product',
-    '/products/:id': 'Delete product by id',
-};
-router.get('/', (req, res) => {
-    return res.json(routesDescription);
+// 1. GET /
+// Here we will render the home page, which will be a description of the API
+const description = require("./description.json");
+router.get("/", (req, res) => {
+    return res.json(description);
 });
 
-router.get('/products', getAllProductsHandler);
-router.get('/categories', getCategoriesHandler);
-router.get('/details/:id', getProductByIdHandler);
-router.put("/products/:id", [productsUploads.single("image")],
-    editProductHandler);
-router.post('/products', [productsUploads.single("image")],
-    createProductHandler);
-router.delete("/products/:id", deleteProductHandler);
-router.delete("/products/destroy/:id", destroyProductHandler);
+// Categories routes
+router.use("/categories", categoriesRoutes);
+// Products routes
+router.use("/products", productsRoutes);
+// Users routes
+router.use("/users", usersRoutes);
+// Orders routes
+router.use("/orders", ordersRoutes);
+// Mail routes
+router.use("/mail", mailRoutes);
+// Carts Routes
+router.use("/carts", cartsRoutes);
+// Favorites routes
+router.use("/favorites", favoritesRoutes);
+// Blogs routes
+router.use("/blogs", blogsRoutes);
+// Reviews routes
+router.use("/reviews", reviewsRoutes);
 
 
 module.exports = router;

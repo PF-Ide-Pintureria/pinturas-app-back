@@ -4,9 +4,20 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "nodemon -L",
-        "resetDB": "node ./src/controllers/resetDBController.js",
-        "test": "mocha --recursive --timeout 10000 --exit"
+        "start": "nodemon -L --trace-warnings",
+        "resetProducts": "node ./scripts/resetProducts.js",
+        "resetUsers": "node ./scripts/resetUsers.js",
+        "resetCategories": "node ./scripts/resetCategories.js",
+        "resetProductsCategories": "node ./scripts/resetProductsCategories.js",
+        "resetCarts": "node ./scripts/resetCarts.js",
+        "resetOrders": "node ./scripts/resetOrders.js",
+        "test": "mocha --recursive --timeout 10000 --exit",
+        "testDB": "mocha -g 'DATABASE CONNECTIONS' --recursive --timeout 10000 --exit",
+        "testEnv": "mocha -g 'ENVIRONMENT VARIABLES' --recursive --timeout 10000 --exit",
+        "testControllers": "mocha -g 'CONTROLLERS' --recursive --timeout 10000 --exit",
+        "testCartsControllers": "mocha -g 'Carts Controllers' --recursive --timeout 10000 --exit",
+        "testUsersControllers": "mocha -g 'Users Controllers' --recursive --timeout 10000 --exit",
+        "testOrdersModels": "mocha -g 'Orders Models' --recursive --timeout 10000 --exit"
     },
     "keywords": [],
     "author": "",
@@ -21,11 +32,13 @@
         "dotenv": "^16.3.1",
         "express": "^4.18.2",
         "express-rate-limit": "^6.7.1",
+        "https": "^1.0.0",
         "jsonwebtoken": "^9.0.1",
-        "jwt-simple": "^0.5.6",
+        "mercadopago": "^1.5.17",
         "moment": "^2.29.4",
         "morgan": "^1.10.0",
         "multer": "^1.4.5-lts.1",
+        "nodemailer": "^6.9.4",
         "path": "^0.12.7",
         "pg": "^8.11.1",
         "pg-hstore": "^2.3.4",
@@ -35,13 +48,15 @@
     },
     "devDependencies": {
         "chai": "^4.2.0",
+        "eslint": "^8.46.0",
         "mocha": "^10.2.0",
         "nodemon": "^2.0.6",
+        "standard": "^17.1.0",
         "supertest": "^6.0.1",
         "supertest-session": "^4.1.0"
     },
     "http.proxySupport": "off",
-    "engines": {
-        "node": ">=16 <17"
+    "eslintConfig": {
+        "extends": "standard"
     }
 }

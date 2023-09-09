@@ -1,3 +1,6 @@
-const { Products, conn } = require('../../src/db.js');
+const ordersModelTests = require('./ordersModelTests');
 
-// Aquí irán las validaciones al modelo
+
+describe('MODELS', () => {
+    describe('[Orders Models]', ordersModelTests);
+});
