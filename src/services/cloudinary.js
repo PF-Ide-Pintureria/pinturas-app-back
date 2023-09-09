@@ -48,4 +48,4 @@ const uploadImage = async (file) => {
 
 };
 
-module.exports = uploadImage;
+module.exports = { uploadImage, cloudinary };

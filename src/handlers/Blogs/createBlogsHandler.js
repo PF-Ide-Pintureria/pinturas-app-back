@@ -1,6 +1,6 @@
 const { BlogsControllers } = require("../../controllers");
 const { createBlogs } = BlogsControllers;
-const { uploadImage } = require("../../services/");
+const { uploadImage } = require("../../services/cloudinary");
 const decodedToken = require("../../services/decodedJwt");
 
 const createBlogsHandler = async (req, res) => {
