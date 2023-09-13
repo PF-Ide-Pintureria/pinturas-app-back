@@ -1,4 +1,4 @@
-const { mercadopago } = require("../../services");
+const { mercadopago } = require("../../services/mercadopago");
 const { Orders } = require('../../db.js');
 const URL_BASE = "https://pinturas-app-front-git-pre-develop-pf-pinturas.vercel.app";
 
