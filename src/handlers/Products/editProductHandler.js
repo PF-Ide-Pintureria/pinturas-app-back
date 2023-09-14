@@ -1,6 +1,6 @@
 const { ProductsControllers } = require('../../controllers');
 const { editProduct } = ProductsControllers;
-const { uploadImage } = require('../../services/');
+const { uploadImage } = require('../../services/cloudinary');
 
 const editProductHandler = async (req, res) => {
 
