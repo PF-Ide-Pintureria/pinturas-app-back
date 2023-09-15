@@ -60,5 +60,8 @@
     "http.proxySupport": "off",
     "eslintConfig": {
         "extends": "standard"
+    },
+    "engines": {
+        "node": ">=18 <19"
     }
 }
