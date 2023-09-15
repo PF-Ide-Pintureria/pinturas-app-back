@@ -1,76 +1,38 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
-
 on:
-  push:
-    branches: [ "develop" ]
-  pull_request:
-    branches: [ "develop" ]
-
-env:
-  DB_NAME: ${{ secrets.DB_NAME }}
-  DB_HOST: ${{ secrets.DB_HOST }}
-  DB_USER: ${{ secrets.DB_USER }}
-  DB_PASS: ${{ secrets.DB_PASS }}
-  CLOUD_NAME: ${{ secrets.CLOUD_NAME }}
-  CLOUD_KEY: ${{ secrets.CLOUD_KEY }}
-  CLOUD_SECRET: ${{ secrets.CLOUD_SECRET }}
-  SENDER_MAIL: ${{ secrets.SENDER_MAIL }}
-  SENDER_PASS : ${{ secrets.SENDER_PASS }}
-  MELI_ACCESS_TOKEN : ${{ secrets.MELI_ACCESS_TOKEN }}
-  DB_TEST_NAME: ${{ secrets.DB_TEST_NAME }}
-  DB_TEST_HOST: ${{ secrets.DB_TEST_HOST }}
-  DB_TEST_USER: ${{ secrets.DB_TEST_USER }}
-  DB_TEST_PASS: ${{ secrets.DB_TEST_PASS }}
-  JWT_SECRET: ${{ secrets.JWT_SECRET }}
-  SECRET_AUTH_ZERO: ${{ secrets.SECRET_AUTH_ZERO }}
-  CLIENT_ID_AUTH_ZERO: ${{ secrets.CLIENT_ID_AUTH_ZERO }}
-  ISSUER_BASE_URL: ${{ secrets.ISSUER_BASE_URL }}
-  BASE_URL_LOCAL_AUTH_ZERO: ${{ secrets.BASE_URL_LOCAL_AUTH_ZERO }}
-  NODE_ENV: "main"
-
+  - push
+  - pull_request
 
 jobs:
-  build:
-
+  cache-and-install:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-      name: Install Node.js
-            uses: actions/setup-node@v3
-            with:
-              node-version: 18
+      - name: Checkout
+        uses: actions/checkout@v3
 
-            
-      uses: pnpm/action-setup@v2
-            name: Install pnpm
-            with:
-              version: 8
-              run_install: false
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-            
-      name: Get pnpm store directory
-            shell: bash
-            run: |
-              echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
 
-            
-      uses: actions/cache@v3
-            name: Setup pnpm cache
-            with:
-              path: ${{ env.STORE_PATH }}
-              key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-              restore-keys: |${{ runner.os }}-pnpm-store-
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-            
-      name: Install dependencies
-            run: pnpm install
-    
-    
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
