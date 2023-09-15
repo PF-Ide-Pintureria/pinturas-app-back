@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { ProductsHandlers } = require("../handlers/");
 const { productsUploads } = require("../middlewares/");
+const uploadXlsx = require("../middlewares/multerXlsx");
 
 const router = Router();
 
@@ -20,9 +21,12 @@ router.put("/:id", [productsUploads.single("image")], ProductsHandlers.editProdu
 router.delete("/:id", ProductsHandlers.deleteProduct);
 
 // 6. POST /products
-router.post(  "/", [productsUploads.single("image")], ProductsHandlers.createProduct);
+router.post("/", [productsUploads.single("image")], ProductsHandlers.createProduct);
 
 // 7. DESTROY /products/destroy/:id
 router.delete("/destroy/:id", ProductsHandlers.destroyProduct);
+
+//8. PUT /products/updatePrices
+router.put("/update/prices", uploadXlsx.single("excelFile"), ProductsHandlers.updatePrices);
 
 module.exports = router;
