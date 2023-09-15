@@ -3,7 +3,7 @@ function createRelations(sequelizeInstance) {
     // En sequelize.models están todos los modelos importados como propiedades
     // Para relacionarlos hacemos un destructuring
     const {
-        Blogs, Products, Reviews, Users, Orders, Carts,
+        Blogs, Products, Reviews, Users, Orders, Carts, Providers
     } = sequelizeInstance.models;
 
     // Aca vendrian las relaciones:
@@ -42,6 +42,11 @@ function createRelations(sequelizeInstance) {
     Users.hasOne(Carts);
     Carts.belongsTo(Users);
 
+    //PRODUCTS <-> PROVIDERS
+    //un producto solo puede pertenecer a un proveedor 
+    //pero un proveedor puede tener muchos productos
+    Products.belongsTo(Providers);
+    Providers.hasMany(Products);
 
     return sequelizeInstance;
 

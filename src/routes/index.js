@@ -11,6 +11,7 @@ const cartsRoutes = require("./cartsRoutes");
 const favoritesRoutes = require("./favoritesRoutes");
 const blogsRoutes = require("./blogsRoutes");
 const reviewsRoutes = require("./reviewsRoutes");
+const providersRoutes = require("./providersRoutes");
 
 const router = Router();
 
@@ -39,6 +40,8 @@ router.use("/favorites", favoritesRoutes);
 router.use("/blogs", blogsRoutes);
 // Reviews routes
 router.use("/reviews", reviewsRoutes);
+// Providers routes
+router.use("/providers", providersRoutes);
 
 
 module.exports = router;
