@@ -49,5 +49,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - run: pnpm i
+    - run: npm i -g pnpm && pnpm i 
     - run: pnpm test
