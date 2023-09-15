@@ -18,7 +18,7 @@ const updatePricesController = async (excelFile) => {
     // Convertir los datos en formato JSON
     const productsFromExcel = xlsx.utils.sheet_to_json(worksheet);
 
-    let updateds = 0;
+    let updates = 0;
 
     for await (const productExcel of productsFromExcel) {
         const code = productExcel.codigo;
@@ -31,12 +31,12 @@ const updatePricesController = async (excelFile) => {
             // Actualizar el precio en la DB si es diferente
             if (productDB.price !== newPrice) {
                 await productDB.update({ price: newPrice });
-                updateds = updateds + 1;
+                updates = updates + 1;
             }
         }
     };
 
-    return `Se han actualizado ${updateds} productos`;
+    return `Se han actualizado ${updates} productos`;
 
 };
 
