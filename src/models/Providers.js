@@ -11,9 +11,10 @@ module.exports = (sequelize) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true
         },
         discount: {
-            type: DataTypes.INTEGER
+            type: DataTypes.FLOAT
         }
     }, { timestamps: false }
     );

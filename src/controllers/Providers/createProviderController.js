@@ -1,10 +1,15 @@
-const { Provider } = require("../../db.js");
+const { Providers } = require("../../db.js");
 
+const createProviderController = async (name, discount) => {
 
-const createProviderController = () => {
+    const provider = new Providers({
+        name: name.toUpperCase(),
+        discount
+    });
+    //Guardar el provider en la base de datos
+    await provider.save();
 
-    return "estoy en el controller";
-
+    return provider;
 };
 
 module.exports = createProviderController;
