@@ -3,7 +3,7 @@
 ## Dev Team Members (Equipo de Desarrollo)
 - [Jamer José](https://github.com/jamerrq)
 - [Edgar Juan](https://github.com/ejguercio)
-- [Roberto Jardines](https://github.com/charliejp21)
+- [Carlos Barrera](https://github.com/CBarreraB)
 - [Basilio Romero](https://github.com/bachiromero)
 
 ## Description (Descripción)
@@ -29,7 +29,7 @@ This project is deployed on Render.com at the following URL:
 
 [ES] Este proyecto está desplegado en Render.com en la siguiente URL:
 
-https://back-server-pinturas-app.onrender.com/products
+https://pinturas-app-back.onrender.com/
 
 ## Testing Status (Estado de las Pruebas)
 [![Node.js CI](https://github.com/PF-Ide-Pintureria/pinturas-app-back/actions/workflows/node.js.yml/badge.svg)](https://github.com/PF-Ide-Pintureria/pinturas-app-back/actions/workflows/node.js.yml)
