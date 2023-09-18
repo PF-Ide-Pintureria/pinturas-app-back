@@ -20,6 +20,10 @@ module.exports = (sequelize) => {
         markup: {
             type: DataTypes.INTEGER,
             allowNull: false
+        },
+        active: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: true,
         }
     }, { timestamps: false }
     );
