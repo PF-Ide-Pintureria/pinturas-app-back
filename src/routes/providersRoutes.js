@@ -7,11 +7,11 @@ const router = Router();
 router.post("/", ProvidersHandlers.createProvider);
 //Editar un proveedor
 router.put("/edit/:id", ProvidersHandlers.editProvider);
+// //Obtener todos los proveedores
+router.get("/", ProvidersHandlers.getProviders);
 // //Eliminar un proveedor
 // router.delete("/:id", ProvidersHandlers.deleteProvider);
 // //Obtener un proveedor
 // router.get("/:id", ProvidersHandlers.getProvider);
-// //Obtener todos los proveedores
-// router.get("/", ProvidersHandlers.getProviders);
 
 module.exports = router;
