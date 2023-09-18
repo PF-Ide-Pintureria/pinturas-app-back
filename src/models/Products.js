@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
             allowNull: true //de momento para facilitar pruebas
         },
         price: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.INTEGER,
             allowNull: true //de momento para facilitar pruebas
         },
         code: {
