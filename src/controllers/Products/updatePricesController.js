@@ -2,12 +2,12 @@ const xlsx = require('xlsx');
 const { Providers } = require('../../db.js');
 //REVISAR LUEGO
 const IVA = 21;
-const MARKUP = 50;
 
-// function calcularPrecioFinal(precioBase, descuentoPorcentaje, IVA, MARKUP) {
-//     const precioFinal = precioBase * (1 - descuentoPorcentaje / 100) * (1 + IVA / 100) * (1 + MARKUP / 100);
-//     return precioFinal;
-// }
+function calculatePrice(priceList, discount, iva, markup) {
+    //precio de lista - descuento (si es que hay) + IVA + ganancia
+    const finalPrice = priceList * (1 - discount / 100) * (1 + iva / 100) * (1 + markup / 100);
+    return Math.floor(finalPrice);
+}
 
 const updatePricesController = async (excelFile, { providerName }) => {
 
@@ -28,25 +28,27 @@ const updatePricesController = async (excelFile, { providerName }) => {
     // Convertir los datos en formato JSON
     const productsFromExcel = xlsx.utils.sheet_to_json(worksheet);
 
-    let updates = 0;
-
-    for await (const productExcel of productsFromExcel) {
+    let updatedCount = 0;
+    const updatePromises = productsFromExcel.map(async (productExcel) => {
         const code = productExcel.codigo;
-        const newPrice = productExcel.precio;
+        const listPrice = productExcel.precio;
 
         if (productsIndex[code]) {
-            // Encontrar el producto en la DB por código
             const productDB = productsIndex[code];
-
+            // Calcular el nuevo precio aquí
+            const finalPrice = calculatePrice(listPrice, provider.discount, IVA, provider.markup);
             // Actualizar el precio en la DB si es diferente
-            if (productDB.price !== newPrice) {
-                await productDB.update({ price: newPrice * (1 - provider.discount / 100) * (1 + IVA / 100) * (1 + MARKUP / 100) });
-                updates = updates + 1;
+            if (productDB.price !== finalPrice) {
+                await productDB.update({ price: finalPrice });
+                updatedCount++; // Incrementar el contador de actualizaciones exitosas
             }
         }
-    };
+    });
 
-    return `Se han actualizado ${updates} productos`;
+    // Ejecutar todas las promesas en paralelo
+    await Promise.all(updatePromises);
+
+    return `Se han actualizado ${updatedCount} productos`;
 
 };
 

@@ -1,6 +1,6 @@
 const { Providers } = require("../../db.js");
 
-const editProvider = async (id, { name, discount }) => {
+const editProvider = async (id, { name, discount, markup }) => {
 
 
 
@@ -13,6 +13,9 @@ const editProvider = async (id, { name, discount }) => {
     }
     if (discount !== undefined) {
         provider.discount = discount;
+    }
+    if (markup !== undefined) {
+        provider.markup = markup;
     }
     await provider.save();
     return provider;

@@ -14,7 +14,12 @@ module.exports = (sequelize) => {
             unique: true
         },
         discount: {
-            type: DataTypes.FLOAT
+            type: DataTypes.FLOAT,
+            allowNull: false
+        },
+        markup: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     }, { timestamps: false }
     );

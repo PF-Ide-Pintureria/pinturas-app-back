@@ -4,8 +4,8 @@ const { editProvider } = ProvidersControllers;
 const editProviderHandler = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, discount } = req.body;
-        if (!id || !name || !discount) {
+        const { name, discount, markup } = req.body;
+        if (!id || !name || !discount || !markup) {
             return res.status(400).json({ message: "faltan datos" });
         }
         return res.status(200).json(await editProvider(id, req.body));
