@@ -1,13 +1,7 @@
 const xlsx = require('xlsx');
 const { Providers } = require('../../db.js');
-//REVISAR LUEGO
+const calculatePrice = require("../../utils/calculatePrice.js");
 const IVA = 21;
-
-function calculatePrice(priceList, discount, iva, markup) {
-    //precio de lista - descuento (si es que hay) + IVA + ganancia
-    const finalPrice = priceList * (1 - discount / 100) * (1 + iva / 100) * (1 + markup / 100);
-    return Math.floor(finalPrice);
-}
 
 const updatePricesController = async (excelFile, { providerName }) => {
 
@@ -29,6 +23,7 @@ const updatePricesController = async (excelFile, { providerName }) => {
     const productsFromExcel = xlsx.utils.sheet_to_json(worksheet);
 
     let updatedCount = 0;
+    //armo un conjunto de promesas para luego ejecutarlas en paralelo y optimizar rendimiento
     const updatePromises = productsFromExcel.map(async (productExcel) => {
         const code = productExcel.codigo;
         const listPrice = productExcel.precio;
