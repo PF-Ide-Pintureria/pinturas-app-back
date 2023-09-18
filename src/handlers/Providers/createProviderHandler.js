@@ -3,10 +3,10 @@ const { createProvider } = ProvidersControllers;
 
 const createProviderHandler = async (req, res) => {
     try {
-        const { name, discount } = req.body;
-        if (!name || !discount) return res.status(400).json({ error: "Faltan datos" });
+        const { name, discount, markup } = req.body;
+        if (!name || !discount || !markup) return res.status(400).json({ error: "Faltan datos" });
 
-        return res.status(200).send(await createProvider(name, discount));
+        return res.status(200).send(await createProvider(name, discount, markup));
 
     } catch (error) {
         if (error.errors[0].type == "unique violation") { //cuando queremos crear un provedor cuyo nombre ya existe

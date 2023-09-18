@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "nodemon -L --trace-warnings",
+        "setProviderToProducts": "node ./scripts/setProviderToProducts.js",
         "secureImages": "node ./scripts/secureImages.js",
         "resetProducts": "node ./scripts/resetProducts.js",
         "resetUsers": "node ./scripts/resetUsers.js",

@@ -1,10 +1,11 @@
 const { Providers } = require("../../db.js");
 
-const createProviderController = async (name, discount) => {
+const createProviderController = async (name, discount, markup) => {
 
     const provider = new Providers({
         name: name.toUpperCase(),
-        discount
+        discount,
+        markup
     });
     //Guardar el provider en la base de datos
     await provider.save();
