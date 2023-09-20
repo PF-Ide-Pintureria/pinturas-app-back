@@ -12,6 +12,6 @@ router.get("/", ProvidersHandlers.getProviders);
 // //Eliminar un proveedor
 // router.delete("/:id", ProvidersHandlers.deleteProvider);
 // //Obtener un proveedor
-// router.get("/:id", ProvidersHandlers.getProvider);
+router.get("/:id", ProvidersHandlers.getProviderById);
 
 module.exports = router;
